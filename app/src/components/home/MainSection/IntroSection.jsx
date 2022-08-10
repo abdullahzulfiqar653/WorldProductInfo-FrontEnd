@@ -1,35 +1,49 @@
 import React, { Component } from "react";
-// import Swiper from "swiper";
-// import Swiper from "swiper/bundle";
 import Men from "../../../assets/images/demos/demo1/sliders/men.png";
 import Shose from "../../../assets/images/demos/demo1/sliders/shoes.png";
 import Skate from "../../../assets/images/demos/demo1/sliders/skate.png";
-
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 class IntroSection extends Component {
   componentDidMount() {
-    // new Swiper(".intro-section.swiper-container", {
-    //   slidesPerView: 1,
-    //   spaceBetween: 0,
+    // new Swiper(".swiper", {
+    //   // configure Swiper to use modules
+    //   modules: [Navigation, Pagination, Scrollbar],
     //   speed: 800,
-    //   simulateTouch: false,
+    //   loop: true,
     //   autoplay: {
-    //     delay: 2000,
+    //     delay: 200,
     //   },
     //   pagination: {
-    //     el: ".hero.swiper-pagination",
+    //     el: ".swiper-pagination",
     //     clickable: true,
     //   },
     //   navigation: {
-    //     nextEl: ".hero.swiper-button-next",
-    //     prevEl: ".hero.swiper-button-prev",
+    //     nextEl: ".swiper-button-next",
+    //     prevEl: ".swiper-button-prev",
     //   },
     // });
   }
   render() {
     return (
       <section className="intro-section">
-        <div className="swiper-container swiper-theme nav-inner pg-inner swiper-nav-lg animation-slider pg-xxl-hide nav-xxl-show nav-hide">
-          <div className="swiper-wrapper">
+        {/* <div className="swiper swiper-theme nav-inner pg-inner swiper-nav-lg animation-slider pg-xxl-hide nav-xxl-show nav-hide">
+          <div className="swiper-wrapper"></div>
+          <div className="swiper-pagination"></div>
+          <button className="swiper-button-next"></button>
+          <button className="swiper-button-prev"></button>
+        </div> */}
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+        >
+          <SwiperSlide>
             <div
               className="swiper-slide banner banner-fixed intro-slide intro-slide1"
               style={{
@@ -65,7 +79,7 @@ class IntroSection extends Component {
                   </p>
 
                   <a
-                    href="shop-list.html"
+                    href="#"
                     className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate"
                   >
                     SHOP NOW<i className="w-icon-long-arrow-right"></i>
@@ -73,7 +87,8 @@ class IntroSection extends Component {
                 </div>
               </div>
             </div>
-
+          </SwiperSlide>
+          <SwiperSlide>
             <div
               className="swiper-slide banner banner-fixed intro-slide intro-slide2"
               style={{
@@ -112,7 +127,8 @@ class IntroSection extends Component {
                 </div>
               </div>
             </div>
-
+          </SwiperSlide>
+          <SwiperSlide>
             <div
               className="swiper-slide banner banner-fixed intro-slide intro-slide3"
               style={{
@@ -142,22 +158,17 @@ class IntroSection extends Component {
                   <h3 className="banner-title p-relative font-weight-bolder ls-50 slide-animate">
                     <span className="text-white mr-4">Roller</span>-skate
                   </h3>
-                  <div className="btn-group slide-animate">
-                    <a
-                      href="shop-list.html"
-                      className="btn btn-dark btn-outline btn-rounded btn-icon-right"
-                    >
-                      SHOP NOW<i className="w-icon-long-arrow-right"></i>
-                    </a>
-                  </div>
+                  <a
+                    href="#"
+                    className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate"
+                  >
+                    SHOP NOW<i className="w-icon-long-arrow-right"></i>
+                  </a>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="swiper-pagination"></div>
-          <button className="swiper-button-next"></button>
-          <button className="swiper-button-prev"></button>
-        </div>
+          </SwiperSlide>
+        </Swiper>
       </section>
     );
   }

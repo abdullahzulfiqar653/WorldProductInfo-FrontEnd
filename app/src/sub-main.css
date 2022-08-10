@@ -10803,7 +10803,7 @@ aside .sp-sidebar-banner span {
 .dropdown > a:after {
   display: inline-block;
   margin-left: 6px;
-  content: "";
+  content: "\f107";
   font-family: "Font Awesome 5 Free";
   font-size: 8px;
   font-weight: 900;

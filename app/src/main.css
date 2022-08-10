@@ -7755,15 +7755,15 @@ blockquote {
 }
 
 .w-icon-long-arrow-left:before {
-  content: "";
+  content: "f177";
 }
 
 .w-icon-long-arrow-right:before {
-  content: "";
+  content: "f30b";
 }
 
 .w-icon-long-arrow-up:before {
-  content: "";
+  content: "f176";
 }
 
 .w-icon-comment:before {
