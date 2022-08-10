@@ -4,10 +4,11 @@ import Banner2 from "../../../assets/images/menu/banner-2.jpg";
 import Banner3 from "../../../assets/images/menu/banner-3.jpg";
 import Banner4 from "../../../assets/images/menu/banner-4.jpg";
 import Banner6 from "../../../assets/images/menu/banner-6.jpg";
+import { Link, NavLink } from "react-router-dom";
 class BottomNav extends Component {
   render() {
     return (
-      <div className="header-bottom sticky-content fix-top sticky-header has-dropdown">
+      <div className="header-bottom sticky-content fix-top sticky-header">
         <div className="container">
           <div className="inner-wrap">
             <div className="header-left">
@@ -15,8 +16,8 @@ class BottomNav extends Component {
                 className="dropdown category-dropdown has-border"
                 data-visible="true"
               >
-                <a
-                  href="#"
+                <NavLink
+                  to="/product-list"
                   className="category-toggle text-dark"
                   role="button"
                   data-toggle="dropdown"
@@ -27,14 +28,14 @@ class BottomNav extends Component {
                 >
                   <i className="w-icon-category"></i>
                   <span>Browse Categories</span>
-                </a>
+                </NavLink>
 
                 <div className="dropdown-box">
                   <ul className="menu vertical-menu category-menu">
                     <li className="has-submenu">
-                      <a href="shop-fullwidth-banner.html">
+                      <NavLink to="/product-list">
                         <i className="w-icon-tshirt2"></i>Fashion
-                      </a>
+                      </NavLink>
                       <ul className="megamenu">
                         <li>
                           <h4 className="menu-title">Women</h4>

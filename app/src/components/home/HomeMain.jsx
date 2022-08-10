@@ -11,9 +11,9 @@ class HomeMain extends Component {
     return (
       <div className="main">
         <IntroSection />
-        <Preview />
-        <CategorySection />
-        <PopularSection />
+        {/* <Preview /> */}
+        {/* <CategorySection /> */}
+        {/* <PopularSection /> */}
       </div>
     );
   }

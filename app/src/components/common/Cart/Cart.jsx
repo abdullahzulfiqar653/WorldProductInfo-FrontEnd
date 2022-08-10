@@ -8,7 +8,14 @@ class Cart extends Component {
   render() {
     return (
       <div className={this.state.cartstate}>
-        <div className="cart-overlay"></div>
+        <div
+          className="cart-overlay"
+          onClick={() =>
+            this.setState({
+              cartstate: "dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2",
+            })
+          }
+        ></div>
         <a
           href="#"
           onClick={() =>

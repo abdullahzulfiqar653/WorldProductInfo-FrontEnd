@@ -2,7 +2,13 @@ import React, { Component } from "react";
 import Men from "../../../assets/images/demos/demo1/sliders/men.png";
 import Shose from "../../../assets/images/demos/demo1/sliders/shoes.png";
 import Skate from "../../../assets/images/demos/demo1/sliders/skate.png";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 class IntroSection extends Component {
   componentDidMount() {
@@ -25,6 +31,7 @@ class IntroSection extends Component {
     // });
   }
   render() {
+    SwiperCore.use([Autoplay]);
     return (
       <section className="intro-section">
         {/* <div className="swiper swiper-theme nav-inner pg-inner swiper-nav-lg animation-slider pg-xxl-hide nav-xxl-show nav-hide">
@@ -37,6 +44,11 @@ class IntroSection extends Component {
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           spaceBetween={50}
           slidesPerView={1}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
           navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}

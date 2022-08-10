@@ -1,14 +1,17 @@
 import "./App.css";
 import "./main.css";
 import Home from "./components/home/Home";
-import Details from "./components/DetailPage/Details";
-import { useEffect } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import ListDetails from "./components/ListPage/ListDetails";
 
 function App() {
   return (
     <div className="App">
-      {/* <Details /> */}
-      <Home />
+      <Switch>
+        <Route path="/home" component={Home} />
+        <Route path="/product-list" component={ListDetails} />
+        <Redirect path="/" exact to="/home" />
+      </Switch>
     </div>
   );
 }

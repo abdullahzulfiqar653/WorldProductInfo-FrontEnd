@@ -10329,6 +10329,7 @@ aside .sp-sidebar-banner span {
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: -0.025em;
+  border-bottom: 1px solid #eee;
 }
 .header-bottom .main-nav {
   margin-left: 2.1rem;
@@ -10803,8 +10804,8 @@ aside .sp-sidebar-banner span {
 .dropdown > a:after {
   display: inline-block;
   margin-left: 6px;
-  content: "\f107";
-  font-family: "Font Awesome 5 Free";
+  content: "";
+  font-family: "wolmart";
   font-size: 8px;
   font-weight: 900;
 }
