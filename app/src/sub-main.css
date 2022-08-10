@@ -4361,11 +4361,11 @@ blockquote {
 }
 @font-face {
   font-family: "wolmart";
-  src: url("../fonts/wolmart.eot?png09e");
-  src: url("../fonts/wolmart.woff?png09e") format("woff"),
-    url("../fonts/wolmart.eot?png09e#iefix") format("embedded-opentype"),
-    url("../fonts/wolmart.ttf?png09e") format("truetype"),
-    url("../fonts/wolmart.svg?png09e#wolmart") format("svg");
+  src: url("./assets/fonts/wolmart.eot?png09e");
+  src: url("./assets/fonts/wolmart.woff?png09e") format("woff"),
+    url("./assets/fonts/wolmart.eot?png09e#iefix") format("embedded-opentype"),
+    url("./assets/fonts/wolmart.ttf?png09e") format("truetype"),
+    url("./assets/fonts/wolmart.svg?png09e#wolmart") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -5700,7 +5700,7 @@ textarea {
   background-position: center;
   background-size: cover;
   border-radius: 1rem;
-  background-image: url(../../assets/images/newsletter-1.jpg);
+  background-image: url(./assets/images/newsletter-1.jpg);
 }
 .newsletter-popup .popup-media {
   margin-bottom: 1.7rem;
@@ -5917,7 +5917,7 @@ body .product-popup {
     max-width: 40rem;
     min-height: 40rem;
     padding: 0rem 2rem;
-    background-image: url(../../assets/images/newsletter-2.jpg);
+    background-image: url(./assets/images/newsletter-2.jpg);
     text-align: center;
     align-items: center;
   }
@@ -12208,11 +12208,11 @@ aside .sp-sidebar-banner span {
 .header-bottom:not(.fixed) .category-dropdown > a {
   background-color: #f1f1f1;
 }
-.header-bottom:not(.fixed) .dropdown-box {
+/* .header-bottom:not(.fixed) .dropdown-box {
   opacity: 1;
   visibility: visible;
   transform: none;
-}
+} */
 .category-dropdown.show > a,
 .category-dropdown:hover > a {
   background-color: #f1f1f1;
