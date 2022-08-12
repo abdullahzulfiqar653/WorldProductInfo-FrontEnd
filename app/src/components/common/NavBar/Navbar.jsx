@@ -9,7 +9,7 @@ class Navbar extends Component {
     return (
       <>
         <h1 className="d-none">GFK - Welcome to GFK Etilize</h1>
-        <header className="header">
+        <header className="header" id="header">
           <UpperNav />
           <MiddleNav />
           <BottomNav />

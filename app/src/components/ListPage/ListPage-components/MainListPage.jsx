@@ -43,22 +43,20 @@ class MainListPage extends Component {
                   <div className="toolbox-item toolbox-sort select-box text-dark">
                     <label>Sort By :</label>
                     <select name="orderby" className="form-control">
-                      <option value="default" selected="selected">
-                        Bestmatch
-                      </option>
-                      <option value="popularity" style={{ display: "none" }}>
+                      <option selected="selected">Bestmatch</option>
+                      <option style={{ display: "none" }}>
                         Sort by Bestmatch
                       </option>
-                      <option value="rating" style={{ display: "none" }}>
+                      <option style={{ display: "none" }}>
                         Sort by average rating
                       </option>
-                      <option value="date" style={{ display: "none" }}>
+                      <option style={{ display: "none" }}>
                         Sort by latest
                       </option>
-                      <option value="price-low" style={{ display: "none" }}>
+                      <option style={{ display: "none" }}>
                         Sort by pric: low to high
                       </option>
-                      <option value="price-high" style={{ display: "none" }}>
+                      <option style={{ display: "none" }}>
                         Sort by price: high to low
                       </option>
                     </select>
@@ -89,7 +87,7 @@ class MainListPage extends Component {
                     <a
                       href="#"
                       aria-label="Previous"
-                      tabindex="-1"
+                      tabIndex="-1"
                       aria-disabled="true"
                     >
                       <i className="w-icon-long-arrow-left"></i>Prev

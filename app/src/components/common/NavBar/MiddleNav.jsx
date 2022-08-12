@@ -13,7 +13,7 @@ class MiddleNav extends Component {
               className="mobile-menu-toggle  w-icon-hamburger"
               aria-label="menu-toggle"
             ></a>
-            <a href="#" classNmae="logo ml-lg-0">
+            <a href="#" className="logo ml-lg-0">
               <img src={Logo} alt="logo" width="144" height="45" />
             </a>
             <form
@@ -39,8 +39,8 @@ class MiddleNav extends Component {
                 placeholder="Search in..."
                 required
               />
-              <button class="btn btn-search" type="submit">
-                <i class="w-icon-search"></i>
+              <button className="btn btn-search" type="submit">
+                <i className="w-icon-search"></i>
               </button>
             </form>
           </div>

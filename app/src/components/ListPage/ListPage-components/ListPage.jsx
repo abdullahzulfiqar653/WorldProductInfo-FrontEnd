@@ -1,6 +1,6 @@
-import MainListPage from "./MainListPage";
 import PageNav from "./PageNav";
 import React, { Component } from "react";
+import MainListPage from "./MainListPage";
 
 class ListPage extends Component {
   render() {

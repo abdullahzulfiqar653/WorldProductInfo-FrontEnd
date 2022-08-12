@@ -121,7 +121,7 @@ class LastSection extends Component {
                 type="text"
                 className="form-control"
                 name="search"
-                autocomplete="off"
+                autoComplete="off"
                 placeholder="Search"
                 required
               />
@@ -149,7 +149,7 @@ class LastSection extends Component {
               id="progress-indicator"
               fill="transparent"
               stroke="#000000"
-              stroke-miterlimit="10"
+              strokeMiterlimit="10"
               cx="35"
               cy="35"
               r="34"
@@ -170,7 +170,7 @@ class LastSection extends Component {
                 type="text"
                 className="form-control"
                 name="search"
-                autocomplete="off"
+                autoComplete="off"
                 placeholder="Search"
                 required
               />
@@ -1059,7 +1059,7 @@ class LastSection extends Component {
                 required=""
               />
               <label
-                for="hide-newsletter-popup"
+                htmlFor="hide-newsletter-popup"
                 className="font-size-sm text-light"
               >
                 Don't show this popup again.
@@ -1229,7 +1229,7 @@ class LastSection extends Component {
                     <a
                       href="#"
                       className="color"
-                      style={{ backgroundColor: "#ca6d00;" }}
+                      style={{ backgroundColor: "#ca6d00" }}
                     ></a>
                     <a
                       href="#"

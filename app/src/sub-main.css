@@ -8374,8 +8374,10 @@ body .product-popup {
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-item:hover .nav-link {
   color: #336699;
+  background: transparent;
 }
 .nav-link {
+  background: transparent;
   display: block;
   position: relative;
   font-size: 1.4rem;

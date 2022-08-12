@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 class PageNav extends Component {
   render() {
     return (
-      <nav class="breadcrumb-nav" style={{ padding: "10px" }}>
-        <div class="container">
-          <ul class="breadcrumb bb-no">
+      <nav className="breadcrumb-nav" style={{ padding: "10px" }}>
+        <div className="container">
+          <ul className="breadcrumb bb-no">
             <li>
               <NavLink to="/home">Home</NavLink>
             </li>

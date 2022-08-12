@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Banner5 from "../../../assets/images/menu/banner-5.jpg";
 import Banner2 from "../../../assets/images/menu/banner-2.jpg";
 import Banner3 from "../../../assets/images/menu/banner-3.jpg";
 import Banner4 from "../../../assets/images/menu/banner-4.jpg";
 import Banner6 from "../../../assets/images/menu/banner-6.jpg";
-import { Link, NavLink } from "react-router-dom";
 class BottomNav extends Component {
   render() {
     return (

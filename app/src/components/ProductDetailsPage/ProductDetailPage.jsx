@@ -2,23 +2,20 @@ import Footer from "../common/Footer";
 import React, { Component } from "react";
 import Navbar from "../common/NavBar/Navbar";
 import LastSection from "../home/LastSection";
-import ListPage from "./ListPage-components/ListPage";
-
-
-class ListDetails extends Component {
+import DetailPageContent from "./ProductDetails-components/DetailPageContent";
+class ProductDetailPage extends Component {
   render() {
     return (
       <>
         <div className="page-wrapper">
           <Navbar />
-          <ListPage />
+          <DetailPageContent />
           <Footer />
         </div>
-
         <LastSection />
       </>
     );
   }
 }
 
-export default ListDetails;
+export default ProductDetailPage;

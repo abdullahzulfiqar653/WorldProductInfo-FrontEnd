@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { HashLink } from "react-router-hash-link";
 import Img1 from "../../../assets/images/shop/1.jpg";
 import Img4 from "../../../assets/images/shop/3.jpg";
 import Img5 from "../../../assets/images/shop/4.jpg";
@@ -15,15 +16,15 @@ class ProductsList extends Component {
       <div className="product-wrapper row cols-xl-2 cols-sm-1 cols-xs-2 cols-1">
         <div className="product product-list product-select">
           <figure className="product-media">
-            <a href="product-default.html">
+            <HashLink to="/product/1#header">
               <img src={Img1} alt="Product" width="330" height="338" />
-            </a>
+            </HashLink>
             <div className="product-action-vertical">
-              <a
-                href="#"
+              <HashLink
+                to="/product/1#header"
                 className="btn-product-icon btn-quickview w-icon-search"
                 title="Quick View"
-              ></a>
+              ></HashLink>
             </div>
           </figure>
           <div className="product-details">
