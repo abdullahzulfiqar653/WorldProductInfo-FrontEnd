@@ -5,7 +5,31 @@ import Banner2 from "../../../assets/images/menu/banner-2.jpg";
 import Banner3 from "../../../assets/images/menu/banner-3.jpg";
 import Banner4 from "../../../assets/images/menu/banner-4.jpg";
 import Banner6 from "../../../assets/images/menu/banner-6.jpg";
+import { HashLink } from "react-router-hash-link";
 class BottomNav extends Component {
+  state = {
+    category: [],
+  };
+  dynamicSort(property) {
+    var sortOrder = 1;
+    if (property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+    }
+    return function (a, b) {
+      var result =
+        a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+      return result * sortOrder;
+    };
+  }
+
+  showSecondLevel = (parentcategoryid) => {
+    let secondLevel = this.props.categories.filter(
+      (category) => category.parentcategoryid === parentcategoryid
+    );
+    this.setState((this.state.category = secondLevel));
+    console.log(this.state.category);
+  };
   render() {
     return (
       <div className="header-bottom sticky-content fix-top sticky-header">
@@ -16,8 +40,7 @@ class BottomNav extends Component {
                 className="dropdown category-dropdown has-border"
                 data-visible="true"
               >
-                <NavLink
-                  to="/product-list"
+                <a
                   className="category-toggle text-dark"
                   role="button"
                   data-toggle="dropdown"
@@ -28,7 +51,7 @@ class BottomNav extends Component {
                 >
                   <i className="w-icon-category"></i>
                   <span>Browse Categories</span>
-                </NavLink>
+                </a>
 
                 <div className="dropdown-box">
                   <ul className="menu vertical-menu category-menu">
@@ -621,50 +644,61 @@ class BottomNav extends Component {
                         </li>
                       </ul>
                     </li>
-                    <li>
-                      <a href="shop-fullwidth-banner.html">
-                        <i className="w-icon-heartbeat"></i>Healthy & Beauty
-                      </a>
-                    </li>
-                    <li>
-                      <a href="shop-fullwidth-banner.html">
-                        <i className="w-icon-gift"></i>Gift Ideas
-                      </a>
-                    </li>
-                    <li>
-                      <a href="shop-fullwidth-banner.html">
-                        <i className="w-icon-gamepad"></i>Toy & Games
-                      </a>
-                    </li>
-                    <li>
-                      <a href="shop-fullwidth-banner.html">
-                        <i className="w-icon-ice-cream"></i>Cooking
-                      </a>
-                    </li>
-                    <li>
-                      <a href="shop-fullwidth-banner.html">
-                        <i className="w-icon-ios"></i>Smart Phones
-                      </a>
-                    </li>
-                    <li>
-                      <a href="shop-fullwidth-banner.html">
-                        <i className="w-icon-camera"></i>Cameras & Photo
-                      </a>
-                    </li>
-                    <li>
-                      <a href="shop-fullwidth-banner.html">
-                        <i className="w-icon-ruby"></i>Accessories
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="shop-banner-sidebar.html"
-                        className="font-weight-bold text-primary text-uppercase ls-25"
-                      >
-                        View All Categories
-                        <i className="w-icon-angle-right"></i>
-                      </a>
-                    </li>
+                    {this.props.categories.map((category) => {
+                      let a = null;
+                      if (category.catlevel === 1) {
+                        this.props.categories.map((cat) => {
+                          if (cat.parentcategoryid === category.categoryid) {
+                            a = "s";
+                          }
+                        });
+                        return a === null ? (
+                          <li key={category.categoryid}>
+                            <Link to={`/product-list/${category.categoryid}`}>
+                              {category.category_label}
+                            </Link>
+                          </li>
+                        ) : (
+                          <li key={category.categoryid} className="has-submenu">
+                            <Link
+                              onMouseOver={() =>
+                                this.showSecondLevel(category.categoryid)
+                              }
+                              // onMouseOut={() => this.setState({ category: [] })}
+                              to={`/product-list/${category.categoryid}`}
+                            >
+                              {category.category_label}
+                            </Link>
+                            {this.state.category != [] ? (
+                              <ul
+                                className="submenu"
+                                style={{
+                                  top: "0",
+                                  padding: "0",
+                                  width: "260px",
+                                }}
+                              >
+                                {this.state.category.map((s) => (
+                                  <li key={s.categoryid}>
+                                    <Link
+                                      to={`/product-list/${s.categoryid}`}
+                                      style={{
+                                        padding: "13px 10px",
+                                        borderBottom: "1px solid #eeeeee",
+                                      }}
+                                    >
+                                      {s.category_label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              ""
+                            )}
+                          </li>
+                        );
+                      }
+                    })}
                   </ul>
                 </div>
               </div>

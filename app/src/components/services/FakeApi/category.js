@@ -1,4 +1,4 @@
-[
+const category = [
     {
         "catlevel": 1,
         "categoryid": 2,
@@ -10213,3 +10213,4 @@
         "parentcategoryid": 4900
     }
 ]
+export default category;
