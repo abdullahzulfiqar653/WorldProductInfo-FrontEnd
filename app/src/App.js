@@ -10,28 +10,8 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/home" component={Home} />
-        <Route path="/product-list/:categoryid" component={ListDetails} />
+        <Route path="/product-list/:categoryid/" component={ListDetails} />
         <Route exact path="/product/:productid" component={ProductDetailPage} />
-        <HashRouter
-          exact
-          path="/product/:productid/basic-overview"
-          component={ProductDetailPage}
-        />
-        <HashRouter
-          exact
-          path="/product/:productid/enhanced-overview"
-          component={ProductDetailPage}
-        />
-        <HashRouter
-          exact
-          path="/product/:productid/specifications"
-          component={ProductDetailPage}
-        />
-        <HashRouter
-          exact
-          path="/product/:productid/gallery"
-          component={ProductDetailPage}
-        />
         <Redirect path="/" exact to="/home" />
       </Switch>
     </div>

@@ -1,14 +1,14 @@
+import { Link } from "react-router-dom";
 import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
 import Banner5 from "../../../assets/images/menu/banner-5.jpg";
 import Banner2 from "../../../assets/images/menu/banner-2.jpg";
+import Banner6 from "../../../assets/images/menu/banner-6.jpg";
 import Banner3 from "../../../assets/images/menu/banner-3.jpg";
 import Banner4 from "../../../assets/images/menu/banner-4.jpg";
-import Banner6 from "../../../assets/images/menu/banner-6.jpg";
-import { HashLink } from "react-router-hash-link";
 class BottomNav extends Component {
   state = {
     category: [],
+    levelThree: [],
   };
   dynamicSort(property) {
     var sortOrder = 1;
@@ -28,7 +28,12 @@ class BottomNav extends Component {
       (category) => category.parentcategoryid === parentcategoryid
     );
     this.setState((this.state.category = secondLevel));
-    console.log(this.state.category);
+  };
+  showThirdLevel = (parentcategoryid) => {
+    let thirdLevel = this.props.categories.filter(
+      (category) => category.parentcategoryid === parentcategoryid
+    );
+    this.setState((this.state.levelThree = thirdLevel));
   };
   render() {
     return (
@@ -56,9 +61,9 @@ class BottomNav extends Component {
                 <div className="dropdown-box">
                   <ul className="menu vertical-menu category-menu">
                     <li className="has-submenu">
-                      <NavLink to="/product-list">
+                      <a>
                         <i className="w-icon-tshirt2"></i>Fashion
-                      </NavLink>
+                      </a>
                       <ul className="megamenu">
                         <li>
                           <h4 className="menu-title">Women</h4>
@@ -654,7 +659,9 @@ class BottomNav extends Component {
                         });
                         return a === null ? (
                           <li key={category.categoryid}>
-                            <Link to={`/product-list/${category.categoryid}`}>
+                            <Link
+                              to={`/product-list/${category.categoryid}#header`}
+                            >
                               {category.category_label}
                             </Link>
                           </li>
@@ -665,36 +672,90 @@ class BottomNav extends Component {
                                 this.showSecondLevel(category.categoryid)
                               }
                               // onMouseOut={() => this.setState({ category: [] })}
-                              to={`/product-list/${category.categoryid}`}
+                              to={`/product-list/${category.categoryid}#header`}
                             >
                               {category.category_label}
                             </Link>
-                            {this.state.category != [] ? (
-                              <ul
-                                className="submenu"
-                                style={{
-                                  top: "0",
-                                  padding: "0",
-                                  width: "260px",
-                                }}
-                              >
-                                {this.state.category.map((s) => (
-                                  <li key={s.categoryid}>
-                                    <Link
-                                      to={`/product-list/${s.categoryid}`}
-                                      style={{
-                                        padding: "13px 10px",
-                                        borderBottom: "1px solid #eeeeee",
-                                      }}
+                            <ul
+                              className="submenu"
+                              style={{
+                                top: "0",
+                                padding: "0",
+                                width: "260px",
+                              }}
+                            >
+                              {this.props.categories
+                                .filter(
+                                  (cat) =>
+                                    cat.parentcategoryid === category.categoryid
+                                )
+                                .map((s) => {
+                                  let b = null;
+                                  this.props.categories.map((cat) => {
+                                    if (cat.parentcategoryid === s.categoryid) {
+                                      b = "s";
+                                    }
+                                  });
+                                  console.log(b);
+                                  return b === null ? (
+                                    <li key={s.categoryid}>
+                                      <Link
+                                        to={`/product-list/${s.categoryid}#header`}
+                                        style={{
+                                          padding: "13px 10px",
+                                          borderBottom: "1px solid #eeeeee",
+                                        }}
+                                      >
+                                        {s.category_label}
+                                      </Link>
+                                    </li>
+                                  ) : (
+                                    <li
+                                      key={s.categoryid}
+                                      className="has-submenu"
                                     >
-                                      {s.category_label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            ) : (
-                              ""
-                            )}
+                                      <Link
+                                        to={`/product-list/${s.categoryid}#header`}
+                                        style={{
+                                          padding: "13px 10px",
+                                          borderBottom: "1px solid #eeeeee",
+                                        }}
+                                      >
+                                        {s.category_label}
+                                      </Link>
+                                      <ul
+                                        className="submenu"
+                                        style={{
+                                          top: "0",
+                                          padding: "0",
+                                          width: "260px",
+                                        }}
+                                      >
+                                        {this.props.categories
+                                          .filter(
+                                            (category) =>
+                                              category.parentcategoryid ===
+                                              s.categoryid
+                                          )
+                                          .map((three) => (
+                                            <li key={three.categoryid}>
+                                              <Link
+                                                to={`/product-list/${three.categoryid}#header`}
+                                                style={{
+                                                  padding: "13px 10px",
+                                                  borderBottom:
+                                                    "1px solid #eeeeee",
+                                                }}
+                                              >
+                                                {three.category_label}
+                                              </Link>
+                                            </li>
+                                          ))}
+                                      </ul>
+                                    </li>
+                                  );
+                                })}
+                            </ul>
                           </li>
                         );
                       }
