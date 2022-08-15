@@ -5,7 +5,6 @@ import ReactDOM from "react-dom/client";
 import "font-awesome/css/font-awesome.css";
 import "./sub-main.css";
 import reportWebVitals from "./reportWebVitals";
-// import "font-awesome/fonts";
 import "font-awesome/css/font-awesome.css";
 import { BrowserRouter } from "react-router-dom";
 

@@ -1,8 +1,13 @@
 import FiltersList from "./FiltersList";
 import React, { Component } from "react";
 import ProductsList from "./ProductsList";
-
+import products from "../../services/FakeApi/product";
 class MainListPage extends Component {
+  state = {
+    products: [],
+  };
+  componentDidMount() {
+  }
   state = {
     filterStatus: "page-content mb-10",
   };
@@ -77,7 +82,7 @@ class MainListPage extends Component {
                   </div>
                 </div>
               </nav>
-              <ProductsList />
+              <ProductsList products={products.results} />
               <div className="toolbox toolbox-pagination justify-content-between">
                 <p className="showing-info mb-2 mb-sm-0">
                   Showing<span>1-12 of 60</span>Products

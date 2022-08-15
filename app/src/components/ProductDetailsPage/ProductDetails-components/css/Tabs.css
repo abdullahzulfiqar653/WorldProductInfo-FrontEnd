@@ -1,0 +1,30 @@
+.thumb {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.thumb .col-md-2 img {
+  object-fit: cover !important;
+}
+.thumb .col-md-2 {
+  max-width: 20% !important;
+  flex: 0 0 20% !important;
+}
+.manuals {
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.pdf-icon {
+  margin: 10px;
+}
+.pdf-icon svg {
+  width: 40px;
+}
+.download-link {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

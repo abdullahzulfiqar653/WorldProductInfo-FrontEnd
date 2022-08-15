@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import React, { Component } from "react";
 import Banner5 from "../../../assets/images/menu/banner-5.jpg";
 import Banner2 from "../../../assets/images/menu/banner-2.jpg";
@@ -60,7 +60,7 @@ class BottomNav extends Component {
 
                 <div className="dropdown-box">
                   <ul className="menu vertical-menu category-menu">
-                    <li className="has-submenu">
+                    {/* <li className="has-submenu">
                       <a>
                         <i className="w-icon-tshirt2"></i>Fashion
                       </a>
@@ -648,7 +648,7 @@ class BottomNav extends Component {
                           </div>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
                     {this.props.categories.map((category) => {
                       let a = null;
                       if (category.catlevel === 1) {
@@ -696,7 +696,7 @@ class BottomNav extends Component {
                                       b = "s";
                                     }
                                   });
-                                  console.log(b);
+                                  // console.log(b);
                                   return b === null ? (
                                     <li key={s.categoryid}>
                                       <Link
@@ -766,9 +766,9 @@ class BottomNav extends Component {
               <nav className="main-nav">
                 <ul className="menu active-underline">
                   <li className="active">
-                    <a href="demo1.html">Home</a>
+                    <NavLink to={"/home"}>Home</NavLink>
                   </li>
-                  <li className="has-submenu">
+                  {/* <li className="has-submenu">
                     <a href="shop-banner-sidebar.html" className="has-submenu">
                       Shop
                     </a>
@@ -1131,18 +1131,18 @@ class BottomNav extends Component {
                         <a href="element-vendors.html">Vendors</a>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
                 </ul>
               </nav>
             </div>
-            <div className="header-right">
+            {/* <div className="header-right">
               <a href="#" className="d-xl-show">
                 <i className="w-icon-map-marker mr-1"></i>Track Order
               </a>
               <a href="#">
                 <i className="w-icon-sale"></i>Daily Deals
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

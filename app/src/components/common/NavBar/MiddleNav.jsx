@@ -1,6 +1,7 @@
 import Cart from "../Cart/Cart";
 import React, { Component } from "react";
 import Logo from "../../../assets/images/logo.png";
+import { NavLink } from "react-router-dom";
 
 class MiddleNav extends Component {
   render() {
@@ -13,15 +14,15 @@ class MiddleNav extends Component {
               className="mobile-menu-toggle  w-icon-hamburger"
               aria-label="menu-toggle"
             ></a>
-            <a href="#" className="logo ml-lg-0">
+            <NavLink to={"/home"} className="logo ml-lg-0">
               <img src={Logo} alt="logo" width="144" height="45" />
-            </a>
+            </NavLink>
             <form
               method="get"
               action="#"
               className="header-search hs-expanded hs-round d-none d-md-flex input-wrapper"
             >
-              <div className="select-box">
+              {/* <div className="select-box">
                 <select name="category" id="category">
                   <option value="0">All Categories</option>
                   <option value="1">Category 1</option>
@@ -30,13 +31,14 @@ class MiddleNav extends Component {
                   <option value="4">Category 4</option>
                   <option value="5">Category 5</option>
                 </select>
-              </div>
+              </div> */}
               <input
                 type="text"
                 className="form-control"
                 name="search"
                 id="search"
                 placeholder="Search in..."
+                style={{ borderLeft: "2px solid #336699" }}
                 required
               />
               <button className="btn btn-search" type="submit">
@@ -45,7 +47,7 @@ class MiddleNav extends Component {
             </form>
           </div>
           <div className="header-right ml-4">
-            <div className="header-call d-xs-show d-lg-flex align-items-center">
+            {/* <div className="header-call d-xs-show d-lg-flex align-items-center">
               <a href="" className="w-icon-call"></a>
               <div className="call-info d-lg-show">
                 <h4 className="chat font-weight-normal font-size-md text-normal ls-normal text-light mb-0">
@@ -65,7 +67,7 @@ class MiddleNav extends Component {
             <a className="wishlist label-down link d-xs-show" href="#">
               <i className="w-icon-heart"></i>
               <span className="wishlist-label d-lg-show">Wishlist</span>
-            </a>
+            </a> */}
             <a className="compare label-down link d-xs-show" href="#">
               <i className="w-icon-compare"></i>
               <span className="compare-label d-lg-show">Compare</span>
