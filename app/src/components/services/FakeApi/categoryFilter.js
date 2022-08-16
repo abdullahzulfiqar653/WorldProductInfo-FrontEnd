@@ -1,0 +1,142 @@
+const categoryFilter = [
+  {
+    categoryid: 11450,
+    category_label: "Miscellaneous Devices",
+    category_product_count: 166,
+    ordernumber: 42,
+  },
+  {
+    categoryid: 11432,
+    category_label: "Emergency Buttons & Pull Stations",
+    category_product_count: 34,
+    ordernumber: 21,
+  },
+  {
+    categoryid: 11487,
+    category_label: "Electric Strikes",
+    category_product_count: 31,
+    ordernumber: 20,
+  },
+  {
+    categoryid: 11478,
+    category_label: "Passive Infrared Detectors",
+    category_product_count: 27,
+    ordernumber: 45,
+  },
+  {
+    categoryid: 11436,
+    category_label: "Intercom Systems",
+    category_product_count: 26,
+    ordernumber: 32,
+  },
+  {
+    categoryid: 11486,
+    category_label: "Magnetic Locks",
+    category_product_count: 26,
+    ordernumber: 38,
+  },
+  {
+    categoryid: 11810,
+    category_label: "Fire Sprinklers",
+    category_product_count: 25,
+    ordernumber: 81,
+  },
+  {
+    categoryid: 11473,
+    category_label: "Emergency Communication Systems",
+    category_product_count: 25,
+    ordernumber: 22,
+  },
+  {
+    categoryid: 11463,
+    category_label: "Keyed Wireless Transmitters",
+    category_product_count: 13,
+    ordernumber: 33,
+  },
+  {
+    categoryid: 11471,
+    category_label: "Connector/Cable Inserts",
+    category_product_count: 11,
+    ordernumber: 12,
+  },
+  {
+    categoryid: 11037,
+    category_label: "Material Detectors",
+    category_product_count: 10,
+    ordernumber: 40,
+  },
+  {
+    categoryid: 11485,
+    category_label: "Wire Splices",
+    category_product_count: 8,
+    ordernumber: 77,
+  },
+  {
+    categoryid: 11435,
+    category_label: "Photoelectric Beam Detectors",
+    category_product_count: 7,
+    ordernumber: 46,
+  },
+  {
+    categoryid: 11053,
+    category_label: "Wine Coolers & Cabinets",
+    category_product_count: 6,
+    ordernumber: 75,
+  },
+  {
+    categoryid: 11762,
+    category_label: "Snow Blowers",
+    category_product_count: 6,
+    ordernumber: 63,
+  },
+  {
+    categoryid: 10996,
+    category_label: "Powered Water Pumps",
+    category_product_count: 4,
+    ordernumber: 59,
+  },
+  {
+    categoryid: 10943,
+    category_label: "Powered Chain Saws",
+    category_product_count: 3,
+    ordernumber: 53,
+  },
+  {
+    categoryid: 10951,
+    category_label: "Electric Blankets & Pads",
+    category_product_count: 3,
+    ordernumber: 14,
+  },
+  {
+    categoryid: 11706,
+    category_label: "Sprayers",
+    category_product_count: 3,
+    ordernumber: 65,
+  },
+  {
+    categoryid: 10958,
+    category_label: "Electric Screw Drivers",
+    category_product_count: 2,
+    ordernumber: 19,
+  },
+  {
+    categoryid: 10957,
+    category_label: "Portable Electric Saws",
+    category_product_count: 1,
+    ordernumber: 51,
+  },
+  {
+    categoryid: 11496,
+    category_label: "Magnetic Contacts",
+    category_product_count: 1,
+    ordernumber: 37,
+  },
+  {
+    categoryid: 11498,
+    category_label: "Alarm Communicators & Control Panels",
+    category_product_count: 1,
+    ordernumber: 2,
+  },
+];
+
+export default categoryFilter;

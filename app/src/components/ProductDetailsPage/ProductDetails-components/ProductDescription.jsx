@@ -6,16 +6,24 @@ import React, { Component } from "react";
 import SimilarProducts from "./SimilarProducts";
 import RelatedProducts from "./RelatedProducts";
 import ProductImageGallery from "./ProductImageGallery";
-import Banner1 from "../../../assets/images/products/video-banner-610x300.jpg";
+import basicOverview from "../../services/FakeApi/basicoverview";
+import ProductsList from "../../ListPage/ListPage-components/ProductsList";
+import accessories from "../../services/FakeApi/accessories";
+import similarProducts from "../../services/FakeApi/similar";
+import relatedProducts from "../../services/FakeApi/related";
 
 class ProductDescription extends Component {
   state = {
     product: undefined,
+    basicOverview: undefined,
+    accessories: undefined,
   };
   componentDidMount() {
     show("#basic-overview-section", document.getElementById("basic-overview"));
     // console.log(this.props);
     this.setState({ product: this.props.product });
+    this.setState({ basicOverview: basicOverview.productAttribute });
+    this.setState({ accessories: accessories.results });
   }
   navigation = (e) => {
     show(`#${e.target.id}-section`, e.target);
@@ -28,15 +36,15 @@ class ProductDescription extends Component {
     // console.log(src, destination);
   };
   render() {
-    const { product } = this.state;
-    // console.log(product);
+    const { product, basicOverview, accessories } = this.state;
+    // console.log(accessories);
     return (
       <div className="page-content">
         <div className="container">
           <div className="main-content">
             <div className="product product-single row">
               <div className="col-md-6 mb-6">
-                {product != undefined ? (
+                {product !== undefined ? (
                   <ProductImageGallery
                     elements={product.productElements}
                     id={product.productid}
@@ -50,7 +58,7 @@ class ProductDescription extends Component {
                   className="product-details"
                   data-sticky-options="{'minWidth': 767}"
                 >
-                  {product != undefined
+                  {product !== undefined
                     ? product.productDescription.map((title) =>
                         title.type === 2 ? (
                           <h1 key={title.type} className="product-title">
@@ -65,12 +73,12 @@ class ProductDescription extends Component {
                     <div className="product-meta">
                       <div className="product-sku">
                         SKUS :
-                        {product != undefined
+                        {product !== undefined
                           ? product.productSkus.map((sku) => (
                               <span
                                 style={{ padding: "0 3px" }}
                                 key={product.productSkus.map((s) =>
-                                  s.name != sku.name && s.sku === sku.sku
+                                  s.name !== sku.name && s.sku === sku.sku
                                     ? sku.name
                                     : sku.sku
                                 )}
@@ -87,11 +95,11 @@ class ProductDescription extends Component {
 
                   <div className="product-short-desc">
                     <ul className="list-type-check list-style-none">
-                      {product != undefined
+                      {product !== undefined
                         ? product.productDescription.map((description) =>
-                            description.type != 2 &&
-                            description.type != 5 &&
-                            description.type != 6 ? (
+                            description.type !== 2 &&
+                            description.type !== 5 &&
+                            description.type !== 6 ? (
                               <li key={`${description.type}20000`}>
                                 {description.description}
                               </li>
@@ -235,7 +243,7 @@ class ProductDescription extends Component {
             </div>
             <div className="tab tab-nav-boxed tab-nav-underline product-tabs">
               <ul className="nav nav-tabs" role="tablist" id="tabs">
-                {product != undefined
+                {product !== undefined
                   ? product.productDescription.map((description) =>
                       description.type === 5 ? (
                         <li className="nav-item">
@@ -302,7 +310,7 @@ class ProductDescription extends Component {
                 </li>
               </ul>
               <div className="tab-content" id="tab-content">
-                {product != undefined
+                {product !== undefined
                   ? product.productDescription.map((description) =>
                       description.type === 5 ? (
                         <div
@@ -326,156 +334,243 @@ class ProductDescription extends Component {
                     )
                   : ""}
                 <div className="tab-pane" id="basic-overview-section">
-                  <div className="row mb-4">
-                    <div className="col-md-6 mb-5">
-                      <h4 className="title tab-pane-title font-weight-bold mb-2">
-                        Detail
-                      </h4>
-                      <p className="mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt arcu cursus vitae
-                        congue mauris. Sagittis id consectetur purus ut. Tellus
-                        rutrum tellus pelle Vel pretium lectus quam id leo in
-                        vitae turpis massa.
-                      </p>
-                      <ul className="list-type-check">
-                        <li>
-                          Nunc nec porttitor turpis. In eu risus enim. In vitae
-                          mollis elit.
-                        </li>
-                        <li>Vivamus finibus vel mauris ut vehicula.</li>
-                        <li>
-                          Nullam a magna porttitor, dictum risus nec, faucibus
-                          sapien.
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-md-6 mb-5">
-                      <div className="banner banner-video product-video br-xs">
-                        <figure className="banner-media">
-                          <a href="#">
-                            <img
-                              src={Banner1}
-                              alt="banner"
-                              width="610"
-                              height="300"
-                              // style=background-color: #bebebe;
-                            />
-                          </a>
-                          <a
-                            className="btn-play-video btn-iframe"
-                            href="assets/video/memory-of-a-woman.mp4"
-                          ></a>
-                        </figure>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row cols-md-3">
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span className="mr-3">1.</span>Free Shipping &amp;
-                        Return
-                      </h5>
-                      <p className="detail pl-5">
-                        We offer free shipping for products on orders above 50$
-                        and offer free delivery for all orders in US.
-                      </p>
-                    </div>
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span>2.</span>Free and Easy Returns
-                      </h5>
-                      <p className="detail pl-5">
-                        We guarantee our products and you could get back all of
-                        your money anytime you want in 30 days.
-                      </p>
-                    </div>
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span>3.</span>Special Financing
-                      </h5>
-                      <p className="detail pl-5">
-                        Get 20%-50% off items over 50$ for a month or over 250$
-                        for a year with our special credit card.
-                      </p>
-                    </div>
-                  </div>
+                  <h4>Main Features</h4>
+                  <ol style={{ listStyleType: "square" }}>
+                    {basicOverview
+                      ? basicOverview.map((basic) =>
+                          basic.atrribute_label !==
+                            "Manufacturer Website Address" &&
+                          basic.atrribute_label !==
+                            "Certifications & Standards" &&
+                          basic.atrribute_label !== "Marketing Information" &&
+                          basic.atrribute_label !== "Product Type" &&
+                          basic.atrribute_label !==
+                            "Manufacturer Part Number" &&
+                          basic.atrribute_label !== "Manufacturer" &&
+                          basic.atrribute_label !== "Product Name" &&
+                          basic.atrribute_label !== "Brand Name" &&
+                          basic.atrribute_label !==
+                            "Minimum Operating Temperature" &&
+                          basic.atrribute_label !==
+                            "Maximum Operating Temperature" &&
+                          basic.atrribute_label !== "Package Contents" ? (
+                            <li key={basic.atrribute_label}>
+                              {basic.atrribute_label}: {basic.displayvalue}
+                            </li>
+                          ) : (
+                            ""
+                          )
+                        )
+                      : ""}
+                  </ol>
+                  <hr style={{ background: "rgb(80 79 79)" }} />
+                  {basicOverview
+                    ? basicOverview.map((basic) =>
+                        basic.atrribute_label === "Marketing Information" ? (
+                          <>
+                            <h4 key={basic.atrribute_label}>
+                              {basic.atrribute_label}
+                            </h4>
+                            <div key={basic.atrributeid}>
+                              {Parser(basic.displayvalue)}
+                            </div>
+                          </>
+                        ) : (
+                          ""
+                        )
+                      )
+                    : ""}
+                  <hr style={{ background: "rgb(80 79 79)" }} />
+                  {basicOverview
+                    ? basicOverview.map((basic) =>
+                        basic.atrribute_label === "Package Contents" ? (
+                          <>
+                            <h4 key={basic.atrribute_label}>
+                              {basic.atrribute_label}
+                            </h4>
+                            <div key={basic.atrributeid}>
+                              {Parser(basic.displayvalue)}
+                            </div>
+                          </>
+                        ) : (
+                          ""
+                        )
+                      )
+                    : ""}
                 </div>
                 <div className="tab-pane" id="specifications-section">
-                  <div className="row mb-4">
-                    <div className="col-md-6 mb-5">
-                      <h4 className="title tab-pane-title font-weight-bold mb-2">
-                        Detail
-                      </h4>
-                      <p className="mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt arcu cursus vitae
-                        congue mauris. Sagittis id consectetur purus ut. Tellus
-                        rutrum tellus pelle Vel pretium lectus quam id leo in
-                        vitae turpis massa.
-                      </p>
-                      <ul className="list-type-check">
-                        <li>
-                          Nunc nec porttitor turpis. In eu risus enim. In vitae
-                          mollis elit.
-                        </li>
-                        <li>Vivamus finibus vel mauris ut vehicula.</li>
-                        <li>
-                          Nullam a magna porttitor, dictum risus nec, faucibus
-                          sapien.
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-md-6 mb-5">
-                      <div className="banner banner-video product-video br-xs">
-                        <figure className="banner-media">
-                          <a href="#">
-                            <img
-                              src={Banner1}
-                              alt="banner"
-                              width="610"
-                              height="300"
-                              // style=background-color: #bebebe;
-                            />
-                          </a>
-                          <a
-                            className="btn-play-video btn-iframe"
-                            href="assets/video/memory-of-a-woman.mp4"
-                          ></a>
-                        </figure>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row cols-md-3">
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span className="mr-3">1.</span>Free Shipping &amp;
-                        Return
-                      </h5>
-                      <p className="detail pl-5">
-                        We offer free shipping for products on orders above 50$
-                        and offer free delivery for all orders in US.
-                      </p>
-                    </div>
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span>2.</span>Free and Easy Returns
-                      </h5>
-                      <p className="detail pl-5">
-                        We guarantee our products and you could get back all of
-                        your money anytime you want in 30 days.
-                      </p>
-                    </div>
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span>3.</span>Special Financing
-                      </h5>
-                      <p className="detail pl-5">
-                        Get 20%-50% off items over 50$ for a month or over 250$
-                        for a year with our special credit card.
-                      </p>
-                    </div>
-                  </div>
+                  <h4 style={{ marginBottom: "5px" }}>General Information</h4>
+                  <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
+                  <table>
+                    <tbody>
+                      {basicOverview
+                        ? basicOverview.map((basic) =>
+                            basic.atrribute_label === "Manufacturer" ||
+                            basic.atrribute_label ===
+                              "Manufacturer Part Number" ||
+                            basic.atrribute_label === "Brand Name" ||
+                            basic.atrribute_label === "Product Name" ||
+                            basic.atrribute_label === "Product Type" ? (
+                              <tr key={basic.attributeid}>
+                                <td
+                                  style={{ padding: "0 15px", width: "200px" }}
+                                  align="right"
+                                >
+                                  {basic.atrribute_label}:
+                                </td>
+                                <td align="left">{basic.displayvalue}</td>
+                              </tr>
+                            ) : basic.atrribute_label ===
+                              "Marketing Information" ? (
+                              <tr>
+                                <td style={{ padding: "0 15px" }} align="right">
+                                  {basic.atrribute_label}:
+                                </td>
+                                <td align="left">
+                                  {Parser(basic.displayvalue)}
+                                </td>
+                              </tr>
+                            ) : (
+                              ""
+                            )
+                          )
+                        : ""}
+                    </tbody>
+                  </table>
+                  <h4 style={{ marginBottom: "5px" }}>Technical Information</h4>
+                  <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
+                  <table>
+                    <tbody>
+                      {basicOverview
+                        ? basicOverview.map((basic) =>
+                            basic.atrribute_label === "Print/Message" ? (
+                              <tr>
+                                <td
+                                  style={{ padding: "0 15px", width: "200px" }}
+                                  align="right"
+                                >
+                                  {basic.atrribute_label}:
+                                </td>
+                                <td align="left">{basic.displayvalue}</td>
+                              </tr>
+                            ) : (
+                              ""
+                            )
+                          )
+                        : ""}
+                    </tbody>
+                  </table>
+                  <h4 style={{ marginBottom: "5px" }}>
+                    Environmental Conditions
+                  </h4>
+                  <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
+                  <table>
+                    <tbody>
+                      {basicOverview
+                        ? basicOverview.map((basic) =>
+                            basic.atrribute_label ===
+                              "Minimum Operating Temperature" ||
+                            basic.atrribute_label ===
+                              "Maximum Operating Temperature" ? (
+                              <tr>
+                                <td
+                                  style={{ padding: "0 15px", width: "200px" }}
+                                  align="right"
+                                >
+                                  {basic.atrribute_label}:
+                                </td>
+                                <td align="left">
+                                  <span>{Parser(basic.displayvalue)}</span>
+                                </td>
+                              </tr>
+                            ) : (
+                              ""
+                            )
+                          )
+                        : ""}
+                    </tbody>
+                  </table>
+                  <h4 style={{ marginBottom: "5px" }}>
+                    Physical Characteristics
+                  </h4>
+                  <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
+                  <table>
+                    <tbody>
+                      {basicOverview
+                        ? basicOverview.map((basic) =>
+                            basic.atrribute_label === "Product Color" ||
+                            basic.atrribute_label === "Height" ||
+                            basic.atrribute_label === "Width" ||
+                            basic.atrribute_label === "Depth" ||
+                            basic.atrribute_label === "Weight (Approximate)" ? (
+                              <tr>
+                                <td
+                                  style={{ padding: "0 15px", width: "200px" }}
+                                  align="right"
+                                >
+                                  {basic.atrribute_label}:
+                                </td>
+                                <td align="left">
+                                  <span>{basic.displayvalue}</span>
+                                </td>
+                              </tr>
+                            ) : (
+                              ""
+                            )
+                          )
+                        : ""}
+                    </tbody>
+                  </table>
+                  <h4 style={{ marginBottom: "5px" }}>Miscellaneous</h4>
+                  <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
+                  <table>
+                    <tbody>
+                      {basicOverview
+                        ? basicOverview.map((basic) =>
+                            basic.atrribute_label === "Package Contents" ||
+                            basic.atrribute_label ===
+                              "Certifications & Standards" ? (
+                              <tr>
+                                <td
+                                  style={{ padding: "0 15px", width: "200px" }}
+                                  align="right"
+                                >
+                                  {basic.atrribute_label}:
+                                </td>
+                                <td align="left">
+                                  {Parser(basic.displayvalue)}
+                                </td>
+                              </tr>
+                            ) : (
+                              ""
+                            )
+                          )
+                        : ""}
+                    </tbody>
+                  </table>
+                  <h4 style={{ marginBottom: "5px" }}>Warranty</h4>
+                  <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
+                  <table>
+                    <tbody>
+                      {basicOverview
+                        ? basicOverview.map((basic) =>
+                            basic.atrribute_label === "Limited Warranty" ? (
+                              <tr>
+                                <td
+                                  style={{ padding: "0 15px", width: "200px" }}
+                                  align="right"
+                                >
+                                  {basic.atrribute_label}:
+                                </td>
+                                <td align="left">{basic.displayvalue}</td>
+                              </tr>
+                            ) : (
+                              ""
+                            )
+                          )
+                        : ""}
+                    </tbody>
+                  </table>
                 </div>
                 <div className="tab-pane" id="gallery-section">
                   <div className="row mb-4">
@@ -487,7 +582,7 @@ class ProductDescription extends Component {
                         {product
                           ? product.productElements.map((element) =>
                               element.type === "Manufacturer-Brochure" ||
-                              // element.type != "Original" &&
+                              // element.type !== "Original" &&
                               element.type === "User-Manual" ? (
                                 <div className="col-md-4">
                                   <a
@@ -534,9 +629,9 @@ class ProductDescription extends Component {
                       <div className="row mb-4 thumb">
                         {product
                           ? product.productElements.map((element) =>
-                              element.type != "Manufacturer-Brochure" &&
-                              // element.type != "Original" &&
-                              element.type != "User-Manual" ? (
+                              element.type !== "Manufacturer-Brochure" &&
+                              // element.type !== "Original" &&
+                              element.type !== "User-Manual" ? (
                                 <div
                                   className="col-md-2"
                                   key={`${element.type}1`}
@@ -557,84 +652,19 @@ class ProductDescription extends Component {
                   </div>
                 </div>
                 <div className="tab-pane" id="accessories-section">
-                  <div className="row mb-4">
-                    <div className="col-md-6 mb-5">
-                      <h4 className="title tab-pane-title font-weight-bold mb-2">
-                        Detail
-                      </h4>
-                      <p className="mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt arcu cursus vitae
-                        congue mauris. Sagittis id consectetur purus ut. Tellus
-                        rutrum tellus pelle Vel pretium lectus quam id leo in
-                        vitae turpis massa.
-                      </p>
-                      <ul className="list-type-check">
-                        <li>
-                          Nunc nec porttitor turpis. In eu risus enim. In vitae
-                          mollis elit.
-                        </li>
-                        <li>Vivamus finibus vel mauris ut vehicula.</li>
-                        <li>
-                          Nullam a magna porttitor, dictum risus nec, faucibus
-                          sapien.
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-md-6 mb-5">
-                      <div className="banner banner-video product-video br-xs">
-                        <figure className="banner-media">
-                          <a href="#">
-                            <img
-                              src={Banner1}
-                              alt="banner"
-                              width="610"
-                              height="300"
-                              // style=background-color: #bebebe;
-                            />
-                          </a>
-                          <a
-                            className="btn-play-video btn-iframe"
-                            href="assets/video/memory-of-a-woman.mp4"
-                          ></a>
-                        </figure>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row cols-md-3">
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span className="mr-3">1.</span>Free Shipping &amp;
-                        Return
-                      </h5>
-                      <p className="detail pl-5">
-                        We offer free shipping for products on orders above 50$
-                        and offer free delivery for all orders in US.
-                      </p>
-                    </div>
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span>2.</span>Free and Easy Returns
-                      </h5>
-                      <p className="detail pl-5">
-                        We guarantee our products and you could get back all of
-                        your money anytime you want in 30 days.
-                      </p>
-                    </div>
-                    <div className="mb-3">
-                      <h5 className="sub-title font-weight-bold">
-                        <span>3.</span>Special Financing
-                      </h5>
-                      <p className="detail pl-5">
-                        Get 20%-50% off items over 50$ for a month or over 250$
-                        for a year with our special credit card.
-                      </p>
-                    </div>
-                  </div>
+                  {accessories ? <ProductsList products={accessories} /> : ""}
                 </div>
               </div>
-              <SimilarProducts />
-              <RelatedProducts />
+              {similarProducts.count !== 0 ? (
+                <SimilarProducts products={similarProducts.results} />
+              ) : (
+                ""
+              )}
+              {similarProducts.count !== 0 ? (
+                <RelatedProducts products={similarProducts.results} />
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

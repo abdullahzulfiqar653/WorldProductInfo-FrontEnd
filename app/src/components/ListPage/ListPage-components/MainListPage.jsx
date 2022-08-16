@@ -6,8 +6,7 @@ class MainListPage extends Component {
   state = {
     products: [],
   };
-  componentDidMount() {
-  }
+  componentDidMount() {}
   state = {
     filterStatus: "page-content mb-10",
   };
@@ -31,7 +30,7 @@ class MainListPage extends Component {
                 <i className="close-icon"></i>
               </a>
 
-              <FiltersList categoryId={123} />
+              <FiltersList categoryId={this.props.id} />
             </aside>
             <div className="main-content">
               <nav className="toolbox sticky-toolbox sticky-content fix-top">
@@ -48,7 +47,7 @@ class MainListPage extends Component {
                   <div className="toolbox-item toolbox-sort select-box text-dark">
                     <label>Sort By :</label>
                     <select name="orderby" className="form-control">
-                      <option selected="selected">Bestmatch</option>
+                      <option>Bestmatch</option>
                       <option style={{ display: "none" }}>
                         Sort by Bestmatch
                       </option>
@@ -71,7 +70,7 @@ class MainListPage extends Component {
                   <div className="toolbox-item toolbox-show select-box">
                     <label>Results Per Page :</label>
                     <select name="count" className="form-control">
-                      <option value="10" selected="selected">
+                      <option value="10">
                         10
                       </option>
                       <option value="20">20</option>

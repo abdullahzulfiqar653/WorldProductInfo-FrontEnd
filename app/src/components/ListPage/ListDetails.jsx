@@ -4,14 +4,14 @@ import Navbar from "../common/NavBar/Navbar";
 import LastSection from "../home/LastSection";
 import ListPage from "./ListPage-components/ListPage";
 
-
 class ListDetails extends Component {
   render() {
+    // console.log(this.props.match.params.categoryid);
     return (
       <>
         <div className="page-wrapper">
           <Navbar />
-          <ListPage />
+          <ListPage id={this.props.match.params.categoryid} />
           <Footer />
         </div>
 

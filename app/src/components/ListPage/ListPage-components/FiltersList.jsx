@@ -1,114 +1,84 @@
 import React, { Component } from "react";
-
+import { HashLink } from "react-router-hash-link";
+import categoryFilter from "../../services/FakeApi/categoryFilter";
+import productTypeFilter from "../../services/FakeApi/productTypeFilter";
+import manufacturerFilter from "../../services/FakeApi/manufacturerFilter";
 class FiltersList extends Component {
+  state = {
+    category: undefined,
+    productType: undefined,
+    manufacturer: undefined,
+  };
+  componentDidMount() {
+    this.setState({ category: categoryFilter });
+    this.setState({ productType: productTypeFilter });
+    this.setState({ manufacturer: manufacturerFilter });
+  }
   render() {
+    const { category, productType, manufacturer } = this.state;
+    // console.log(category);
     return (
       <div className="sidebar-content scrollable">
         <div className="widget widget-collapsible">
           <h3 className="widget-title">
-            <span>All Categories</span>
+            <span>Categories Filter</span>
           </h3>
           <ul className="widget-body filter-items search-ul">
-            <li>
-              <a href="#">Accessories</a>
-            </li>
-            <li>
-              <a href="#">Babies</a>
-            </li>
-            <li>
-              <a href="#">Beauty</a>
-            </li>
-            <li>
-              <a href="#">Decoration</a>
-            </li>
-            <li>
-              <a href="#">Electronics</a>
-            </li>
-            <li>
-              <a href="#">Fashion</a>
-            </li>
-            <li>
-              <a href="#">Food</a>
-            </li>
-            <li>
-              <a href="#">Furniture</a>
-            </li>
-            <li>
-              <a href="#">Kitchen</a>
-            </li>
-            <li>
-              <a href="#">Medical</a>
-            </li>
-            <li>
-              <a href="#">Sports</a>
-            </li>
-            <li>
-              <a href="#">Watches</a>
-            </li>
+            {category
+              ? category.map((category) => (
+                  <li key={category.categoryid}>
+                    <HashLink
+                      to={`/product-list/${category.categoryid}#header`}
+                    >
+                      {category.category_label}(
+                      {category.category_product_count})
+                    </HashLink>
+                  </li>
+                ))
+              : ""}
           </ul>
         </div>
         <div className="widget widget-collapsible">
           <h3 className="widget-title">
-            <span>Price</span>
+            <span>Product Type</span>
           </h3>
           <div className="widget-body">
             <ul className="filter-items search-ul">
-              <li>
-                <a href="#">$0.00 - $100.00</a>
-              </li>
-              <li>
-                <a href="#">$100.00 - $200.00</a>
-              </li>
-              <li>
-                <a href="#">$200.00 - $300.00</a>
-              </li>
-              <li>
-                <a href="#">$300.00 - $500.00</a>
-              </li>
-              <li>
-                <a href="#">$500.00+</a>
-              </li>
+              {productType
+                ? productType.map((productType) => (
+                    <li key={productType.valueid}>
+                      <HashLink
+                        to={`/product-list/${productType.valueid}#header`}
+                      >
+                        {productType.value}({productType.category_product_count}
+                        )
+                      </HashLink>
+                    </li>
+                  ))
+                : ""}
             </ul>
-            <form className="price-range">
-              <input
-                type="number"
-                name="min_price"
-                className="min_price text-center"
-                placeholder="$min"
-              />
-              <span className="delimiter">-</span>
-              <input
-                type="number"
-                name="max_price"
-                className="max_price text-center"
-                placeholder="$max"
-              />
-              <a href="#" className="btn btn-primary btn-rounded">
-                Go
-              </a>
-            </form>
           </div>
         </div>
         <div className="widget widget-collapsible">
           <h3 className="widget-title">
-            <span>Size</span>
+            <span>Manufacturer Filter</span>
           </h3>
-          <ul className="widget-body filter-items item-check mt-1">
-            <li>
-              <a href="#">Extra Large</a>
-            </li>
-            <li>
-              <a href="#">Large</a>
-            </li>
-            <li>
-              <a href="#">Medium</a>
-            </li>
-            <li>
-              <a href="#">Small</a>
-            </li>
+          <ul className="widget-body filter-items search-ul">
+            {manufacturer
+              ? manufacturer.map((manufacturer) => (
+                  <li key={manufacturer.manufacturerid}>
+                    <HashLink
+                      to={`/product-list/${manufacturer.manufacturerid}#header`}
+                    >
+                      {manufacturer.name} (
+                      {manufacturer.manufacturer_product_count})
+                    </HashLink>
+                  </li>
+                ))
+              : ""}
           </ul>
         </div>
-        <div className="widget widget-collapsible">
+        {/* <div className="widget widget-collapsible">
           <h3 className="widget-title">
             <span>Brand</span>
           </h3>
@@ -163,7 +133,7 @@ class FiltersList extends Component {
               <a href="#">Yellow</a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     );
   }

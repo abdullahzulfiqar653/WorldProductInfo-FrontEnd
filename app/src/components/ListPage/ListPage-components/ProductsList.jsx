@@ -65,10 +65,11 @@ class ProductsList extends Component {
               )}
               <div
                 className="product-desc"
-                style={{ margin: "0", color: "black" }}
+                style={{ margin: "0", color: "gray" }}
               >
+                SKUS :
                 {product.productSkus.map((Sku) => (
-                  <span style={{ padding: "0px 5px" }}>
+                  <span style={{ paddingRight: "5px" }}>
                     {Sku.name} : {Sku.sku}
                   </span>
                 ))}

@@ -4,10 +4,11 @@ import MainListPage from "./MainListPage";
 
 class ListPage extends Component {
   render() {
+    // console.log(this.props.id);
     return (
       <main className="main">
         <PageNav />
-        <MainListPage />
+        <MainListPage id={this.props.id} />
       </main>
     );
   }
