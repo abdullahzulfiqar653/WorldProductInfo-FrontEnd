@@ -1,10 +1,9 @@
 import HomeMain from "./HomeMain";
-import Navbar from "../common/NavBar/Navbar";
-
-import React, { Component } from "react";
-
 import Footer from "../common/Footer";
 import LastSection from "./LastSection";
+import React, { Component } from "react";
+import Navbar from "../common/NavBar/Navbar";
+
 class Home extends Component {
   render() {
     return (

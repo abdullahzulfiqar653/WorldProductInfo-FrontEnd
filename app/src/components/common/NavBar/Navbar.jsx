@@ -6,12 +6,6 @@ import React, { Component } from "react";
 import category from "../../services/FakeApi/category";
 
 class Navbar extends Component {
-  state = {
-    category: [],
-  };
-  componentDidMount() {
-    this.setState({ category: category });
-  }
   render() {
     return (
       <>
@@ -19,7 +13,7 @@ class Navbar extends Component {
         <header className="header" id="header">
           <UpperNav />
           <MiddleNav />
-          <BottomNav categories={this.state.category} />
+          <BottomNav />
         </header>
       </>
     );
