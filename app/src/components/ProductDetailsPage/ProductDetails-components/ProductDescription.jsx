@@ -30,21 +30,20 @@ const ProductDescription = (props) => {
   const navigation = (e) => {
     show(`#${e.target.id}-section`, e.target);
   };
-  const galleryShow = (e) => {
-    const src = e.target.src;
-    let destination = document.getElementById("gallery-image");
-    destination.src = src;
+  const galleryShow = (source, banner) => {
+    let destination = document.getElementById(banner);
+    destination.src = source;
   };
 
-  const viewGallery = () => {
+  const viewGallery = (section = null) => (
     <div className="col-md-6 mb-5">
       <div className="banner banner-video product-video br-xs">
         {gallery ? (
           <figure className="banner-media">
             <img
-              src={`https://content.etilize.com/Main/${props.product.productid}.jpg`}
+              src={`https://content.etilize.com/Original/${props.product.productid}.jpg`}
               alt="banner"
-              id="gallery-image"
+              id={section ? "gallery-image" : "swiper-image"}
               width="610"
               height="300"
             />
@@ -53,42 +52,39 @@ const ProductDescription = (props) => {
           ""
         )}
       </div>
-      <div className="row mb-4 thumb">
-        {gallery
-          ? gallery.productElements.map((element) =>
-              element.type !== "Manufacturer-Brochure" &&
-              // element.type !== "Original" &&
-              element.type !== "User-Manual" ? (
-                <div className="col-md-2" key={`${element.type}1`}>
-                  <img
-                    src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
-                    alt=""
-                    onClick={galleryShow}
-                  />
-                </div>
-              ) : (
-                ""
-              )
-            )
-          : ""}
+      <div
+        className="row mb-4 thumb"
+        style={{ overflow: "auto", flexWrap: "nowrap" }}
+      >
+        {gallery.productElements.map((element) =>
+          element.type !== "Manufacturer-Brochure" &&
+          // element.type !== "Original" &&
+          element.type !== "User-Manual" ? (
+            <div className="col-md-2" key={`${element.type}1`}>
+              <img
+                src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
+                alt=""
+                onClick={(e) =>
+                  galleryShow(
+                    e.target.src,
+                    section ? "gallery-image" : "swiper-image"
+                  )
+                }
+              />
+            </div>
+          ) : (
+            ""
+          )
+        )}
       </div>
-    </div>;
-  };
+    </div>
+  );
   return (
     <div className="page-content">
       <div className="container">
         <div className="main-content">
           <div className="product product-single row">
-            <div className="col-md-6 mb-6">
-              {gallery !== undefined ? (
-                <ProductImageGallery
-                  elements={gallery}
-                  id={props.product.productid}
-                />
-              ) : (
-                ""
-              )}
-            </div>
+            {gallery && viewGallery()}
             <div className="col-md-6 mb-4 mb-md-6">
               <div
                 className="product-details"
@@ -547,46 +543,7 @@ const ProductDescription = (props) => {
                         : ""}
                     </div>
                   </div>
-                  {/*  */}
-                  <div className="col-md-6 mb-5">
-                    <div className="banner banner-video product-video br-xs">
-                      {gallery ? (
-                        <figure className="banner-media">
-                          <img
-                            src={`https://content.etilize.com/Main/${props.product.productid}.jpg`}
-                            alt="banner"
-                            id="gallery-image"
-                            width="610"
-                            height="300"
-                          />
-                        </figure>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                    <div className="row mb-4 thumb">
-                      {gallery
-                        ? gallery.productElements.map((element) =>
-                            element.type !== "Manufacturer-Brochure" &&
-                            // element.type !== "Original" &&
-                            element.type !== "User-Manual" ? (
-                              <div
-                                className="col-md-2"
-                                key={`${element.type}1`}
-                              >
-                                <img
-                                  src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
-                                  alt=""
-                                  onClick={galleryShow}
-                                />
-                              </div>
-                            ) : (
-                              ""
-                            )
-                          )
-                        : ""}
-                    </div>
-                  </div>
+                  {gallery && viewGallery("gallery")}
                 </div>
               </div>
               {/* <div className="tab-pane" id="accessories-section">

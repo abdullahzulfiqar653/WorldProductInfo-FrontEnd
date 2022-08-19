@@ -1,9 +1,15 @@
+import Loader from "../SmallLoader";
+import { connect } from "react-redux";
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { connect } from "react-redux";
 import { categoryLoaded } from "../../../actions/actions";
 class BottomNav extends Component {
+  state = {
+    categoryRange: 15,
+    opacity: 0,
+  };
   componentDidMount() {
+    console.log(this.props.loadCategories());
     this.props.loadCategories();
   }
   isParent(id) {
@@ -28,25 +34,46 @@ class BottomNav extends Component {
         className={categoryid ? "submenu" : "menu vertical-menu category-menu"}
         style={{ top: "0", padding: "0" }}
       >
-        {this.getCategoryList(id + 1, categoryid).map((category, range) => (
-          <li
-            key={category.categoryid}
-            className={this.isParent(category.categoryid) ? "has-submenu" : ""}
-          >
-            <Link
-              to={`/product-list/${category.categoryid}#header`}
-              style={{ padding: "8px 10px" }}
-            >
-              {category.category_label}
-            </Link>
-            {this.getCategories(id + 1, category.categoryid)}
-          </li>
-        ))}
+        {this.getCategoryList(id + 1, categoryid).map((category, range) => {
+          if (range < this.state.categoryRange) {
+            return (
+              <li
+                key={category.categoryid}
+                className={
+                  this.isParent(category.categoryid) ? "has-submenu" : ""
+                }
+              >
+                <Link
+                  to={`/product-list/${category.categoryid}#header`}
+                  style={{ padding: "8px 10px" }}
+                >
+                  {category.category_label}
+                </Link>
+                {this.getCategories(id + 1, category.categoryid)}
+              </li>
+            );
+          }
+          if (range === this.state.categoryRange) {
+            return (
+              <li key={category.categoryid}>
+                <a
+                  to={`/product-list/${category.categoryid}#header`}
+                  style={{ padding: "8px 10px", cursor: "pointer" }}
+                  onClick={() => this.setState({ categoryRange: 1000 })}
+                >
+                  Load More {"->"}
+                </a>
+              </li>
+            );
+          }
+        })}
       </ul>
     );
   }
+
   render() {
-    const { categories } = this.props;
+    const { categories, loading } = this.props;
+    console.log(this.state.opacity);
     return (
       <div className="header-bottom sticky-content fix-top sticky-header">
         <div className="container">
@@ -66,7 +93,9 @@ class BottomNav extends Component {
                   title="Browse Categories"
                 >
                   <i className="w-icon-category"></i>
-                  <span>Browse Categories</span>
+                  <span style={{ display: "flex" }}>
+                    Browse Categories {loading === true ? <Loader /> : ""}
+                  </span>
                 </a>
                 <div className="dropdown-box">
                   {categories && this.getCategories()}
@@ -89,6 +118,7 @@ class BottomNav extends Component {
 
 const mapStateToProps = (state) => ({
   categories: state.category,
+  loading: state.loading,
 });
 
 const mapDispatchToProps = (disptch) => ({
