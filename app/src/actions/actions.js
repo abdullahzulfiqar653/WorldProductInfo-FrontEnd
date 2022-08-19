@@ -74,16 +74,10 @@ export const productLoaded = (productid) => async (dispatch) => {
     .get(REQUEST_URL + `/product/${productid}`)
     .then((res) => {
       // console.log(res.data);
-      if (res.data.length > 0) {
-        dispatch({
-          type: actions.PRODUCT_LOADED,
-          payload: res.data,
-        });
-      } else {
-        dispatch({
-          type: actions.PRODUCT_LOAD_FAIL,
-        });
-      }
+      dispatch({
+        type: actions.PRODUCT_LOADED,
+        payload: res.data,
+      });
     })
     .catch(function (error) {
       console.log(error);
