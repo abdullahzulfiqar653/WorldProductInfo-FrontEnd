@@ -20,11 +20,27 @@ import {
   MANUFACTURER_FILTER_LOAD_FAIL,
   PRODUCT_TYPE_FILTER_LOAD_START,
   PRODUCT_TYPE_FILTER_LOAD_FAIL,
+  PRODUCT_BASIC_OVERVIEW_LOAD_START,
+  PRODUCT_BASIC_OVERVIEW_LOADED,
+  PRODUCT_BASIC_OVERVIEW_LOAD_FAIL,
+  PRODUCT_SPECIFICATIONS_LOAD_START,
+  PRODUCT_SPECIFICATIONS_LOADED,
+  PRODUCT_SPECIFICATIONS_LOAD_FAIL,
+  PRODUCT_GALLERY_LOAD_START,
+  PRODUCT_GALLERY_LOADED,
+  PRODUCT_GALLERY_LOAD_FAIL,
+  PRODUCT_SIMILAR_LOAD_START,
+  PRODUCT_SIMILAR_LOADED,
+  PRODUCT_SIMILAR_LOAD_FAIL,
 } from "../actions/actionTypes";
 
 const initialState = {
   category: [],
   categoryFilter: [],
+  basicOverview: [],
+  specifications: [],
+  gallery: [],
+  similarProducts: {},
   products: {},
   singleProduct: {},
   productTypeFilter: [],
@@ -94,6 +110,46 @@ export function reducer(state = initialState, action) {
         loading: false,
       };
     case PRODUCT_LOAD_FAIL:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+    case PRODUCT_BASIC_OVERVIEW_LOAD_START:
+      return { ...state, error: null, loading: true };
+    case PRODUCT_BASIC_OVERVIEW_LOADED:
+      return { ...state, basicOverview: payload, error: null, loading: true };
+    case PRODUCT_BASIC_OVERVIEW_LOAD_FAIL:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+    case PRODUCT_SPECIFICATIONS_LOAD_START:
+      return { ...state, error: null, loading: true };
+    case PRODUCT_SPECIFICATIONS_LOADED:
+      return { ...state, specifications: payload, error: null, loading: true };
+    case PRODUCT_SPECIFICATIONS_LOAD_FAIL:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+    case PRODUCT_GALLERY_LOAD_START:
+      return { ...state, error: null, loading: true };
+    case PRODUCT_GALLERY_LOADED:
+      return { ...state, gallery: payload, error: null, loading: true };
+    case PRODUCT_GALLERY_LOAD_FAIL:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+    case PRODUCT_SIMILAR_LOAD_START:
+      return { ...state, error: null, loading: true };
+    case PRODUCT_SIMILAR_LOADED:
+      return { ...state, similarProducts: payload, error: null, loading: true };
+    case PRODUCT_SIMILAR_LOAD_FAIL:
       return {
         ...state,
         error: action.error,

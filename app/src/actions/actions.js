@@ -180,3 +180,87 @@ export const manufacturerFilterLoaded =
         });
       });
   };
+
+export const loadBasicOverview = (productid) => async (dispatch) => {
+  dispatch({
+    type: actions.PRODUCT_BASIC_OVERVIEW_LOAD_START,
+  });
+  await axios
+    .get(REQUEST_URL + `/product/basic/over/view/${productid}`)
+    .then((res) => {
+      // console.log(res.data);
+      dispatch({
+        type: actions.PRODUCT_BASIC_OVERVIEW_LOADED,
+        payload: res.data,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({
+        type: actions.PRODUCT_BASIC_OVERVIEW_LOAD_FAIL,
+      });
+    });
+};
+
+export const loadSpecifications = (productid) => async (dispatch) => {
+  dispatch({
+    type: actions.PRODUCT_SPECIFICATIONS_LOAD_START,
+  });
+  await axios
+    .get(REQUEST_URL + `/product/specification/${productid}`)
+    .then((res) => {
+      // console.log(res.data);
+      dispatch({
+        type: actions.PRODUCT_SPECIFICATIONS_LOADED,
+        payload: res.data,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({
+        type: actions.PRODUCT_SPECIFICATIONS_LOAD_FAIL,
+      });
+    });
+};
+
+export const loadGallery = (productid) => async (dispatch) => {
+  dispatch({
+    type: actions.PRODUCT_GALLERY_LOAD_START,
+  });
+  await axios
+    .get(REQUEST_URL + `/product/gallery/${productid}`)
+    .then((res) => {
+      // console.log(res.data);
+      dispatch({
+        type: actions.PRODUCT_GALLERY_LOADED,
+        payload: res.data,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({
+        type: actions.PRODUCT_GALLERY_LOAD_FAIL,
+      });
+    });
+};
+
+export const loadSimilarProducts = (productid) => async (dispatch) => {
+  dispatch({
+    type: actions.PRODUCT_SIMILAR_LOAD_START,
+  });
+  await axios
+    .get(REQUEST_URL + `/products/?productid=${productid}&flag=similar`)
+    .then((res) => {
+      // console.log(res.data);
+      dispatch({
+        type: actions.PRODUCT_SIMILAR_LOADED,
+        payload: res.data,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+      dispatch({
+        type: actions.PRODUCT_SIMILAR_LOAD_FAIL,
+      });
+    });
+};
