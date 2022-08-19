@@ -42,15 +42,6 @@ class ProductsList extends Component {
                   )
                 )}
               </h4>
-              {/* <div className="ratings-container">
-                <div className="ratings-full">
-                  <span className="ratings" style={{ width: "100%" }}></span>
-                </div>
-                <a href="product-default.html" className="rating-reviews">
-                  (3 Reviews)
-                </a>
-              </div> */}
-
               {product.productDescription.map((description) =>
                 description.type === 3 ? (
                   <div

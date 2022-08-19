@@ -4,9 +4,6 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 import "../../../assets/swiper/swiper-bundle.min.css";
 function ProductImageGallery(props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  // if (props.elements) {
-  //   console.log(props);
-  // }
   console.log(props);
   return (
     <>

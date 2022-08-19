@@ -11,7 +11,7 @@ class BottomNav extends Component {
     return this.props.categories.some((obj) => obj.parentcategoryid === id);
   }
 
-  getCategories(catLevel, parent = null) {
+  getCategoryList(catLevel, parent = null) {
     if (!parent) {
       return this.props.categories.filter(
         (category) => category.catlevel === catLevel
@@ -22,13 +22,13 @@ class BottomNav extends Component {
         category.catlevel === catLevel && category.parentcategoryid === parent
     );
   }
-  getChilds(id, categoryid) {
+  getCategories(id, categoryid) {
     return (
       <ul
         className={categoryid ? "submenu" : "menu vertical-menu category-menu"}
         style={{ top: "0", padding: "0", width: "260px" }}
       >
-        {this.getCategories(id + 1, categoryid).map((category) => (
+        {this.getCategoryList(id + 1, categoryid).map((category) => (
           <li
             key={category.categoryid}
             className={this.isParent(category.categoryid) ? "has-submenu" : ""}
@@ -36,7 +36,7 @@ class BottomNav extends Component {
             <Link to={`/product-list/${category.categoryid}#header`}>
               {category.category_label}
             </Link>
-            {this.getChilds(id + 1, category.categoryid)}
+            {this.getCategories(id + 1, category.categoryid)}
           </li>
         ))}
       </ul>
@@ -66,7 +66,7 @@ class BottomNav extends Component {
                   <span>Browse Categories</span>
                 </a>
                 <div className="dropdown-box">
-                  {categories && this.getChilds(0, null)}
+                  {categories && this.Categories()}
                 </div>
               </div>
               <nav className="main-nav">

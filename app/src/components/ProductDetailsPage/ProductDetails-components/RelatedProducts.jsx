@@ -7,12 +7,7 @@ class RelatedProducts extends Component {
       <section className="vendor-product-section">
         <div className="title-link-wrapper mb-4">
           <h4 className="title">Related Products</h4>
-          {/* <a
-            href="#"
-            className="btn btn-dark btn-link btn-slide-right btn-icon-right"
-          >
-            More Products<i className="w-icon-long-arrow-right"></i>
-          </a> */}
+          
         </div>
         
         <div className="row cols-4 cols-md-4 cols-sm-6 cols-2">

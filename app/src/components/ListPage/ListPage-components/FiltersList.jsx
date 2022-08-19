@@ -14,9 +14,9 @@ class FiltersList extends Component {
     this.setState({ productType: productTypeFilter });
     this.setState({ manufacturer: manufacturerFilter });
   }
+  
   render() {
     const { category, productType, manufacturer } = this.state;
-    // console.log(category);
     return (
       <div className="sidebar-content scrollable">
         <div className="widget widget-collapsible">
@@ -78,62 +78,6 @@ class FiltersList extends Component {
               : ""}
           </ul>
         </div>
-        {/* <div className="widget widget-collapsible">
-          <h3 className="widget-title">
-            <span>Brand</span>
-          </h3>
-          <ul className="widget-body filter-items item-check mt-1">
-            <li>
-              <a href="#">Elegant Auto Group</a>
-            </li>
-            <li>
-              <a href="#">Green Grass</a>
-            </li>
-            <li>
-              <a href="#">Node Js</a>
-            </li>
-            <li>
-              <a href="#">NS8</a>
-            </li>
-            <li>
-              <a href="#">Red</a>
-            </li>
-            <li>
-              <a href="#">Skysuite Tech</a>
-            </li>
-            <li>
-              <a href="#">Sterling</a>
-            </li>
-          </ul>
-        </div>
-        <div className="widget widget-collapsible">
-          <h3 className="widget-title">
-            <span>Color</span>
-          </h3>
-          <ul className="widget-body filter-items item-check mt-1">
-            <li>
-              <a href="#">Black</a>
-            </li>
-            <li>
-              <a href="#">Blue</a>
-            </li>
-            <li>
-              <a href="#">Brown</a>
-            </li>
-            <li>
-              <a href="#">Green</a>
-            </li>
-            <li>
-              <a href="#">Grey</a>
-            </li>
-            <li>
-              <a href="#">Orange</a>
-            </li>
-            <li>
-              <a href="#">Yellow</a>
-            </li>
-          </ul>
-        </div> */}
       </div>
     );
   }

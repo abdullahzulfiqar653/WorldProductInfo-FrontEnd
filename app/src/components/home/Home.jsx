@@ -1,6 +1,5 @@
 import HomeMain from "./HomeMain";
 import Footer from "../common/Footer";
-import LastSection from "./LastSection";
 import React, { Component } from "react";
 import Navbar from "../common/NavBar/Navbar";
 
@@ -13,7 +12,6 @@ class Home extends Component {
           <HomeMain />
           <Footer />
         </div>
-        <LastSection />
       </div>
     );
   }

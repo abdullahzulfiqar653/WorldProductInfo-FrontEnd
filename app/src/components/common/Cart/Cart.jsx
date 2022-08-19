@@ -27,11 +27,11 @@ class Cart extends Component {
           className="cart-toggle label-down link"
         >
           <i className="w-icon-cart">
-            <span className="cart-count">2</span>
+            <span className="cart-count">0</span>
           </i>
           <span className="cart-label">Cart</span>
         </a>
-        <div className="dropdown-box">
+        {/* <div className="dropdown-box">
           <div className="cart-header">
             <span>Shopping Cart</span>
             <a
@@ -117,7 +117,7 @@ class Cart extends Component {
               Checkout
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
