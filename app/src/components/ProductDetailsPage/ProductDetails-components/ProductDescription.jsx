@@ -35,10 +35,45 @@ const ProductDescription = (props) => {
     let destination = document.getElementById("gallery-image");
     destination.src = src;
   };
-  console.log(basicOverview);
-  console.log(specifications);
-  console.log(gallery);
-  console.log(similarProducts);
+
+  const viewGallery = () => {
+    <div className="col-md-6 mb-5">
+      <div className="banner banner-video product-video br-xs">
+        {gallery ? (
+          <figure className="banner-media">
+            <img
+              src={`https://content.etilize.com/Main/${props.product.productid}.jpg`}
+              alt="banner"
+              id="gallery-image"
+              width="610"
+              height="300"
+            />
+          </figure>
+        ) : (
+          ""
+        )}
+      </div>
+      <div className="row mb-4 thumb">
+        {gallery
+          ? gallery.productElements.map((element) =>
+              element.type !== "Manufacturer-Brochure" &&
+              // element.type !== "Original" &&
+              element.type !== "User-Manual" ? (
+                <div className="col-md-2" key={`${element.type}1`}>
+                  <img
+                    src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
+                    alt=""
+                    onClick={galleryShow}
+                  />
+                </div>
+              ) : (
+                ""
+              )
+            )
+          : ""}
+      </div>
+    </div>;
+  };
   return (
     <div className="page-content">
       <div className="container">
@@ -251,12 +286,7 @@ const ProductDescription = (props) => {
                           "Minimum Operating Temperature" &&
                         basic.atrribute_label !==
                           "Maximum Operating Temperature" &&
-                        basic.atrribute_label !== "Package Contents" &&
-                        basic.atrribute_label !== "Compatibility" ? (
-                          <li key={basic.atrribute_label}>
-                            {basic.atrribute_label}: {basic.displayvalue}
-                          </li>
-                        ) : basic.atrribute_label === "Compatibility" ? (
+                        basic.atrribute_label !== "Package Contents" ? (
                           <li key={basic.atrribute_label}>
                             {basic.atrribute_label}:{" "}
                             {Parser(basic.displayvalue)}
@@ -487,8 +517,8 @@ const ProductDescription = (props) => {
                       Gallery
                     </h4>
                     <div className="row manuals">
-                      {props.product
-                        ? props.product.productElements.map((element) =>
+                      {gallery
+                        ? gallery.productElements.map((element) =>
                             element.type === "Manufacturer-Brochure" ||
                             // element.type !== "Original" &&
                             element.type === "User-Manual" ? (
@@ -517,9 +547,10 @@ const ProductDescription = (props) => {
                         : ""}
                     </div>
                   </div>
+                  {/*  */}
                   <div className="col-md-6 mb-5">
                     <div className="banner banner-video product-video br-xs">
-                      {props.product ? (
+                      {gallery ? (
                         <figure className="banner-media">
                           <img
                             src={`https://content.etilize.com/Main/${props.product.productid}.jpg`}
@@ -527,7 +558,6 @@ const ProductDescription = (props) => {
                             id="gallery-image"
                             width="610"
                             height="300"
-                            // style=background-color: #bebebe;
                           />
                         </figure>
                       ) : (
@@ -535,8 +565,8 @@ const ProductDescription = (props) => {
                       )}
                     </div>
                     <div className="row mb-4 thumb">
-                      {props.product
-                        ? props.product.productElements.map((element) =>
+                      {gallery
+                        ? gallery.productElements.map((element) =>
                             element.type !== "Manufacturer-Brochure" &&
                             // element.type !== "Original" &&
                             element.type !== "User-Manual" ? (

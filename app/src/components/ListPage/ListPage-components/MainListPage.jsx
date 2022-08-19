@@ -50,8 +50,8 @@ function MainListPage(props) {
             <a className="sidebar-close" href="#" onClick={closeFilters}>
               <i className="close-icon"></i>
             </a>
+            <FiltersList categoryId={props.id} />
           </aside>
-          <FiltersList categoryId={props.id} />
           <div className="main-content">
             <nav className="toolbox sticky-toolbox sticky-content fix-top">
               <div className="toolbox-left">
