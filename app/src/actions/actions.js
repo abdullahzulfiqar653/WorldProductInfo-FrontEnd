@@ -10,7 +10,7 @@ export const pageLoaded = (des) => ({
 
 export const categoryLoaded = () => async (dispatch) => {
   dispatch({
-    type: actions.CATEGORY_LOAD_START,
+    type: actions.REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/category/`, config)
@@ -38,7 +38,7 @@ export const categoryLoaded = () => async (dispatch) => {
 
 export const productListLoaded = (categoryid, limit) => async (dispatch) => {
   dispatch({
-    type: actions.PRODUCTS_LIST_LOAD_START,
+    type: actions.REQUEST_START,
   });
   await axios
     .get(
@@ -68,7 +68,7 @@ export const productListLoaded = (categoryid, limit) => async (dispatch) => {
 
 export const productLoaded = (productid) => async (dispatch) => {
   dispatch({
-    type: actions.PRODUCT_LOAD_START,
+    type: actions.REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/product/${productid}`)
@@ -89,7 +89,7 @@ export const productLoaded = (productid) => async (dispatch) => {
 
 export const categoryFilterLoaded = (parentcategoryid) => async (dispatch) => {
   dispatch({
-    type: actions.CATEGORY_FILTER_LOAD_START,
+    type: actions.REQUEST_START,
   });
   await axios
     .get(
@@ -120,7 +120,7 @@ export const categoryFilterLoaded = (parentcategoryid) => async (dispatch) => {
 export const productTypeFilterLoaded =
   (parentcategoryid) => async (dispatch) => {
     dispatch({
-      type: actions.PRODUCT_TYPE_FILTER_LOAD_START,
+      type: actions.REQUEST_START,
     });
     await axios
       .get(
@@ -152,7 +152,7 @@ export const productTypeFilterLoaded =
 export const manufacturerFilterLoaded =
   (parentcategoryid) => async (dispatch) => {
     dispatch({
-      type: actions.MANUFACTURER_FILTER_LOAD_START,
+      type: actions.REQUEST_START,
     });
     await axios
       .get(
@@ -183,7 +183,7 @@ export const manufacturerFilterLoaded =
 
 export const loadBasicOverview = (productid) => async (dispatch) => {
   dispatch({
-    type: actions.PRODUCT_BASIC_OVERVIEW_LOAD_START,
+    type: actions.REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/product/basic/over/view/${productid}`)
@@ -204,7 +204,7 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
 
 export const loadSpecifications = (productid) => async (dispatch) => {
   dispatch({
-    type: actions.PRODUCT_SPECIFICATIONS_LOAD_START,
+    type: actions.REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/product/specification/${productid}`)
@@ -225,7 +225,7 @@ export const loadSpecifications = (productid) => async (dispatch) => {
 
 export const loadGallery = (productid) => async (dispatch) => {
   dispatch({
-    type: actions.PRODUCT_GALLERY_LOAD_START,
+    type: actions.REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/product/gallery/${productid}`)
@@ -246,7 +246,7 @@ export const loadGallery = (productid) => async (dispatch) => {
 
 export const loadSimilarProducts = (productid) => async (dispatch) => {
   dispatch({
-    type: actions.PRODUCT_SIMILAR_LOAD_START,
+    type: actions.REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/products/?productid=${productid}&flag=similar`)

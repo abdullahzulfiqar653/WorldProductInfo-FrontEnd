@@ -6,9 +6,44 @@ class BottomNav extends Component {
   componentDidMount() {
     this.props.loadCategories();
   }
+  isParent(id) {
+    // Object.keys(obj).map((key, index) => error.data[key])
+    return this.props.categories.some((obj) => obj.parentcategoryid === id);
+  }
+
+  getCategories(catLevel, parent = null) {
+    if (!parent) {
+      return this.props.categories.filter(
+        (category) => category.catlevel === catLevel
+      );
+    }
+    return this.props.categories.filter(
+      (category) =>
+        category.catlevel === catLevel && category.parentcategoryid === parent
+    );
+  }
+  getChilds(id, categoryid) {
+    return (
+      <ul
+        className={categoryid ? "submenu" : "menu vertical-menu category-menu"}
+        style={{ top: "0", padding: "0", width: "260px" }}
+      >
+        {this.getCategories(id + 1, categoryid).map((category) => (
+          <li
+            key={category.categoryid}
+            className={this.isParent(category.categoryid) ? "has-submenu" : ""}
+          >
+            <Link to={`/product-list/${category.categoryid}#header`}>
+              {category.category_label}
+            </Link>
+            {this.getChilds(id + 1, category.categoryid)}
+          </li>
+        ))}
+      </ul>
+    );
+  }
   render() {
     const { categories } = this.props;
-    console.log(this.props);
     return (
       <div className="header-bottom sticky-content fix-top sticky-header">
         <div className="container">
@@ -30,127 +65,8 @@ class BottomNav extends Component {
                   <i className="w-icon-category"></i>
                   <span>Browse Categories</span>
                 </a>
-
                 <div className="dropdown-box">
-                  <ul className="menu vertical-menu category-menu">
-                    {categories
-                      ? categories.map((category) => {
-                          let a = null;
-                          if (category.catlevel === 1) {
-                            categories.map((cat) => {
-                              if (
-                                cat.parentcategoryid === category.categoryid
-                              ) {
-                                a = "s";
-                              }
-                            });
-                            return a === null ? (
-                              <li key={category.categoryid}>
-                                <Link
-                                  to={`/product-list/${category.categoryid}#header`}
-                                >
-                                  {category.category_label}
-                                </Link>
-                              </li>
-                            ) : (
-                              <li
-                                key={category.categoryid}
-                                className="has-submenu"
-                              >
-                                <Link
-                                  to={`/product-list/${category.categoryid}#header`}
-                                >
-                                  {category.category_label}
-                                </Link>
-                                <ul
-                                  className="submenu"
-                                  style={{
-                                    top: "0",
-                                    padding: "0",
-                                    width: "260px",
-                                  }}
-                                >
-                                  {categories
-                                    .filter(
-                                      (cat) =>
-                                        cat.parentcategoryid ===
-                                        category.categoryid
-                                    )
-                                    .map((s) => {
-                                      let b = null;
-                                      categories.map((cat) => {
-                                        if (
-                                          cat.parentcategoryid === s.categoryid
-                                        ) {
-                                          b = "s";
-                                        }
-                                      });
-                                      // console.log(b);
-                                      return b === null ? (
-                                        <li key={s.categoryid}>
-                                          <Link
-                                            to={`/product-list/${s.categoryid}#header`}
-                                            style={{
-                                              padding: "13px 10px",
-                                              borderBottom: "1px solid #eeeeee",
-                                            }}
-                                          >
-                                            {s.category_label}
-                                          </Link>
-                                        </li>
-                                      ) : (
-                                        <li
-                                          key={s.categoryid}
-                                          className="has-submenu"
-                                        >
-                                          <Link
-                                            to={`/product-list/${s.categoryid}#header`}
-                                            style={{
-                                              padding: "13px 10px",
-                                              borderBottom: "1px solid #eeeeee",
-                                            }}
-                                          >
-                                            {s.category_label}
-                                          </Link>
-                                          <ul
-                                            className="submenu"
-                                            style={{
-                                              top: "0",
-                                              padding: "0",
-                                              width: "260px",
-                                            }}
-                                          >
-                                            {categories
-                                              .filter(
-                                                (category) =>
-                                                  category.parentcategoryid ===
-                                                  s.categoryid
-                                              )
-                                              .map((three) => (
-                                                <li key={three.categoryid}>
-                                                  <Link
-                                                    to={`/product-list/${three.categoryid}#header`}
-                                                    style={{
-                                                      padding: "13px 10px",
-                                                      borderBottom:
-                                                        "1px solid #eeeeee",
-                                                    }}
-                                                  >
-                                                    {three.category_label}
-                                                  </Link>
-                                                </li>
-                                              ))}
-                                          </ul>
-                                        </li>
-                                      );
-                                    })}
-                                </ul>
-                              </li>
-                            );
-                          }
-                        })
-                      : ""}
-                  </ul>
+                  {categories && this.getChilds(0, null)}
                 </div>
               </div>
               <nav className="main-nav">
