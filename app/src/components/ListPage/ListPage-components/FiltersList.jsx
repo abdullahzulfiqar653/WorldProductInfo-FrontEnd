@@ -63,7 +63,7 @@ function FiltersList(props) {
                   ? productType.map((productType) => (
                       <li key={productType.valueid}>
                         <HashLink
-                          to={`/product-list/${productType.valueid}#header`}
+                          to={`/product-list/${props.categoryId}/${productType.valueid}#header`}
                         >
                           {productType.value}(
                           {productType.category_product_count})

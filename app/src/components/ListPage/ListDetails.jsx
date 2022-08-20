@@ -9,7 +9,7 @@ class ListDetails extends Component {
       <>
         <div className="page-wrapper">
           <Navbar />
-          <ListPage id={this.props.match.params.categoryid} />
+          <ListPage id={this.props.match.params} />
           <Footer />
         </div>
       </>

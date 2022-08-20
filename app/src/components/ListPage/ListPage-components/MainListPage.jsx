@@ -15,7 +15,8 @@ function MainListPage(props) {
   const [offSet, setOffSet] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadProductList(props.id, Limit, offSet));
+    dispatch(loadProductList(props.id.categoryid, Limit, offSet));
+    paginate();
   }, [props.id, Limit, offSet]);
   const products = useSelector((state) => state.products);
   const loading = useSelector((state) => state.loading);
@@ -51,7 +52,7 @@ function MainListPage(props) {
             <a className="sidebar-close" href="#" onClick={closeFilters}>
               <i className="close-icon"></i>
             </a>
-            <FiltersList categoryId={props.id} />
+            <FiltersList categoryId={props.id.categoryid} />
           </aside>
           <div className="main-content">
             <nav className="toolbox sticky-toolbox sticky-content fix-top">

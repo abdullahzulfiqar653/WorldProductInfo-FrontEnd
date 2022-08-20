@@ -2,6 +2,7 @@ import axios from "axios";
 import * as actions from "./actionTypes";
 import config from "../components/services/config";
 import { REQUEST_URL } from "../constant/constantURL";
+import { checkProductTypes } from "./utils";
 
 export const pageLoaded = (des) => ({
   type: actions.PAGE_LOADED,
@@ -32,6 +33,7 @@ export const loadProductList =
     dispatch({
       type: actions.REQUEST_START,
     });
+    console.log(checkProductTypes(categoryid).promise);
     await axios
       .get(
         REQUEST_URL +
