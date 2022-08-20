@@ -112,7 +112,7 @@ function MainListPage(props) {
                     <figure className="product-media">
                       <HashLink to={`/product/${product.productid}#header`}>
                         <img
-                          src={`https://content.etilize.com/Large/${product.productid}.jpg?noimage=logo`}
+                          src={`https://content.etilize.com/images/60/${product.productid}.jpg?noimage=logo`}
                           alt="Product"
                           width="330"
                           height="338"

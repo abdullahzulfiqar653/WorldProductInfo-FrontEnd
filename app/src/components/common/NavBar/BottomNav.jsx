@@ -1,8 +1,9 @@
+import "./Navbar.css";
 import Loader from "../SmallLoader";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { categoryLoaded } from "../../../actions/actions";
+import { loadCategory } from "../../../actions/actions";
 class BottomNav extends Component {
   state = {
     categoryRange: 15,
@@ -13,7 +14,6 @@ class BottomNav extends Component {
     this.props.loadCategories();
   }
   isParent(id) {
-    // Object.keys(obj).map((key, index) => error.data[key])
     return this.props.categories.some((obj) => obj.parentcategoryid === id);
   }
 
@@ -28,14 +28,21 @@ class BottomNav extends Component {
         category.catlevel === catLevel && category.parentcategoryid === parent
     );
   }
-  getCategories(id = 0, categoryid = null) {
+
+  displayCategories(catLevel = 0, categoryid = null) {
     return (
       <ul
-        className={categoryid ? "submenu" : "menu vertical-menu category-menu"}
+        className={
+          categoryid && catLevel > 1
+            ? "submenu"
+            : catLevel > 0
+            ? "custom-megamenu"
+            : "menu vertical-menu category-menu"
+        }
         style={{ top: "0", padding: "0" }}
       >
-        {this.getCategoryList(id + 1, categoryid).map((category, range) => {
-          if (range < this.state.categoryRange) {
+        {this.getCategoryList(catLevel + 1, categoryid).map(
+          (category, range) => {
             return (
               <li
                 key={category.categoryid}
@@ -49,24 +56,11 @@ class BottomNav extends Component {
                 >
                   {category.category_label}
                 </Link>
-                {this.getCategories(id + 1, category.categoryid)}
+                {this.displayCategories(catLevel + 1, category.categoryid)}
               </li>
             );
           }
-          if (range === this.state.categoryRange) {
-            return (
-              <li key={category.categoryid}>
-                <a
-                  to={`/product-list/${category.categoryid}#header`}
-                  style={{ padding: "8px 10px", cursor: "pointer" }}
-                  onClick={() => this.setState({ categoryRange: 1000 })}
-                >
-                  Load More {"->"}
-                </a>
-              </li>
-            );
-          }
-        })}
+        )}
       </ul>
     );
   }
@@ -98,7 +92,7 @@ class BottomNav extends Component {
                   </span>
                 </a>
                 <div className="dropdown-box">
-                  {categories && this.getCategories()}
+                  {categories && this.displayCategories()}
                 </div>
               </div>
               <nav className="main-nav">
@@ -122,7 +116,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (disptch) => ({
-  loadCategories: () => disptch(categoryLoaded()),
+  loadCategories: () => disptch(loadCategory()),
 });
 
 //container component

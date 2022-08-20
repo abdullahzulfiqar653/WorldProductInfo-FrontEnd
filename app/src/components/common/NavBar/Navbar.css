@@ -8489,3 +8489,41 @@ aside .sp-sidebar-banner span {
     justify-content: center;
   }
 }
+
+/* Custom mega menu bnaty hoy */
+.custom-megamenu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: auto;
+  max-height: 1800px;
+  opacity: 1;
+  background-color: white;
+  /* visibility: visible !important; */
+}
+.custom-megamenu li:not(:last-child) a {
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+}
+.custom-megamenu .has-submenu > a::after {
+  content: "";
+  font-weight: 600;
+  font-size: 0.9rem;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.category-menu li:hover .custom-megamenu {
+  visibility: visible !important;
+}
+.custom-megamenu li {
+  background-color: white;
+  width: 300px;
+  padding: 0px 10px;
+  display: flex;
+  /* justify-content: space-around;
+  align-items: center; */
+}
+.custom-megamenu li a {
+  font-weight: 400;
+  padding: 8px 10px;
+}

@@ -8,28 +8,19 @@ export const pageLoaded = (des) => ({
   payload: "haha",
 });
 
-export const categoryLoaded = () => async (dispatch) => {
+export const loadCategory = () => async (dispatch) => {
   dispatch({
     type: actions.REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/category/`, config)
     .then((res) => {
-      // console.log(res.data);
-      // console.log(res.data.length);
-      if (res.data.length > 0) {
-        dispatch({
-          type: actions.CATEGORY_LOADED,
-          payload: res.data,
-        });
-      } else {
-        dispatch({
-          type: actions.CATEGORY_LOAD_FAIL,
-        });
-      }
+      dispatch({
+        type: actions.CATEGORY_LOADED,
+        payload: res.data,
+      });
     })
     .catch(function (error) {
-      // console.log(error);
       dispatch({
         type: actions.CATEGORY_LOAD_FAIL,
       });
