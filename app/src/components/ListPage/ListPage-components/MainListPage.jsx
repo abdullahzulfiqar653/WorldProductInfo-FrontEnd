@@ -8,40 +8,45 @@ import { loadProductList } from "../../../actions/actions";
 import "../../ProductDetailsPage/ProductDetails-components/css/button.css";
 
 function MainListPage(props) {
-  const [filterStatus, setFilterStatus] = useState("page-content mb-10");
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+
+  const loading = state.loading;
+  const products = state.products;
   const [Limit, setLimit] = useState(10);
+  const [offSet, setOffSet] = useState(0);
   const [pageList, setPageList] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const [offSet, setOffSet] = useState(0);
-  const dispatch = useDispatch();
+  const [filterStatus, setFilterStatus] = useState("page-content mb-10");
+
   useEffect(() => {
     dispatch(loadProductList(props.id, Limit, offSet));
   }, [props.id, Limit, offSet]);
-  const products = useSelector((state) => state.products);
-  const loading = useSelector((state) => state.loading);
+
   const openFilters = () => {
     setFilterStatus("page-content mb-10 sidebar-active");
   };
+
   const closeFilters = () => {
     setFilterStatus("page-content mb-10");
   };
+
   const handelChange = (e) => {
     setLimit(e.target.value);
+    setOffSet(0);
+    setCurrentPage(1);
   };
+
   const pageNext = () => {
     setOffSet(parseInt(offSet) + parseInt(Limit));
     setCurrentPage(currentPage + 1);
   };
+
   const pagePrevious = () => {
     setOffSet(parseInt(offSet) - parseInt(Limit));
     setCurrentPage(currentPage - 1);
   };
-  const paginate = () => {
-    let pageRange = Math.ceil(products ? products.count / Limit : 1);
-    pageRange > 1 ? setPageList(pageRange) : setPageList(1);
-    console.log(pageRange);
-  };
-  // setTimeout(paginate(), 5000);
+
   return (
     <div className={filterStatus}>
       <div className="container-fluid">
@@ -185,6 +190,7 @@ function MainListPage(props) {
                 ) : (
                   ""
                 )}
+
                 <div className="toolbox toolbox-pagination justify-content-between">
                   <p className="showing-info mb-2 mb-sm-0">
                     Showing
@@ -210,9 +216,10 @@ function MainListPage(props) {
                         <i className="fas fa-arrow-left"></i>Prev
                       </button>
                     </li>
-                    <a onClick={() => paginate()}>Show Pages</a>
+
                     <li>
-                      {currentPage} / {pageList}
+                      {currentPage} /{" "}
+                      {Math.ceil(products ? products.count / Limit : 1)}
                     </li>
                     <li className="next">
                       <button
