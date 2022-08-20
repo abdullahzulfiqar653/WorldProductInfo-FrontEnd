@@ -7,7 +7,7 @@ const initialState = {
   specifications: [],
   gallery: [],
   similarProducts: {},
-  products: {},
+  products: [],
   singleProduct: {},
   productTypeFilter: [],
   manufacturerFilter: [],
