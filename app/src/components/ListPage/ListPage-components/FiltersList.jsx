@@ -91,7 +91,7 @@ function FiltersList(props) {
                 ? manufacturer.map((manufacturer) => (
                     <li key={manufacturer.manufacturerid}>
                       <HashLink
-                        to={`/product-list/${manufacturer.manufacturerid}#header`}
+                        to={`/product-list/${props.categoryId}/${manufacturer.manufacturerid}#header`}
                       >
                         {manufacturer.name} (
                         {manufacturer.manufacturer_product_count})

@@ -12,7 +12,7 @@ function App() {
       <Switch>
         <Route path="/home" component={Home} />
         <Route
-          path="/product-list/:categoryid/:valueid?/:manufacturerid?"
+          path="/product-list/:categoryid/:optionalparams?"
           component={ListDetails}
         />
         <Route exact path="/product/:productid" component={ProductDetailPage} />

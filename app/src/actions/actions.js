@@ -2,7 +2,7 @@ import axios from "axios";
 import * as actions from "./actionTypes";
 import config from "../components/services/config";
 import { REQUEST_URL } from "../constant/constantURL";
-import { checkProductTypes } from "./utils";
+import { checkManufacturer, checkProductTypes } from "./utils";
 
 export const pageLoaded = (des) => ({
   type: actions.PAGE_LOADED,
@@ -29,16 +29,40 @@ export const loadCategory = () => async (dispatch) => {
 };
 
 export const loadProductList =
-  (categoryid, limit, offset) => async (dispatch) => {
+  (categoryid, limit, offset, optional = undefined) =>
+  async (dispatch) => {
     dispatch({
       type: actions.REQUEST_START,
     });
-    console.log(checkProductTypes(categoryid).promise);
+    let checkManufacturerData;
+    let checkProductTypeData;
+    let isManufacturer;
+    let isProductType;
+    let url = `/products/?categoryid=${categoryid}&flag=category&limit=${limit}&offset=${offset}`;
+    if (optional != undefined) {
+      checkProductTypeData = (await checkProductTypes(categoryid)).data;
+      isProductType = checkProductTypeData.some(
+        (obj) => obj.valueid.toString() === optional
+      );
+      if (!isProductType) {
+        checkManufacturerData = (await checkManufacturer(categoryid)).data;
+        isManufacturer = checkManufacturerData.some(
+          (obj) => obj.manufacturerid.toString() === optional
+        );
+        if (!isManufacturer) {
+          url = `/products/?categoryid=${categoryid}&flag=category&limit=${limit}&offset=${offset}`;
+          console.log(isManufacturer);
+        } else {
+          console.log(isManufacturer);
+          url = `/products/?categoryid=${categoryid}&manufacturerid=${optional}&flag=manufacturer&limit=${limit}&offset=${offset}`;
+        }
+      } else {
+        url = `/products/?categoryid=${categoryid}&valueid=${optional}&flag=producttype&limit=${limit}&offset=${offset}`;
+      }
+    }
+    console.log(url);
     await axios
-      .get(
-        REQUEST_URL +
-          `/products/?categoryid=${categoryid}&flag=category&limit=${limit}&offset=${offset}`
-      )
+      .get(REQUEST_URL + url)
       .then((res) => {
         // console.log(res.data);
         if (res.data.count > 0) {

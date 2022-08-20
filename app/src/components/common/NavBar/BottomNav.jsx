@@ -10,7 +10,6 @@ class BottomNav extends Component {
     opacity: 0,
   };
   componentDidMount() {
-    console.log(this.props.loadCategories());
     this.props.loadCategories();
   }
   isParent(id) {
@@ -67,7 +66,6 @@ class BottomNav extends Component {
 
   render() {
     const { categories, loading } = this.props;
-    console.log(this.state.opacity);
     return (
       <div className="header-bottom sticky-content fix-top sticky-header">
         <div className="container">

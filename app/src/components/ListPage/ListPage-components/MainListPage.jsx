@@ -20,8 +20,14 @@ function MainListPage(props) {
   const [filterStatus, setFilterStatus] = useState("page-content mb-10");
 
   useEffect(() => {
-    dispatch(loadProductList(props.id.categoryid, Limit, offSet));
-    paginate();
+    dispatch(
+      loadProductList(
+        props.id.categoryid,
+        Limit,
+        offSet,
+        props.id.optionalparams
+      )
+    );
   }, [props.id, Limit, offSet]);
 
   const openFilters = () => {

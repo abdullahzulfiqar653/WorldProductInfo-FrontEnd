@@ -1,17 +1,19 @@
-import axios from "axios";
+import http from "../components/services/httpService";
 import config from "../components/services/config";
 import { REQUEST_URL } from "../constant/constantURL";
 
 export const checkProductTypes = async (parentcategoryid) => {
-  let response;
-  await axios
-    .get(
-      REQUEST_URL + `/product/type/filter/name/?categoryid=${parentcategoryid}`,
-      config
-    )
-    .then((res) => {
-      response = res.data;
-    })
-    .catch();
+  let response = http.get(
+    REQUEST_URL + `/product/type/filter/name/?categoryid=${parentcategoryid}`,
+    config
+  );
+  return response;
+};
+
+export const checkManufacturer = async (parentcategoryid) => {
+  let response = http.get(
+    REQUEST_URL + `/manufacturer/filter/name/?categoryid=${parentcategoryid}`,
+    config
+  );
   return response;
 };

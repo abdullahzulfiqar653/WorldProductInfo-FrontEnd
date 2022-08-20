@@ -77,7 +77,7 @@ export function reducer(state = initialState, action) {
       };
 
     case actions.PRODUCT_BASIC_OVERVIEW_LOADED:
-      return { ...state, basicOverview: payload, error: null, loading: true };
+      return { ...state, basicOverview: payload, error: null, loading: false };
     case actions.PRODUCT_BASIC_OVERVIEW_LOAD_FAIL:
       return {
         ...state,
@@ -85,7 +85,7 @@ export function reducer(state = initialState, action) {
         loading: false,
       };
     case actions.PRODUCT_SPECIFICATIONS_LOADED:
-      return { ...state, specifications: payload, error: null, loading: true };
+      return { ...state, specifications: payload, error: null, loading: false };
     case actions.PRODUCT_SPECIFICATIONS_LOAD_FAIL:
       return {
         ...state,
@@ -94,7 +94,7 @@ export function reducer(state = initialState, action) {
       };
 
     case actions.PRODUCT_GALLERY_LOADED:
-      return { ...state, gallery: payload, error: null, loading: true };
+      return { ...state, gallery: payload, error: null, loading: false };
     case actions.PRODUCT_GALLERY_LOAD_FAIL:
       return {
         ...state,
@@ -103,7 +103,7 @@ export function reducer(state = initialState, action) {
       };
 
     case actions.PRODUCT_SIMILAR_LOADED:
-      return { ...state, similarProducts: payload, error: null, loading: true };
+      return { ...state, similarProducts: payload, error: null, loading: false };
     case actions.PRODUCT_SIMILAR_LOAD_FAIL:
       return {
         ...state,
