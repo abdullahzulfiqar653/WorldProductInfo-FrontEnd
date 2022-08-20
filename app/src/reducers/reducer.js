@@ -8,6 +8,7 @@ const initialState = {
   gallery: [],
   similarProducts: {},
   products: [],
+  searchResults: {},
   singleProduct: {},
   productTypeFilter: [],
   manufacturerFilter: [],
@@ -62,6 +63,20 @@ export function reducer(state = initialState, action) {
         loading: false,
       };
 
+    case actions.SEARCH_RESULTS_LOADED:
+      return {
+        ...state,
+        searchResults: payload,
+        error: null,
+        loading: false,
+      };
+    case actions.SEARCH_RESULTS_LOAD_FAIL:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+
     case actions.PRODUCT_LOADED:
       return {
         ...state,
@@ -103,7 +118,12 @@ export function reducer(state = initialState, action) {
       };
 
     case actions.PRODUCT_SIMILAR_LOADED:
-      return { ...state, similarProducts: payload, error: null, loading: false };
+      return {
+        ...state,
+        similarProducts: payload,
+        error: null,
+        loading: false,
+      };
     case actions.PRODUCT_SIMILAR_LOAD_FAIL:
       return {
         ...state,

@@ -4,15 +4,19 @@ import React, { useEffect } from "react";
 import { HashLink } from "react-router-hash-link";
 import LargeLoader from "../../common/LargeLoader";
 import { useDispatch, useSelector } from "react-redux";
-import { loadProductList } from "../../../actions/actions";
+import { loadProductList, loadSearchResults } from "../../../actions/actions";
 import "../../ProductDetailsPage/ProductDetails-components/css/button.css";
 
 function MainListPage(props) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-
+  let products = {};
   const loading = state.loading;
-  const products = state.products;
+  if (props.id.query) {
+    products = state.searchResults;
+  } else {
+    products = state.products;
+  }
   const [Limit, setLimit] = useState(10);
   const [offSet, setOffSet] = useState(0);
   const [pageList, setPageList] = useState(1);
@@ -20,16 +24,20 @@ function MainListPage(props) {
   const [filterStatus, setFilterStatus] = useState("page-content mb-10");
 
   useEffect(() => {
-    dispatch(
-      loadProductList(
-        props.id.categoryid,
-        Limit,
-        offSet,
-        props.id.optionalparams
-      )
-    );
+    if (props.id.query) {
+      dispatch(loadSearchResults(props.id.query, Limit, offSet));
+    } else {
+      dispatch(
+        loadProductList(
+          props.id.categoryid,
+          Limit,
+          offSet,
+          props.id.optionalparams
+        )
+      );
+    }
   }, [props.id, Limit, offSet]);
-
+  console.log();
   const openFilters = () => {
     setFilterStatus("page-content mb-10 sidebar-active");
   };
@@ -58,13 +66,17 @@ function MainListPage(props) {
     <div className={filterStatus}>
       <div className="container-fluid">
         <div className="shop-content">
-          <aside className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
-            <div className="sidebar-overlay" onClick={closeFilters}></div>
-            <a className="sidebar-close" href="#" onClick={closeFilters}>
-              <i className="close-icon"></i>
-            </a>
-            <FiltersList categoryId={props.id.categoryid} />
-          </aside>
+          {props.id.query ? (
+            ""
+          ) : (
+            <aside className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
+              <div className="sidebar-overlay" onClick={closeFilters}></div>
+              <a className="sidebar-close" href="#" onClick={closeFilters}>
+                <i className="close-icon"></i>
+              </a>
+              <FiltersList categoryId={props.id.categoryid} />
+            </aside>
+          )}
           <div className="main-content">
             <nav className="toolbox sticky-toolbox sticky-content fix-top">
               <div className="toolbox-left">

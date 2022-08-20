@@ -28,6 +28,29 @@ export const loadCategory = () => async (dispatch) => {
     });
 };
 
+export const loadSearchResults =
+  (searchQuery, limit, offset) => async (dispatch) => {
+    dispatch({
+      type: actions.REQUEST_START,
+    });
+    await axios
+      .get(
+        REQUEST_URL +
+          `/products/?flag=search&search=${searchQuery}&limit=${limit}&offset=${offset}`
+      )
+      .then((res) => {
+        dispatch({
+          type: actions.SEARCH_RESULTS_LOADED,
+          payload: res.data,
+        });
+      })
+      .catch(function (error) {
+        dispatch({
+          type: actions.PRODUCTS_LIST_LOAD_FAIL,
+        });
+      });
+  };
+
 export const loadProductList =
   (categoryid, limit, offset, optional = undefined) =>
   async (dispatch) => {
@@ -77,7 +100,6 @@ export const loadProductList =
         }
       })
       .catch(function (error) {
-        // console.log(error);
         dispatch({
           type: actions.PRODUCTS_LIST_LOAD_FAIL,
         });

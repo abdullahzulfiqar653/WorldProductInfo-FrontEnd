@@ -1,0 +1,20 @@
+import Footer from "../common/Footer";
+import React, { Component } from "react";
+import Navbar from "../common/NavBar/Navbar";
+import ListPage from "./ListPage-components/ListPage";
+
+class SearchPage extends Component {
+  render() {
+    return (
+      <>
+        <div className="page-wrapper">
+          <Navbar />
+          <ListPage id={this.props.match.params} />
+          <Footer />
+        </div>
+      </>
+    );
+  }
+}
+
+export default SearchPage;

@@ -45,7 +45,7 @@ const ProductDescription = (props) => {
         {gallery ? (
           <figure className="banner-media">
             <img
-              src={`https://content.etilize.com/Large/${props.product.productid}.jpg`}
+              src={`https://content.etilize.com/Main/${props.product.productid}.jpg`}
               alt="banner"
               id={section ? "gallery-image" : "swiper-image"}
               width="610"
@@ -576,7 +576,7 @@ const ProductDescription = (props) => {
                                 <a
                                   className="download-link"
                                   target="__blank"
-                                  href={`https://content.etilize.com/${element.type}/${props.product.productid}.pdf`}
+                                  href={`https://content.etilize.com/Tour/${props.product.productid}/`}
                                   download
                                 >
                                   <div className="pdf-icon">
