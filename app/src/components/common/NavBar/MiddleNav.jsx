@@ -39,7 +39,7 @@ class MiddleNav extends Component {
               <Link
                 className="btn btn-search"
                 type="submit"
-                to={`/products/search/${this.state.searchQuery}`}
+                to={`/product-list/?flag=search&search=${this.state.searchQuery}#header`}
               >
                 <i className="w-icon-search"></i>
               </Link>

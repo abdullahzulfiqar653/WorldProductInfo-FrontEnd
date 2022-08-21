@@ -46,7 +46,55 @@ const ProductDescription = (props) => {
     destination.src = source;
   };
 
-  console.log(specifications);
+  const isPreasentinAttributes = (id) => {
+    return specifications.productAttribute.some((obj) => obj.header_id === id);
+  };
+
+  const setUniqueHeaders = () => {
+    const previousHeaders = specifications.categoryid.categoryHeader;
+    let uniqueHeaders = [
+      ...new Map(previousHeaders.map((m) => [m.headerid, m])).values(),
+    ];
+    return uniqueHeaders;
+  };
+
+  const tabSpecifications = () => {
+    const uniqueHeaders = setUniqueHeaders();
+    return uniqueHeaders.map(
+      (header, i) =>
+        isPreasentinAttributes(header.headerid) && (
+          <div key={header.headerid + i}>
+            <h4 style={{ marginBottom: "5px" }}>{header.header_label}</h4>
+            <hr
+              style={{
+                margin: "5px",
+              }}
+            />
+            <tbody>
+              {specifications.productAttribute.map((attribute) =>
+                header.headerid === attribute.header_id ? (
+                  <tr key={attribute.attributeid}>
+                    <td
+                      style={{
+                        padding: "0 15px",
+                        width: "200px",
+                      }}
+                      align="right"
+                    >
+                      {attribute.atrribute_label}:
+                    </td>
+
+                    <td align="left">{Parser(attribute.displayvalue)}</td>
+                  </tr>
+                ) : (
+                  ""
+                )
+              )}
+            </tbody>
+          </div>
+        )
+    );
+  };
 
   const viewGallery = (section = null) => (
     <div className="col-md-6 mb-5">
@@ -380,38 +428,7 @@ const ProductDescription = (props) => {
                   : ""}
               </div>
               <div className="tab-pane" id="specifications-section">
-                {specifications &&
-                  specifications.categoryid.categoryHeader.map((header, i) => (
-                    <div key={header.headerid + i}>
-                      <h4 style={{ marginBottom: "5px" }}>
-                        {header.header_label}
-                      </h4>
-                      <hr
-                        style={{ background: "rgb(80 79 79)", margin: "5px" }}
-                      />
-                      <tbody>
-                        {specifications.productAttribute.map(
-                          (attribute, i) =>
-                            attribute.header_id === header.headerid && (
-                              <tr key={attribute.attributeid + i}>
-                                <td
-                                  style={{
-                                    padding: "0 15px",
-                                    width: "200px",
-                                  }}
-                                  align="right"
-                                >
-                                  {attribute.atrribute_label}:
-                                </td>
-                                <td align="left">
-                                  {Parser(attribute.displayvalue)}
-                                </td>
-                              </tr>
-                            )
-                        )}
-                      </tbody>
-                    </div>
-                  ))}
+                {specifications && tabSpecifications()}
               </div>
               <div className="tab-pane" id="gallery-section">
                 <div className="row mb-4">

@@ -1,42 +1,32 @@
-import { useState } from "react";
+import queryString from "query-string";
 import FiltersList from "./FiltersList";
-import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import React, { useState, useEffect } from "react";
 import LargeLoader from "../../common/LargeLoader";
+import { getFormBody } from "../../../actions/utils";
 import { useDispatch, useSelector } from "react-redux";
-import { loadProductList, loadSearchResults } from "../../../actions/actions";
+import { loadProductList } from "../../../actions/actions";
 import "../../ProductDetailsPage/ProductDetails-components/css/button.css";
 import { useMemo } from "react";
+import { useCallback } from "react";
 
 function MainListPage(props) {
+  let location = useLocation();
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   let products = {};
   const loading = state.loading;
-  if (props.id.query) {
-    products = state.searchResults;
-  } else {
-    products = state.products;
-  }
+  products = state.products;
+
+  const values = queryString.parse(location.search);
   const [Limit, setLimit] = useState(10);
   const [offSet, setOffSet] = useState(0);
-  const [pageList, setPageList] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterStatus, setFilterStatus] = useState("page-content mb-10");
 
   useMemo(() => {
-    if (props.id.query) {
-      dispatch(loadSearchResults(props.id.query, Limit, offSet));
-    } else {
-      dispatch(
-        loadProductList(
-          props.id.categoryid,
-          Limit,
-          offSet,
-          props.id.optionalparams
-        )
-      );
-    }
+    dispatch(loadProductList(Limit, offSet, getFormBody(values)));
   }, [props.id, Limit, offSet]);
 
   const openFilters = () => {
@@ -67,17 +57,14 @@ function MainListPage(props) {
     <div className={filterStatus}>
       <div className="container-fluid">
         <div className="shop-content">
-          {props.id.query ? (
-            ""
-          ) : (
-            <aside className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
-              <div className="sidebar-overlay" onClick={closeFilters}></div>
-              <a className="sidebar-close" href="#" onClick={closeFilters}>
-                <i className="close-icon"></i>
-              </a>
-              <FiltersList categoryId={props.id.categoryid} />
-            </aside>
-          )}
+          <aside className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
+            <div className="sidebar-overlay" onClick={closeFilters}></div>
+            <a className="sidebar-close" href="#" onClick={closeFilters}>
+              <i className="close-icon"></i>
+            </a>
+            <FiltersList />
+          </aside>
+
           <div className="main-content">
             <nav className="toolbox sticky-toolbox sticky-content fix-top">
               <div className="toolbox-left">

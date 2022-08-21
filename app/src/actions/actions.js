@@ -50,76 +50,25 @@ export const loadCategory = () => async (dispatch) => {
     });
 };
 
-export const loadSearchResults =
-  (searchQuery, limit, offset) => async (dispatch) => {
-    dispatch({
-      type: actions.REQUEST_START,
-    });
-    await axios
-      .get(
-        REQUEST_URL +
-          `/products/?flag=search&search=${searchQuery}&limit=${limit}&offset=${offset}`
-      )
-      .then((res) => {
-        dispatch({
-          type: actions.SEARCH_RESULTS_LOADED,
-          payload: res.data,
-        });
-      })
-      .catch(function (error) {
-        dispatch({
-          type: actions.PRODUCTS_LIST_LOAD_FAIL,
-        });
+export const loadProductList = (limit, offset, params) => async (dispatch) => {
+  dispatch({
+    type: actions.REQUEST_START,
+  });
+  const url = `/products/?${params}&limit=${limit}&offset=${offset}`;
+  await axios
+    .get(REQUEST_URL + url)
+    .then((res) => {
+      dispatch({
+        type: actions.PRODUCTS_LIST_LOADED,
+        payload: res.data,
       });
-  };
-
-export const loadProductList =
-  (categoryid, limit, offset, optional = undefined) =>
-  async (dispatch) => {
-    dispatch({
-      type: actions.REQUEST_START,
-    });
-    let checkManufacturerData;
-    let checkProductTypeData;
-    let isManufacturer;
-    let isProductType;
-    let url = `/products/?categoryid=${categoryid}&flag=category&limit=${limit}&offset=${offset}`;
-    if (optional != undefined) {
-      checkProductTypeData = (await checkProductTypes(categoryid)).data;
-      isProductType = checkProductTypeData.some(
-        (obj) => obj.valueid.toString() === optional
-      );
-      if (!isProductType) {
-        checkManufacturerData = (await checkManufacturer(categoryid)).data;
-        isManufacturer = checkManufacturerData.some(
-          (obj) => obj.manufacturerid.toString() === optional
-        );
-        if (!isManufacturer) {
-          url = `/products/?categoryid=${categoryid}&flag=category&limit=${limit}&offset=${offset}`;
-          console.log(isManufacturer);
-        } else {
-          console.log(isManufacturer);
-          url = `/products/?categoryid=${categoryid}&manufacturerid=${optional}&flag=manufacturer&limit=${limit}&offset=${offset}`;
-        }
-      } else {
-        url = `/products/?categoryid=${categoryid}&valueid=${optional}&flag=producttype&limit=${limit}&offset=${offset}`;
-      }
-    }
-    console.log(url);
-    await axios
-      .get(REQUEST_URL + url)
-      .then((res) => {
-        dispatch({
-          type: actions.PRODUCTS_LIST_LOADED,
-          payload: res.data,
-        });
-      })
-      .catch(function (error) {
-        dispatch({
-          type: actions.PRODUCTS_LIST_LOAD_FAIL,
-        });
+    })
+    .catch(function (error) {
+      dispatch({
+        type: actions.PRODUCTS_LIST_LOAD_FAIL,
       });
-  };
+    });
+};
 
 export const productLoaded = (productid) => async (dispatch) => {
   dispatch({
