@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
+import queryString from "query-string";
+import { useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,102 +10,81 @@ import {
   manufacturerFilterLoaded,
 } from "../../../actions/actions";
 function FiltersList(props) {
-  // categoryid's are being dispatched here in use effect hook so that the filters lists could be fetched
+  let location = useLocation();
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const { categoryid } = queryString.parse(location.search);
+
   useEffect(() => {
-    dispatch(categoryFilterLoaded(props.categoryId));
-    dispatch(productTypeFilterLoaded(props.categoryId));
-    dispatch(manufacturerFilterLoaded(props.categoryId));
-  }, [props.categoryId]);
+    dispatch(categoryFilterLoaded(categoryid));
+    dispatch(productTypeFilterLoaded(categoryid));
+    dispatch(manufacturerFilterLoaded(categoryid));
+  }, [categoryid]);
+
   // setting the states to the variables to use in the components
   // all of these states are comming from the store
-  const category = useSelector((state) => state.categoryFilter);
-  const productType = useSelector((state) => state.productTypeFilter);
-  const manufacturer = useSelector((state) => state.manufacturerFilter);
+  const category = state.categoryFilter;
+  const productType = state.productTypeFilter;
+  const manufacturer = state.manufacturerFilter;
+  console.log(manufacturer && manufacturer);
+
   return (
     <div className="sidebar-content scrollable">
-      {category ? (
-        category.length === 0 ? (
-          ""
-        ) : (
-          <div className="widget widget-collapsible">
-            <h3 className="widget-title">
-              <span>Categories Filter</span>
-            </h3>
-            <ul className="widget-body filter-items search-ul">
-              {category
-                ? category.map((category) => (
-                    <li key={category.categoryid}>
-                      <HashLink
-                        to={`/product-list/${category.categoryid}#header`}
-                      >
-                        {category.category_label}(
-                        {category.category_product_count})
-                      </HashLink>
-                    </li>
-                  ))
-                : ""}
+      {category && category.length > 0 && (
+        <div className="widget widget-collapsible">
+          <h3 className="widget-title">
+            <span>{category ? "Categories Filter" : ""}</span>
+          </h3>
+          <ul className="widget-body filter-items search-ul">
+            {category.map((obj) => (
+              <li key={obj.categoryid}>
+                <HashLink
+                  to={`/product-list/?categoryid=${obj.categoryid}&flag=category#header`}
+                >
+                  {obj.category_label}({obj.category_product_count})
+                </HashLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {productType && productType.length > 0 && (
+        <div className="widget widget-collapsible">
+          <h3 className="widget-title">
+            <span>Product Type</span>
+          </h3>
+          <div className="widget-body">
+            <ul className="filter-items search-ul">
+              {productType.map((productType) => (
+                <li key={productType.valueid}>
+                  <HashLink
+                    to={`/product-list/?categoryid=${categoryid}&flag=producttype&valueid=${productType.valueid}#header`}
+                  >
+                    {productType.value} ({productType.category_product_count})
+                  </HashLink>
+                </li>
+              ))}
             </ul>
           </div>
-        )
-      ) : (
-        ""
+        </div>
       )}
-      {productType ? (
-        productType.length === 0 ? (
-          ""
-        ) : (
-          <div className="widget widget-collapsible">
-            <h3 className="widget-title">
-              <span>Product Type</span>
-            </h3>
-            <div className="widget-body">
-              <ul className="filter-items search-ul">
-                {productType
-                  ? productType.map((productType) => (
-                      <li key={productType.valueid}>
-                        <HashLink
-                          to={`/product-list/${props.categoryId}/${productType.valueid}#header`}
-                        >
-                          {productType.value}(
-                          {productType.category_product_count})
-                        </HashLink>
-                      </li>
-                    ))
-                  : ""}
-              </ul>
-            </div>
-          </div>
-        )
-      ) : (
-        ""
-      )}
-      {manufacturer ? (
-        manufacturer.length === 0 ? (
-          ""
-        ) : (
-          <div className="widget widget-collapsible">
-            <h3 className="widget-title">
-              <span>Manufacturer Filter</span>
-            </h3>
-            <ul className="widget-body filter-items search-ul">
-              {manufacturer
-                ? manufacturer.map((manufacturer) => (
-                    <li key={manufacturer.manufacturerid}>
-                      <HashLink
-                        to={`/product-list/${props.categoryId}/${manufacturer.manufacturerid}#header`}
-                      >
-                        {manufacturer.name} (
-                        {manufacturer.manufacturer_product_count})
-                      </HashLink>
-                    </li>
-                  ))
-                : ""}
-            </ul>
-          </div>
-        )
-      ) : (
-        ""
+      {manufacturer && manufacturer.length > 0 && (
+        <div className="widget widget-collapsible">
+          <h3 className="widget-title">
+            <span>Manufacturer Filter</span>
+          </h3>
+          <ul className="widget-body filter-items search-ul">
+            {manufacturer.map((obj) => (
+              <li key={obj.manufacturerid}>
+                <HashLink
+                  to={`/product-list/?categoryid=${categoryid}&flag=manufacturer&manufacturerid=${obj.manufacturerid}#header`}
+                >
+                  {obj.name} ({obj.manufacturer_product_count})
+                </HashLink>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

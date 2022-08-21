@@ -50,7 +50,7 @@ class BottomNav extends Component {
                 }
               >
                 <Link
-                  to={`/product-list/${category.categoryid}#header`}
+                  to={`/product-list/?categoryid=${category.categoryid}&flag=category#header`}
                   style={{ padding: "8px 10px" }}
                 >
                   {category.category_label}
