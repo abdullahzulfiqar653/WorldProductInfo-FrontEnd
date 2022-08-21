@@ -4,11 +4,12 @@ import "./css/button.css";
 import { show } from "./custome";
 import { useEffect } from "react";
 import Parser from "html-react-parser";
+import Accessories from "./Accessories";
 import SimilarProducts from "./SimilarProducts";
 import LargeLoader from "../../common/LargeLoader";
 import { useDispatch, useSelector } from "react-redux";
-import ProductImageGallery from "./ProductImageGallery";
 import {
+  loadAccessories,
   loadBasicOverview,
   loadGallery,
   loadSimilarProducts,
@@ -17,27 +18,35 @@ import {
 
 const ProductDescription = (props) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loadBasicOverview(props.id));
     dispatch(loadSpecifications(props.id));
     dispatch(loadGallery(props.id));
     dispatch(loadSimilarProducts(props.id));
-  }, [props.id]);
+    dispatch(loadAccessories(props.id));
+  }, [props.product]);
+
   const state = useSelector((state) => state);
+  const gallery = state.gallery;
+  const loading = state.loading;
+  const accessories = state.accessories;
   const basicOverview = state.basicOverview;
   const specifications = state.specifications;
-  const gallery = state.gallery;
   const similarProducts = state.similarProducts;
-  const loading = state.loading;
+
   const navigation = (e) => {
     show(`#${e.target.id}-section`, e.target);
   };
+
   const galleryShow = (source, tagname, banner) => {
     let destination = document.getElementById(banner);
     let tag = document.getElementById(banner + "-tag");
     tag.innerHTML = tagname;
     destination.src = source;
   };
+
+  console.log(specifications);
 
   const viewGallery = (section = null) => (
     <div className="col-md-6 mb-5">
@@ -69,7 +78,15 @@ const ProductDescription = (props) => {
         {gallery.productElements.map((element) =>
           element.type !== "Manufacturer-Brochure" &&
           element.type !== "Additional-pdf1" &&
+          element.type !== "Additional-pdf2" &&
+          element.type !== "Additional-pdf3" &&
+          element.type !== "Additional-pdf4" &&
+          element.type !== "Additional-pdf5" &&
+          element.type !== "Additional-pdf6" &&
+          element.type !== "Additional-pdf7" &&
+          element.type !== "Assembly-Instructions" &&
           element.type !== "360-main-view" &&
+          element.type !== "220-Canvas" &&
           element.type !== "Tour" &&
           // element.type !== "Original" &&
           element.type !== "User-Manual" ? (
@@ -93,6 +110,7 @@ const ProductDescription = (props) => {
       </div>
     </div>
   );
+
   return (
     <div className="page-content">
       <div className="container">
@@ -259,15 +277,6 @@ const ProductDescription = (props) => {
                   Gallery
                 </button>
               </li>
-              {/* <li className="nav-item">
-                <button
-                  className="nav-link"
-                  onClick={navigation}
-                  id="accessories"
-                >
-                  Options & Accessories
-                </button>
-              </li> */}
             </ul>
             <div className="tab-content" id="tab-content">
               {props.product !== undefined
@@ -302,7 +311,7 @@ const ProductDescription = (props) => {
                 <h4>Main Features</h4>
                 <ol style={{ listStyleType: "square" }}>
                   {basicOverview
-                    ? basicOverview.productAttribute.map((basic) =>
+                    ? basicOverview.productAttribute.map((basic, i) =>
                         basic.atrribute_label !==
                           "Manufacturer Website Address" &&
                         basic.atrribute_label !==
@@ -318,7 +327,14 @@ const ProductDescription = (props) => {
                         basic.atrribute_label !==
                           "Maximum Operating Temperature" &&
                         basic.atrribute_label !== "Package Contents" ? (
-                          <li key={basic.atrribute_label}>
+                          <li
+                            key={
+                              basic.atrribute_label +
+                              basic.displayvalue +
+                              props.id +
+                              i
+                            }
+                          >
                             {basic.atrribute_label}:{" "}
                             {Parser(basic.displayvalue)}
                           </li>
@@ -364,182 +380,38 @@ const ProductDescription = (props) => {
                   : ""}
               </div>
               <div className="tab-pane" id="specifications-section">
-                <h4 style={{ marginBottom: "5px" }}>General Information</h4>
-                <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
-                <table>
-                  <tbody>
-                    {basicOverview
-                      ? basicOverview.productAttribute.map((basic) =>
-                          basic.atrribute_label === "Manufacturer" ||
-                          basic.atrribute_label ===
-                            "Manufacturer Part Number" ||
-                          basic.atrribute_label === "Brand Name" ||
-                          basic.atrribute_label === "Product Name" ||
-                          basic.atrribute_label === "Product Type" ? (
-                            <tr key={basic.attributeid}>
-                              <td
-                                style={{ padding: "0 15px", width: "200px" }}
-                                align="right"
-                              >
-                                {basic.atrribute_label}:
-                              </td>
-                              <td align="left">{basic.displayvalue}</td>
-                            </tr>
-                          ) : basic.atrribute_label ===
-                            "Marketing Information" ? (
-                            <tr>
-                              <td style={{ padding: "0 15px" }} align="right">
-                                {basic.atrribute_label}:
-                              </td>
-                              <td align="left">{Parser(basic.displayvalue)}</td>
-                            </tr>
-                          ) : (
-                            ""
-                          )
-                        )
-                      : ""}
-                  </tbody>
-                </table>
-                <h4 style={{ marginBottom: "5px" }}>Technical Information</h4>
-                <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
-                <table>
-                  <tbody>
-                    {basicOverview ? (
-                      basicOverview.productAttribute.map((basic) =>
-                        basic.atrribute_label === "Print/Message" ? (
-                          <tr>
-                            <td
-                              style={{ padding: "0 15px", width: "200px" }}
-                              align="right"
-                            >
-                              {basic.atrribute_label}:
-                            </td>
-                            <td align="left">{basic.displayvalue}</td>
-                          </tr>
-                        ) : (
-                          ""
-                        )
-                      )
-                    ) : (
-                      <tr></tr>
-                    )}
-                  </tbody>
-                </table>
-                <h4 style={{ marginBottom: "5px" }}>
-                  Environmental Conditions
-                </h4>
-                <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
-                <table>
-                  <tbody>
-                    {basicOverview ? (
-                      basicOverview.productAttribute.map((basic) =>
-                        basic.atrribute_label ===
-                          "Minimum Operating Temperature" ||
-                        basic.atrribute_label ===
-                          "Maximum Operating Temperature" ? (
-                          <tr>
-                            <td
-                              style={{ padding: "0 15px", width: "200px" }}
-                              align="right"
-                            >
-                              {basic.atrribute_label}:
-                            </td>
-                            <td align="left">
-                              <span>{Parser(basic.displayvalue)}</span>
-                            </td>
-                          </tr>
-                        ) : (
-                          <></>
-                        )
-                      )
-                    ) : (
-                      <></>
-                    )}
-                  </tbody>
-                </table>
-                <h4 style={{ marginBottom: "5px" }}>
-                  Physical Characteristics
-                </h4>
-                <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
-                <table>
-                  <tbody>
-                    {basicOverview
-                      ? basicOverview.productAttribute.map((basic) =>
-                          basic.atrribute_label === "Product Color" ||
-                          basic.atrribute_label === "Height" ||
-                          basic.atrribute_label === "Width" ||
-                          basic.atrribute_label === "Depth" ||
-                          basic.atrribute_label === "Weight (Approximate)" ? (
-                            <tr>
-                              <td
-                                style={{ padding: "0 15px", width: "200px" }}
-                                align="right"
-                              >
-                                {basic.atrribute_label}:
-                              </td>
-                              <td align="left">
-                                <span>{basic.displayvalue}</span>
-                              </td>
-                            </tr>
-                          ) : (
-                            ""
-                          )
-                        )
-                      : ""}
-                  </tbody>
-                </table>
-                <h4 style={{ marginBottom: "5px" }}>Miscellaneous</h4>
-                <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
-                <table>
-                  <tbody>
-                    {basicOverview ? (
-                      basicOverview.productAttribute.map((basic) =>
-                        basic.atrribute_label === "Package Contents" ||
-                        basic.atrribute_label ===
-                          "Certifications & Standards" ? (
-                          <tr>
-                            <td
-                              style={{ padding: "0 15px", width: "200px" }}
-                              align="right"
-                            >
-                              {basic.atrribute_label}:
-                            </td>
-                            <td align="left">{Parser(basic.displayvalue)}</td>
-                          </tr>
-                        ) : (
-                          <></>
-                        )
-                      )
-                    ) : (
-                      <></>
-                    )}
-                  </tbody>
-                </table>
-                <h4 style={{ marginBottom: "5px" }}>Warranty</h4>
-                <hr style={{ background: "rgb(80 79 79)", margin: "5px" }} />
-                <table>
-                  <tbody>
-                    {basicOverview ? (
-                      basicOverview.productAttribute.map((basic) =>
-                        basic.atrribute_label === "Limited Warranty" ? (
-                          <tr>
-                            <td
-                              style={{ padding: "0 15px", width: "200px" }}
-                              align="right"
-                            >
-                              {basic.atrribute_label}:
-                            </td>
-                            <td align="left">{basic.displayvalue}</td>
-                          </tr>
-                        ) : (
-                          <></>
-                        )
-                      )
-                    ) : (
-                      <></>
-                    )}
-                  </tbody>
-                </table>
+                {specifications &&
+                  specifications.categoryid.categoryHeader.map((header, i) => (
+                    <div key={header.headerid + i}>
+                      <h4 style={{ marginBottom: "5px" }}>
+                        {header.header_label}
+                      </h4>
+                      <hr
+                        style={{ background: "rgb(80 79 79)", margin: "5px" }}
+                      />
+                      <tbody>
+                        {specifications.productAttribute.map(
+                          (attribute, i) =>
+                            attribute.header_id === header.headerid && (
+                              <tr key={attribute.attributeid + i}>
+                                <td
+                                  style={{
+                                    padding: "0 15px",
+                                    width: "200px",
+                                  }}
+                                  align="right"
+                                >
+                                  {attribute.atrribute_label}:
+                                </td>
+                                <td align="left">
+                                  {Parser(attribute.displayvalue)}
+                                </td>
+                              </tr>
+                            )
+                        )}
+                      </tbody>
+                    </div>
+                  ))}
               </div>
               <div className="tab-pane" id="gallery-section">
                 <div className="row mb-4">
@@ -552,6 +424,13 @@ const ProductDescription = (props) => {
                         ? gallery.productElements.map((element) =>
                             element.type === "Manufacturer-Brochure" ||
                             element.type === "Additional-pdf1" ||
+                            element.type === "Additional-pdf2" ||
+                            element.type === "Additional-pdf3" ||
+                            element.type === "Additional-pdf4" ||
+                            element.type === "Additional-pdf5" ||
+                            element.type === "Additional-pdf6" ||
+                            element.type === "Additional-pdf7" ||
+                            element.type === "Assembly-Instructions" ||
                             element.type === "User-Manual" ? (
                               <div className="col-md-4">
                                 <a
@@ -600,9 +479,6 @@ const ProductDescription = (props) => {
                   {gallery && viewGallery("gallery")}
                 </div>
               </div>
-              {/* <div className="tab-pane" id="accessories-section">
-                {accessories ? <ProductsList products={accessories} /> : ""}
-              </div> */}
             </div>
             {similarProducts ? (
               similarProducts.count !== 0 ? (
@@ -613,11 +489,15 @@ const ProductDescription = (props) => {
             ) : (
               ""
             )}
-            {/* {similarProducts.count !== 0 ? (
-              <RelatedProducts products={similarProducts.results} />
+            {accessories ? (
+              accessories.count !== 0 ? (
+                <Accessories products={accessories.results} />
+              ) : (
+                ""
+              )
             ) : (
               ""
-            )} */}
+            )}
           </div>
         </div>
       </div>

@@ -6,11 +6,12 @@ import LargeLoader from "../common/LargeLoader";
 import { productLoaded } from "../../actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import DetailPageContent from "./ProductDetails-components/DetailPageContent";
+import { useMemo } from "react";
 
 function ProductDetailPage(props) {
-  const [productid, setProductId] = useState(props.match.params.productid);
+  const productid = props.match.params.productid;
   const dispatch = useDispatch();
-  useEffect(() => {
+  useMemo(() => {
     dispatch(productLoaded(productid));
   }, [productid]);
   const state = useSelector((state) => state);

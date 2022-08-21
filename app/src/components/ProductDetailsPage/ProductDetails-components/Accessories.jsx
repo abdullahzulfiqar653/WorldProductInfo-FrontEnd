@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { HashLink } from "react-router-hash-link";
-class SimilarProducts extends Component {
+class Accessories extends Component {
   render() {
     console.log(this.props);
     return (
-      <section className="related-product-section">
+      <section className="vendor-product-section">
         <div className="title-link-wrapper mb-4">
-          <h4 className="title">Similar Products</h4>
+          <h4 className="title">Product Accessories</h4>
         </div>
-        <div className="row cols-4 cols-md-4 cols-sm-6 cols-2">
+
+        <div className="row cols-4 cols-md-4 cols-sm-6 cols-2"
+        //  style={}
+         >
           {this.props.products.map((product) => (
-            <div className="product" key={product.productid}>
+            <div className="product">
               <figure className="product-media">
                 <HashLink to={`/product/${product.productid}#header`}>
                   <img
@@ -49,12 +52,9 @@ class SimilarProducts extends Component {
               </figure>
               <div className="product-details">
                 <h4 className="product-name">
-                  {product.productDescription.map((description, key) =>
+                  {product.productDescription.map((description) =>
                     description.type === 2 ? (
-                      <HashLink
-                        key={description.description + key}
-                        to={`/product/${product.productid}#header`}
-                      >
+                      <HashLink to={`/product/${product.productid}#header`}>
                         {description.description}
                       </HashLink>
                     ) : (
@@ -97,4 +97,4 @@ class SimilarProducts extends Component {
   }
 }
 
-export default SimilarProducts;
+export default Accessories;

@@ -7,6 +7,7 @@ const initialState = {
   specifications: [],
   gallery: [],
   similarProducts: {},
+  accessories: {},
   products: [],
   searchResults: {},
   singleProduct: {},
@@ -125,6 +126,20 @@ export function reducer(state = initialState, action) {
         loading: false,
       };
     case actions.PRODUCT_SIMILAR_LOAD_FAIL:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+
+    case actions.PRODUCT_ACCESSORIES_LOADED:
+      return {
+        ...state,
+        accessories: payload,
+        error: null,
+        loading: false,
+      };
+    case actions.PRODUCT_ACCESSORIES_LOAD_FAIL:
       return {
         ...state,
         error: action.error,

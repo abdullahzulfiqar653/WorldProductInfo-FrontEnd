@@ -6,6 +6,7 @@ import LargeLoader from "../../common/LargeLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProductList, loadSearchResults } from "../../../actions/actions";
 import "../../ProductDetailsPage/ProductDetails-components/css/button.css";
+import { useMemo } from "react";
 
 function MainListPage(props) {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function MainListPage(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [filterStatus, setFilterStatus] = useState("page-content mb-10");
 
-  useEffect(() => {
+  useMemo(() => {
     if (props.id.query) {
       dispatch(loadSearchResults(props.id.query, Limit, offSet));
     } else {
@@ -37,7 +38,7 @@ function MainListPage(props) {
       );
     }
   }, [props.id, Limit, offSet]);
-  console.log();
+
   const openFilters = () => {
     setFilterStatus("page-content mb-10 sidebar-active");
   };
@@ -107,9 +108,9 @@ function MainListPage(props) {
                 </div>
               </div>
             </nav>
-            {loading === false ? (
+            {!loading && products ? (
               <div>
-                {products ? (
+                {products.count !== 0 ? (
                   <div className="product-wrapper row cols-xl-2 cols-sm-1 cols-xs-2 cols-1">
                     {products.results.map((product) => (
                       <div
@@ -207,7 +208,11 @@ function MainListPage(props) {
                     ))}
                   </div>
                 ) : (
-                  ""
+                  <div className="row">
+                    <h1 style={{ textAlign: "center" }}>
+                      There are no products.
+                    </h1>
+                  </div>
                 )}
 
                 <div className="toolbox toolbox-pagination justify-content-between">

@@ -9,6 +9,28 @@ export const pageLoaded = (des) => ({
   payload: "haha",
 });
 
+export const loadAccessories = (productid) => async (dispatch) => {
+  dispatch({
+    type: actions.REQUEST_START,
+  });
+  await axios
+    .get(
+      REQUEST_URL + `/products/?productid=${productid}&flag=accessories`,
+      config
+    )
+    .then((res) => {
+      dispatch({
+        type: actions.PRODUCT_ACCESSORIES_LOADED,
+        payload: res.data,
+      });
+    })
+    .catch(function (error) {
+      dispatch({
+        type: actions.PRODUCT_ACCESSORIES_LOAD_FAIL,
+      });
+    });
+};
+
 export const loadCategory = () => async (dispatch) => {
   dispatch({
     type: actions.REQUEST_START,
@@ -87,17 +109,10 @@ export const loadProductList =
     await axios
       .get(REQUEST_URL + url)
       .then((res) => {
-        // console.log(res.data);
-        if (res.data.count > 0) {
-          dispatch({
-            type: actions.PRODUCTS_LIST_LOADED,
-            payload: res.data,
-          });
-        } else {
-          dispatch({
-            type: actions.PRODUCTS_LIST_LOAD_FAIL,
-          });
-        }
+        dispatch({
+          type: actions.PRODUCTS_LIST_LOADED,
+          payload: res.data,
+        });
       })
       .catch(function (error) {
         dispatch({
@@ -113,14 +128,12 @@ export const productLoaded = (productid) => async (dispatch) => {
   await axios
     .get(REQUEST_URL + `/product/${productid}`)
     .then((res) => {
-      // console.log(res.data);
       dispatch({
         type: actions.PRODUCT_LOADED,
         payload: res.data,
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_LOAD_FAIL,
       });
@@ -137,7 +150,6 @@ export const categoryFilterLoaded = (parentcategoryid) => async (dispatch) => {
       config
     )
     .then((res) => {
-      // console.log(res);
       if (res.status === 200) {
         dispatch({
           type: actions.CATEGORY_FILTER_LOADED,
@@ -169,7 +181,6 @@ export const productTypeFilterLoaded =
         config
       )
       .then((res) => {
-        // console.log(res);
         if (res.status === 200) {
           dispatch({
             type: actions.PRODUCT_TYPE_FILTER_LOADED,
@@ -201,7 +212,6 @@ export const manufacturerFilterLoaded =
         config
       )
       .then((res) => {
-        // console.log(res);
         if (res.status === 200) {
           dispatch({
             type: actions.MANUFACTURER_FILTER_LOADED,
@@ -228,7 +238,6 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
   await axios
     .get(REQUEST_URL + `/product/basic/over/view/${productid}`)
     .then((res) => {
-      // console.log(res.data);
       dispatch({
         type: actions.PRODUCT_BASIC_OVERVIEW_LOADED,
         payload: res.data,
@@ -249,7 +258,6 @@ export const loadSpecifications = (productid) => async (dispatch) => {
   await axios
     .get(REQUEST_URL + `/product/specification/${productid}`)
     .then((res) => {
-      // console.log(res.data);
       dispatch({
         type: actions.PRODUCT_SPECIFICATIONS_LOADED,
         payload: res.data,
@@ -270,7 +278,6 @@ export const loadGallery = (productid) => async (dispatch) => {
   await axios
     .get(REQUEST_URL + `/product/gallery/${productid}`)
     .then((res) => {
-      // console.log(res.data);
       dispatch({
         type: actions.PRODUCT_GALLERY_LOADED,
         payload: res.data,
@@ -291,7 +298,6 @@ export const loadSimilarProducts = (productid) => async (dispatch) => {
   await axios
     .get(REQUEST_URL + `/products/?productid=${productid}&flag=similar`)
     .then((res) => {
-      // console.log(res.data);
       dispatch({
         type: actions.PRODUCT_SIMILAR_LOADED,
         payload: res.data,
