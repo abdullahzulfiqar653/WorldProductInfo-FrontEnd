@@ -1,0 +1,116 @@
+{
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120,
+        "singleQuote": true,
+        "useTabs": false,
+        "tabWidth": 2,
+        "semi": true,
+        "bracketSpacing": true,
+        "trailingComma": "all",
+        "arrowParens": "always",
+        "endOfLine":"auto"
+      }
+    ],
+    "arrow-parens": ["error", "always"],
+    "arrow-body-style": "off",
+    "spaced-comment": [
+      "warn",
+      "always",
+      {
+        "line": {
+          "markers": ["/"],
+          "exceptions": ["-", "+"]
+        },
+        "block": {
+          "markers": ["!"],
+          "exceptions": ["*"],
+          "balanced": true
+        }
+      }
+    ],
+    "curly": "warn",
+    "complexity": ["error", 8],
+    "eol-last": "error",
+    "guard-for-in": "error",
+    "no-unused-labels": "error",
+    "max-classes-per-file": ["error", 1],
+    "new-parens": "warn",
+    "no-caller": "error",
+    "no-bitwise": "warn",
+    "no-cond-assign": "error",
+    "no-multiple-empty-lines": "error",
+    "no-new-wrappers": "error",
+    "no-debugger": "error",
+    "constructor-super": "error",
+    "no-empty": "warn",
+    "no-eval": "warn",
+    "no-invalid-this": "warn",
+    // ESLint N/A
+    // "no-reference-import": true,
+    "no-shadow": "error",
+    "dot-notation": "warn",
+    "no-throw-literal": "error",
+    "no-fallthrough": "warn",
+    "no-trailing-spaces": [
+      "error",
+      { "skipBlankLines": true, "ignoreComments": true }
+    ],
+    "no-undef-init": "error",
+    "no-unsafe-finally": "error",
+    "no-unused-expressions": "error",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-var": "error",
+    "quote-props": ["error", "consistent-as-needed"],
+    "object-shorthand": "error",
+    "sort-keys": "off",
+    "brace-style": ["warn", "1tbs"],
+    "one-var": ["error", "never"],
+    // must install prefer-arrow/prefer-arrow-functions
+    // "only-arrow-functions": {
+    //   "options": ["allow-declarations", "allow-named-functions"]
+    // },
+    "ordered-imports": "off",
+    "prefer-const": "error",
+    "quotes": [
+      "warn",
+      "single",
+      { "avoidEscape": true, "allowTemplateLiterals": true }
+    ],
+    "radix": "warn",
+    "no-extra-semi": "warn",
+    // "space-before-function-paren": "warn",
+    "comma-dangle": ["warn", "always-multiline"],
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "typedef": "off",
+    "typeof-compare": "off",
+    "use-isnan": "warn",
+    "react/prop-types": "off",
+    "react/button-has-type": "off",
+    // pending
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off",
+    "import/no-cycle": ["warn", { "maxDepth": 1 }],
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-console": "error",
+    "react/no-array-index-key": "warn",
+    "no-nested-ternary": "warn",
+    "import/no-duplicates": "warn",
+    "no-restricted-imports": [
+      "error",
+      { "paths": ["ramda"], "patterns": ["!@/lib/ramda", "ramda/es/*"] }
+    ]
+  }
+}
