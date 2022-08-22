@@ -25,6 +25,9 @@ jobs: # list of things to do
         working-directory: ./app
         run: npm install
  
-      - name: Code Linting
+      - name: Run linters
         working-directory: ./app
-        run: npm run lint
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          prettier: true
