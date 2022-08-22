@@ -24,7 +24,7 @@ jobs: # list of things to do
  
       - name: Install Dependencies
         working-directory: ./app
-        run: npm install
+        run: npm ci
  
       - name: Run linters
         uses: wearerequired/lint-action@v2
