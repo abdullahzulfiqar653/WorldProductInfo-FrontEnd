@@ -12,6 +12,7 @@ jobs: # list of things to do
   linting:
     name: Linting # job name (unique id)
     runs-on: ubuntu-latest # on which machine to run
+
     steps: # list of steps
       - name: Install NodeJS
         uses: actions/setup-node@v2
@@ -26,7 +27,6 @@ jobs: # list of things to do
         run: npm install
  
       - name: Run linters
-        working-directory: ./app
         uses: wearerequired/lint-action@v2
         with:
           eslint: true
