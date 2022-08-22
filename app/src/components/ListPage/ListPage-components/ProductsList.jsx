@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { HashLink } from "react-router-hash-link";
-import Img1 from "../../../assets/images/shop/1.jpg";
+import React, { Component } from 'react';
+import { HashLink } from 'react-router-hash-link';
+import Img1 from '../../../assets/images/shop/1.jpg';
 class ProductsList extends Component {
   componentDidMount() {
     console.log(this.props.products);
@@ -28,39 +28,28 @@ class ProductsList extends Component {
               </div>
             </figure>
             <div className="product-details">
-              <h4
-                className="product-name"
-                style={{ fontSize: "15px !impotant" }}
-              >
+              <h4 className="product-name" style={{ fontSize: '15px !impotant' }}>
                 {product.productDescription.map((description) =>
                   description.type === 2 ? (
-                    <HashLink to={`/product/${product.productid}#header`}>
-                      {description.description}
-                    </HashLink>
+                    <HashLink to={`/product/${product.productid}#header`}>{description.description}</HashLink>
                   ) : (
-                    ""
-                  )
+                    ''
+                  ),
                 )}
               </h4>
               {product.productDescription.map((description) =>
                 description.type === 3 ? (
-                  <div
-                    className="product-desc"
-                    style={{ margin: "0", color: "black" }}
-                  >
+                  <div className="product-desc" style={{ margin: '0', color: 'black' }}>
                     {description.description}
                   </div>
                 ) : (
-                  ""
-                )
+                  ''
+                ),
               )}
-              <div
-                className="product-desc"
-                style={{ margin: "0", color: "gray" }}
-              >
+              <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
                 SKUS :
                 {product.productSkus.map((Sku) => (
-                  <span style={{ paddingRight: "5px" }}>
+                  <span style={{ paddingRight: '5px' }}>
                     {Sku.name} : {Sku.sku}
                   </span>
                 ))}
@@ -74,16 +63,8 @@ class ProductsList extends Component {
                 >
                   <i className="w-icon-cart"></i>Select Options
                 </a>
-                <a
-                  href="#"
-                  className="btn-product-icon btn-wishlist w-icon-heart"
-                  title="Add to wishlist"
-                ></a>
-                <a
-                  href="#"
-                  className="btn-product-icon btn-compare w-icon-compare"
-                  title="Compare"
-                ></a>
+                <a href="#" className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></a>
+                <a href="#" className="btn-product-icon btn-compare w-icon-compare" title="Compare"></a>
               </div>
             </div>
           </div>

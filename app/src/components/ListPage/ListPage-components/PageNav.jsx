@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 class PageNav extends Component {
   render() {
     return (
-      <nav className="breadcrumb-nav" style={{ padding: "10px" }}>
+      <nav className="breadcrumb-nav" style={{ padding: '10px' }}>
         <div className="container">
           <ul className="breadcrumb bb-no">
             <li>

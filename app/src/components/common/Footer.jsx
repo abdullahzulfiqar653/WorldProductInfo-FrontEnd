@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Logo from "../../assets/images/logo_footer.png";
+import React, { Component } from 'react';
+import Logo from '../../assets/images/logo_footer.png';
 class Footer extends Component {
   render() {
     return (
@@ -38,9 +38,7 @@ class Footer extends Component {
           </div>
           <div className="footer-bottom">
             <div className="footer-left">
-              <p className="copyright">
-                Copyright © 2022 GFK Etilize. All Rights Reserved.
-              </p>
+              <p className="copyright">Copyright © 2022 GFK Etilize. All Rights Reserved.</p>
             </div>
           </div>
         </div>

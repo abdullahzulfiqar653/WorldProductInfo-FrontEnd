@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import ENGFlag from "../../../assets/images/flags/eng.png";
-import FRAFlag from "../../../assets/images/flags/fra.png";
+import React, { Component } from 'react';
+import ENGFlag from '../../../assets/images/flags/eng.png';
+import FRAFlag from '../../../assets/images/flags/fra.png';
 
 class UpperNav extends Component {
   render() {
@@ -20,41 +20,23 @@ class UpperNav extends Component {
             </div>
             <div className="dropdown">
               <a href="#">
-                <img
-                  src={ENGFlag}
-                  alt="ENG Flag"
-                  width={14}
-                  height={8}
-                  className="dropdown-image"
-                />
+                <img src={ENGFlag} alt="ENG Flag" width={14} height={8} className="dropdown-image" />
                 ENG
               </a>
               <div className="dropdown-box">
                 <a href="#">
-                  <img
-                    src={ENGFlag}
-                    alt="ENG Flag"
-                    width={14}
-                    height={8}
-                    className="dropdown-image"
-                  />
+                  <img src={ENGFlag} alt="ENG Flag" width={14} height={8} className="dropdown-image" />
                   ENG
                 </a>
                 <a href="#">
-                  <img
-                    src={FRAFlag}
-                    alt="FRA Flag"
-                    width={14}
-                    height={8}
-                    className="dropdown-image"
-                  />
+                  <img src={FRAFlag} alt="FRA Flag" width={14} height={8} className="dropdown-image" />
                   FRA
                 </a>
               </div>
             </div>
 
             <span className="divider d-lg-show"></span>
-            
+
             <a href="#" className="d-lg-show login sign-in">
               <i className="w-icon-account"></i>Sign In
             </a>

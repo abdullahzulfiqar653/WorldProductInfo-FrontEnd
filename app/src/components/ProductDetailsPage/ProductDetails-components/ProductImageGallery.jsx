@@ -1,7 +1,7 @@
-import React, { Component, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
-import "../../../assets/swiper/swiper-bundle.min.css";
+import React, { Component, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Navigation, Thumbs } from 'swiper';
+import '../../../assets/swiper/swiper-bundle.min.css';
 function ProductImageGallery(props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   console.log(props);
@@ -18,9 +18,9 @@ function ProductImageGallery(props) {
           >
             {props.elements
               ? props.elements.productElements.map((element) =>
-                  element.type != "Manufacturer-Brochure" &&
-                  element.type != "Original" &&
-                  element.type != "User-Manual" ? (
+                  element.type != 'Manufacturer-Brochure' &&
+                  element.type != 'Original' &&
+                  element.type != 'User-Manual' ? (
                     <SwiperSlide key={element.type}>
                       <figure className="product-image">
                         <img
@@ -33,10 +33,10 @@ function ProductImageGallery(props) {
                       </figure>
                     </SwiperSlide>
                   ) : (
-                    ""
-                  )
+                    ''
+                  ),
                 )
-              : ""}
+              : ''}
           </Swiper>
           <Swiper
             onSwiper={setThumbsSwiper}
@@ -50,9 +50,9 @@ function ProductImageGallery(props) {
           >
             {props.elements
               ? props.elements.productElements.map((element) =>
-                  element.type != "Manufacturer-Brochure" &&
-                  element.type != "Original" &&
-                  element.type != "User-Manual" ? (
+                  element.type != 'Manufacturer-Brochure' &&
+                  element.type != 'Original' &&
+                  element.type != 'User-Manual' ? (
                     <SwiperSlide key={element.type}>
                       <figure className="product-image">
                         <img
@@ -65,10 +65,10 @@ function ProductImageGallery(props) {
                       </figure>
                     </SwiperSlide>
                   ) : (
-                    ""
-                  )
+                    ''
+                  ),
                 )
-              : ""}
+              : ''}
           </Swiper>
         </div>
       </div>

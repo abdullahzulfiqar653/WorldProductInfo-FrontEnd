@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Cart extends Component {
   state = {
-    cartstate: "dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2",
+    cartstate: 'dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2',
   };
 
   render() {
@@ -12,7 +12,7 @@ class Cart extends Component {
           className="cart-overlay"
           onClick={() =>
             this.setState({
-              cartstate: "dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2",
+              cartstate: 'dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2',
             })
           }
         ></div>
@@ -20,8 +20,7 @@ class Cart extends Component {
           href="#"
           onClick={() =>
             this.setState({
-              cartstate:
-                "dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2 opened",
+              cartstate: 'dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2 opened',
             })
           }
           className="cart-toggle label-down link"

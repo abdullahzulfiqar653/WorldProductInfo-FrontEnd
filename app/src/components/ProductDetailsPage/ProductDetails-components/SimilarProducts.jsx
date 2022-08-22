@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { HashLink } from "react-router-hash-link";
+import React, { Component } from 'react';
+import { HashLink } from 'react-router-hash-link';
 class SimilarProducts extends Component {
   render() {
     console.log(this.props);
@@ -21,21 +21,9 @@ class SimilarProducts extends Component {
                   />
                 </HashLink>
                 <div className="product-action-vertical">
-                  <a
-                    href="#"
-                    className="btn-product-icon btn-cart w-icon-cart"
-                    title="Add to cart"
-                  ></a>
-                  <a
-                    href="#"
-                    className="btn-product-icon btn-wishlist w-icon-heart"
-                    title="Add to wishlist"
-                  ></a>
-                  <a
-                    href="#"
-                    className="btn-product-icon btn-compare w-icon-compare"
-                    title="Add to Compare"
-                  ></a>
+                  <a href="#" className="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
+                  <a href="#" className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></a>
+                  <a href="#" className="btn-product-icon btn-compare w-icon-compare" title="Add to Compare"></a>
                 </div>
                 <div className="product-action">
                   <HashLink
@@ -51,36 +39,27 @@ class SimilarProducts extends Component {
                 <h4 className="product-name">
                   {product.productDescription.map((description, key) =>
                     description.type === 2 ? (
-                      <HashLink
-                        key={description.description + key}
-                        to={`/product/${product.productid}#header`}
-                      >
+                      <HashLink key={description.description + key} to={`/product/${product.productid}#header`}>
                         {description.description}
                       </HashLink>
                     ) : (
-                      ""
-                    )
+                      ''
+                    ),
                   )}
                 </h4>
                 {product.productDescription.map((description) =>
                   description.type === 3 ? (
-                    <div
-                      className="product-desc"
-                      style={{ margin: "0", color: "black" }}
-                    >
+                    <div className="product-desc" style={{ margin: '0', color: 'black' }}>
                       {description.description}
                     </div>
                   ) : (
-                    ""
-                  )
+                    ''
+                  ),
                 )}
-                <div
-                  className="product-desc"
-                  style={{ margin: "0", color: "gray" }}
-                >
+                <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
                   SKUS :
                   {product.productSkus.map((Sku) => (
-                    <span style={{ paddingRight: "5px" }}>
+                    <span style={{ paddingRight: '5px' }}>
                       {Sku.name} : {Sku.sku}
                     </span>
                   ))}

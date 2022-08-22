@@ -1,8 +1,8 @@
-import { reducer } from "../reducers/reducer";
+import { reducer } from '../reducers/reducer';
 
 function createStore(reducer) {
   let state;
-  let listeners = [];
+  const listeners = [];
   function subscribe(listener) {
     listeners.push(listener);
   }
@@ -13,7 +13,9 @@ function createStore(reducer) {
 
   function dispatch(action) {
     state = reducer(state, action);
-    for (let i = 0; i < listeners.length; i++) listeners[i]();
+    for (let i = 0; i < listeners.length; i++) {
+      listeners[i]();
+    }
   }
 
   return {

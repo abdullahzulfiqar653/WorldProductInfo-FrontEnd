@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { HashLink } from "react-router-hash-link";
+import React, { Component } from 'react';
+import { HashLink } from 'react-router-hash-link';
 class RelatedProducts extends Component {
   render() {
     console.log(this.props);
@@ -7,9 +7,8 @@ class RelatedProducts extends Component {
       <section className="vendor-product-section">
         <div className="title-link-wrapper mb-4">
           <h4 className="title">Related Products</h4>
-          
         </div>
-        
+
         <div className="row cols-4 cols-md-4 cols-sm-6 cols-2">
           {this.props.products.map((product) => (
             <div className="product">
@@ -23,21 +22,9 @@ class RelatedProducts extends Component {
                   />
                 </HashLink>
                 <div className="product-action-vertical">
-                  <a
-                    href="#"
-                    className="btn-product-icon btn-cart w-icon-cart"
-                    title="Add to cart"
-                  ></a>
-                  <a
-                    href="#"
-                    className="btn-product-icon btn-wishlist w-icon-heart"
-                    title="Add to wishlist"
-                  ></a>
-                  <a
-                    href="#"
-                    className="btn-product-icon btn-compare w-icon-compare"
-                    title="Add to Compare"
-                  ></a>
+                  <a href="#" className="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
+                  <a href="#" className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></a>
+                  <a href="#" className="btn-product-icon btn-compare w-icon-compare" title="Add to Compare"></a>
                 </div>
                 <div className="product-action">
                   <HashLink
@@ -53,33 +40,25 @@ class RelatedProducts extends Component {
                 <h4 className="product-name">
                   {product.productDescription.map((description) =>
                     description.type === 2 ? (
-                      <HashLink to={`/product/${product.productid}#header`}>
-                        {description.description}
-                      </HashLink>
+                      <HashLink to={`/product/${product.productid}#header`}>{description.description}</HashLink>
                     ) : (
-                      ""
-                    )
+                      ''
+                    ),
                   )}
                 </h4>
                 {product.productDescription.map((description) =>
                   description.type === 3 ? (
-                    <div
-                      className="product-desc"
-                      style={{ margin: "0", color: "black" }}
-                    >
+                    <div className="product-desc" style={{ margin: '0', color: 'black' }}>
                       {description.description}
                     </div>
                   ) : (
-                    ""
-                  )
+                    ''
+                  ),
                 )}
-                <div
-                  className="product-desc"
-                  style={{ margin: "0", color: "gray" }}
-                >
+                <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
                   SKUS :
                   {product.productSkus.map((Sku) => (
-                    <span style={{ paddingRight: "5px" }}>
+                    <span style={{ paddingRight: '5px' }}>
                       {Sku.name} : {Sku.sku}
                     </span>
                   ))}

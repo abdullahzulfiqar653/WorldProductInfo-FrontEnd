@@ -1,11 +1,11 @@
-import Cart from "../Cart/Cart";
-import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
-import Logo from "../../../assets/images/logo.png";
+import Cart from '../Cart/Cart';
+import React, { Component } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import Logo from '../../../assets/images/logo.png';
 
 class MiddleNav extends Component {
   state = {
-    searchQuery: "",
+    searchQuery: '',
   };
   handelSearch = (query) => {
     this.setState({ searchQuery: query });
@@ -16,12 +16,8 @@ class MiddleNav extends Component {
       <div className="header-middle">
         <div className="container">
           <div className="header-left mr-md-4">
-            <a
-              href="#"
-              className="mobile-menu-toggle  w-icon-hamburger"
-              aria-label="menu-toggle"
-            ></a>
-            <NavLink to={"/home"} className="logo ml-lg-0">
+            <a href="#" className="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle"></a>
+            <NavLink to={'/home'} className="logo ml-lg-0">
               <img src={Logo} alt="logo" width="144" height="45" />
             </NavLink>
             <div className="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
@@ -31,7 +27,7 @@ class MiddleNav extends Component {
                 name="search"
                 id="search"
                 placeholder="Search in..."
-                style={{ borderLeft: "2px solid #336699" }}
+                style={{ borderLeft: '2px solid #336699' }}
                 required
                 value={this.state.searchQuery}
                 onChange={(e) => this.handelSearch(e.currentTarget.value)}
