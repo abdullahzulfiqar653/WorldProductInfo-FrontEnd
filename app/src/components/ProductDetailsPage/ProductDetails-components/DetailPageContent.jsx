@@ -4,7 +4,6 @@ import ProductDescription from "./ProductDescription";
 
 class DetailPageContent extends Component {
   render() {
-    // console.log(this.props);
     return (
       <div className="main mb-10 pb-1">
         <ProductNav />

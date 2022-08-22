@@ -11,35 +11,12 @@ import SwiperCore, {
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 class IntroSection extends Component {
-  componentDidMount() {
-    // new Swiper(".swiper", {
-    //   // configure Swiper to use modules
-    //   modules: [Navigation, Pagination, Scrollbar],
-    //   speed: 800,
-    //   loop: true,
-    //   autoplay: {
-    //     delay: 200,
-    //   },
-    //   pagination: {
-    //     el: ".swiper-pagination",
-    //     clickable: true,
-    //   },
-    //   navigation: {
-    //     nextEl: ".swiper-button-next",
-    //     prevEl: ".swiper-button-prev",
-    //   },
-    // });
-  }
+  
   render() {
     SwiperCore.use([Autoplay]);
     return (
       <section className="intro-section">
-        {/* <div className="swiper swiper-theme nav-inner pg-inner swiper-nav-lg animation-slider pg-xxl-hide nav-xxl-show nav-hide">
-          <div className="swiper-wrapper"></div>
-          <div className="swiper-pagination"></div>
-          <button className="swiper-button-next"></button>
-          <button className="swiper-button-prev"></button>
-        </div> */}
+        
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           spaceBetween={50}

@@ -4,9 +4,7 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 import "../../../assets/swiper/swiper-bundle.min.css";
 function ProductImageGallery(props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  // if (props.elements) {
-  //   console.log(props);
-  // }
+  console.log(props);
   return (
     <>
       <div className="product-gallery product-gallery-sticky">
@@ -19,7 +17,7 @@ function ProductImageGallery(props) {
             // className="swiper-container product-single-swiper swiper-theme nav-inner swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events"
           >
             {props.elements
-              ? props.elements.map((element) =>
+              ? props.elements.productElements.map((element) =>
                   element.type != "Manufacturer-Brochure" &&
                   element.type != "Original" &&
                   element.type != "User-Manual" ? (
@@ -51,7 +49,7 @@ function ProductImageGallery(props) {
             className="product-thumbs-wrap"
           >
             {props.elements
-              ? props.elements.map((element) =>
+              ? props.elements.productElements.map((element) =>
                   element.type != "Manufacturer-Brochure" &&
                   element.type != "Original" &&
                   element.type != "User-Manual" ? (

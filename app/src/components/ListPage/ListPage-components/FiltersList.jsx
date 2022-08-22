@@ -1,142 +1,93 @@
-import React, { Component } from "react";
+import React from "react";
+import { useEffect } from "react";
+import queryString from "query-string";
+import { useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import categoryFilter from "../../services/FakeApi/categoryFilter";
-import productTypeFilter from "../../services/FakeApi/productTypeFilter";
-import manufacturerFilter from "../../services/FakeApi/manufacturerFilter";
-class FiltersList extends Component {
-  state = {
-    category: undefined,
-    productType: undefined,
-    manufacturer: undefined,
-  };
-  componentDidMount() {
-    this.setState({ category: categoryFilter });
-    this.setState({ productType: productTypeFilter });
-    this.setState({ manufacturer: manufacturerFilter });
-  }
-  render() {
-    const { category, productType, manufacturer } = this.state;
-    // console.log(category);
-    return (
-      <div className="sidebar-content scrollable">
+import { useDispatch, useSelector } from "react-redux";
+import {
+  categoryFilterLoaded,
+  productTypeFilterLoaded,
+  manufacturerFilterLoaded,
+} from "../../../actions/actions";
+function FiltersList(props) {
+  let location = useLocation();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const { categoryid } = queryString.parse(location.search);
+
+  useEffect(() => {
+    dispatch(categoryFilterLoaded(categoryid));
+    dispatch(productTypeFilterLoaded(categoryid));
+    dispatch(manufacturerFilterLoaded(categoryid));
+  }, [categoryid]);
+
+  // setting the states to the variables to use in the components
+  // all of these states are comming from the store
+  const category = state.categoryFilter;
+  const productType = state.productTypeFilter;
+  const manufacturer = state.manufacturerFilter;
+  console.log(manufacturer && manufacturer);
+
+  return (
+    <div className="sidebar-content scrollable">
+      {category && category.length > 0 && (
         <div className="widget widget-collapsible">
           <h3 className="widget-title">
-            <span>Categories Filter</span>
+            <span>{category ? "Categories Filter" : ""}</span>
           </h3>
           <ul className="widget-body filter-items search-ul">
-            {category
-              ? category.map((category) => (
-                  <li key={category.categoryid}>
-                    <HashLink
-                      to={`/product-list/${category.categoryid}#header`}
-                    >
-                      {category.category_label}(
-                      {category.category_product_count})
-                    </HashLink>
-                  </li>
-                ))
-              : ""}
+            {category.map((obj) => (
+              <li key={obj.categoryid}>
+                <HashLink
+                  to={`/product-list/?categoryid=${obj.categoryid}&flag=category#header`}
+                >
+                  {obj.category_label}({obj.category_product_count})
+                </HashLink>
+              </li>
+            ))}
           </ul>
         </div>
+      )}
+      {productType && productType.length > 0 && (
         <div className="widget widget-collapsible">
           <h3 className="widget-title">
             <span>Product Type</span>
           </h3>
           <div className="widget-body">
             <ul className="filter-items search-ul">
-              {productType
-                ? productType.map((productType) => (
-                    <li key={productType.valueid}>
-                      <HashLink
-                        to={`/product-list/${productType.valueid}#header`}
-                      >
-                        {productType.value}({productType.category_product_count}
-                        )
-                      </HashLink>
-                    </li>
-                  ))
-                : ""}
+              {productType.map((productType) => (
+                <li key={productType.valueid}>
+                  <HashLink
+                    to={`/product-list/?categoryid=${categoryid}&flag=producttype&valueid=${productType.valueid}#header`}
+                  >
+                    {productType.value} ({productType.category_product_count})
+                  </HashLink>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
+      )}
+      {manufacturer && manufacturer.length > 0 && (
         <div className="widget widget-collapsible">
           <h3 className="widget-title">
             <span>Manufacturer Filter</span>
           </h3>
           <ul className="widget-body filter-items search-ul">
-            {manufacturer
-              ? manufacturer.map((manufacturer) => (
-                  <li key={manufacturer.manufacturerid}>
-                    <HashLink
-                      to={`/product-list/${manufacturer.manufacturerid}#header`}
-                    >
-                      {manufacturer.name} (
-                      {manufacturer.manufacturer_product_count})
-                    </HashLink>
-                  </li>
-                ))
-              : ""}
+            {manufacturer.map((obj) => (
+              <li key={obj.manufacturerid}>
+                <HashLink
+                  to={`/product-list/?categoryid=${categoryid}&flag=manufacturer&manufacturerid=${obj.manufacturerid}#header`}
+                >
+                  {obj.name} ({obj.manufacturer_product_count})
+                </HashLink>
+              </li>
+            ))}
           </ul>
         </div>
-        {/* <div className="widget widget-collapsible">
-          <h3 className="widget-title">
-            <span>Brand</span>
-          </h3>
-          <ul className="widget-body filter-items item-check mt-1">
-            <li>
-              <a href="#">Elegant Auto Group</a>
-            </li>
-            <li>
-              <a href="#">Green Grass</a>
-            </li>
-            <li>
-              <a href="#">Node Js</a>
-            </li>
-            <li>
-              <a href="#">NS8</a>
-            </li>
-            <li>
-              <a href="#">Red</a>
-            </li>
-            <li>
-              <a href="#">Skysuite Tech</a>
-            </li>
-            <li>
-              <a href="#">Sterling</a>
-            </li>
-          </ul>
-        </div>
-        <div className="widget widget-collapsible">
-          <h3 className="widget-title">
-            <span>Color</span>
-          </h3>
-          <ul className="widget-body filter-items item-check mt-1">
-            <li>
-              <a href="#">Black</a>
-            </li>
-            <li>
-              <a href="#">Blue</a>
-            </li>
-            <li>
-              <a href="#">Brown</a>
-            </li>
-            <li>
-              <a href="#">Green</a>
-            </li>
-            <li>
-              <a href="#">Grey</a>
-            </li>
-            <li>
-              <a href="#">Orange</a>
-            </li>
-            <li>
-              <a href="#">Yellow</a>
-            </li>
-          </ul>
-        </div> */}
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 }
 
 export default FiltersList;

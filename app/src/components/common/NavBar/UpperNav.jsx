@@ -54,15 +54,7 @@ class UpperNav extends Component {
             </div>
 
             <span className="divider d-lg-show"></span>
-            {/* <a href="#" className="d-lg-show">
-              Blog
-            </a>
-            <a href="#" className="d-lg-show">
-              Contact Us
-            </a>
-            <a href="#" className="d-lg-show">
-              My Account
-            </a> */}
+            
             <a href="#" className="d-lg-show login sign-in">
               <i className="w-icon-account"></i>Sign In
             </a>

@@ -7,16 +7,10 @@ class SimilarProducts extends Component {
       <section className="related-product-section">
         <div className="title-link-wrapper mb-4">
           <h4 className="title">Similar Products</h4>
-          {/* <a
-            href="#"
-            className="btn btn-dark btn-link btn-slide-right btn-icon-right"
-          >
-            More Products<i className="w-icon-long-arrow-right"></i>
-          </a> */}
         </div>
         <div className="row cols-4 cols-md-4 cols-sm-6 cols-2">
           {this.props.products.map((product) => (
-            <div className="product">
+            <div className="product" key={product.productid}>
               <figure className="product-media">
                 <HashLink to={`/product/${product.productid}#header`}>
                   <img
@@ -55,9 +49,12 @@ class SimilarProducts extends Component {
               </figure>
               <div className="product-details">
                 <h4 className="product-name">
-                  {product.productDescription.map((description) =>
+                  {product.productDescription.map((description, key) =>
                     description.type === 2 ? (
-                      <HashLink to={`/product/${product.productid}#header`}>
+                      <HashLink
+                        key={description.description + key}
+                        to={`/product/${product.productid}#header`}
+                      >
                         {description.description}
                       </HashLink>
                     ) : (

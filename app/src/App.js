@@ -11,7 +11,7 @@ function App() {
     <Provider store={store}>
       <Switch>
         <Route path="/home" component={Home} />
-        <Route path="/product-list/:categoryid/" component={ListDetails} />
+        <Route path="/product-list/" component={ListDetails} />
         <Route exact path="/product/:productid" component={ProductDetailPage} />
         <Redirect path="/" exact to="/home" />
       </Switch>

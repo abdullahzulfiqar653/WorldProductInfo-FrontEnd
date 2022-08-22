@@ -1,10 +1,17 @@
 import Cart from "../Cart/Cart";
 import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../../assets/images/logo.png";
-import { NavLink } from "react-router-dom";
 
 class MiddleNav extends Component {
+  state = {
+    searchQuery: "",
+  };
+  handelSearch = (query) => {
+    this.setState({ searchQuery: query });
+  };
   render() {
+    console.log(this.state.searchQuery);
     return (
       <div className="header-middle">
         <div className="container">
@@ -17,21 +24,7 @@ class MiddleNav extends Component {
             <NavLink to={"/home"} className="logo ml-lg-0">
               <img src={Logo} alt="logo" width="144" height="45" />
             </NavLink>
-            <form
-              method="get"
-              action="#"
-              className="header-search hs-expanded hs-round d-none d-md-flex input-wrapper"
-            >
-              {/* <div className="select-box">
-                <select name="category" id="category">
-                  <option value="0">All Categories</option>
-                  <option value="1">Category 1</option>
-                  <option value="2">Category 2</option>
-                  <option value="3">Category 3</option>
-                  <option value="4">Category 4</option>
-                  <option value="5">Category 5</option>
-                </select>
-              </div> */}
+            <div className="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
               <input
                 type="text"
                 className="form-control"
@@ -40,34 +33,19 @@ class MiddleNav extends Component {
                 placeholder="Search in..."
                 style={{ borderLeft: "2px solid #336699" }}
                 required
+                value={this.state.searchQuery}
+                onChange={(e) => this.handelSearch(e.currentTarget.value)}
               />
-              <button className="btn btn-search" type="submit">
+              <Link
+                className="btn btn-search"
+                type="submit"
+                to={`/product-list/?flag=search&search=${this.state.searchQuery}#header`}
+              >
                 <i className="w-icon-search"></i>
-              </button>
-            </form>
+              </Link>
+            </div>
           </div>
           <div className="header-right ml-4">
-            {/* <div className="header-call d-xs-show d-lg-flex align-items-center">
-              <a href="" className="w-icon-call"></a>
-              <div className="call-info d-lg-show">
-                <h4 className="chat font-weight-normal font-size-md text-normal ls-normal text-light mb-0">
-                  <a href="mailto:#" className="text-capitalize">
-                    Live Chat
-                  </a>
-                  or :
-                </h4>
-                <a
-                  href="tel:#"
-                  className="phone-number font-weight-bolder ls-50"
-                >
-                  0(000)000-000
-                </a>
-              </div>
-            </div>
-            <a className="wishlist label-down link d-xs-show" href="#">
-              <i className="w-icon-heart"></i>
-              <span className="wishlist-label d-lg-show">Wishlist</span>
-            </a> */}
             <a className="compare label-down link d-xs-show" href="#">
               <i className="w-icon-compare"></i>
               <span className="compare-label d-lg-show">Compare</span>

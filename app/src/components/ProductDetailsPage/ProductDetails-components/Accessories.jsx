@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { HashLink } from "react-router-hash-link";
-class RelatedProducts extends Component {
+class Accessories extends Component {
   render() {
     console.log(this.props);
     return (
       <section className="vendor-product-section">
         <div className="title-link-wrapper mb-4">
-          <h4 className="title">Related Products</h4>
-          
+          <h4 className="title">Product Accessories</h4>
         </div>
-        
-        <div className="row cols-4 cols-md-4 cols-sm-6 cols-2">
+
+        <div className="row cols-4 cols-md-4 cols-sm-6 cols-2"
+        //  style={}
+         >
           {this.props.products.map((product) => (
             <div className="product">
               <figure className="product-media">
@@ -96,4 +97,4 @@ class RelatedProducts extends Component {
   }
 }
 
-export default RelatedProducts;
+export default Accessories;
