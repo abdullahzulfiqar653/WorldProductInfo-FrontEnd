@@ -42,12 +42,12 @@ function MainListPage(props) {
   };
 
   const pageNext = () => {
-    setOffSet(parseInt(offSet,10) + parseInt(Limit,10));
+    setOffSet(parseInt(offSet, 10) + parseInt(Limit, 10));
     setCurrentPage(currentPage + 1);
   };
 
   const pagePrevious = () => {
-    setOffSet(parseInt(offSet,10) - parseInt(Limit,10));
+    setOffSet(parseInt(offSet, 10) - parseInt(Limit, 10));
     setCurrentPage(currentPage - 1);
   };
 
@@ -66,12 +66,7 @@ function MainListPage(props) {
           <div className="main-content">
             <nav className="toolbox sticky-toolbox sticky-content fix-top">
               <div className="toolbox-left">
-                <button
-                  onClick={openFilters}
-                  href="#"
-                  className="btn btn-primary btn-outline btn-rounded left-sidebar-toggle
-                                   btn-icon-left"
-                >
+                <button onClick={openFilters} className="btn btn-primary btn-outline btn-rounded left-sidebar-toggle btn-icon-left">
                   <i className="w-icon-category"></i>
                   <span>Filters</span>
                 </button>
@@ -108,8 +103,7 @@ function MainListPage(props) {
                             <HashLink
                               to={`/product/${product.productid}#header`}
                               className="btn-product-icon btn-quickview w-icon-search"
-                              title="Quick View"
-                            ></HashLink>
+                              title="Quick View"></HashLink>
                           </div>
                         </figure>
                         <div className="product-details">
@@ -118,8 +112,7 @@ function MainListPage(props) {
                             style={{
                               fontSize: '15px !impotant',
                               whiteSpace: 'pre-wrap',
-                            }}
-                          >
+                            }}>
                             {product.productDescription.map((description) =>
                               description.type === 2 ? (
                                 <HashLink to={`/product/${product.productid}#header`} key={'alpha'}>
@@ -136,8 +129,7 @@ function MainListPage(props) {
                               <div
                                 className="product-desc"
                                 style={{ margin: '0', color: 'black' }}
-                                key={description.type + product.productid}
-                              >
+                                key={description.type + product.productid}>
                                 {description.description}
                               </div>
                             ) : (
@@ -157,15 +149,13 @@ function MainListPage(props) {
                             <a
                               // href="product-default.html"
                               className="btn-product btn-cart"
-                              title="Add to Cart"
-                            >
+                              title="Add to Cart">
                               <i className="w-icon-cart"></i>Select Options
                             </a>
                             <a
                               href="#"
                               className="btn-product-icon btn-wishlist w-icon-heart"
-                              title="Add to wishlist"
-                            ></a>
+                              title="Add to wishlist"></a>
                             <a href="#" className="btn-product-icon btn-compare w-icon-compare" title="Compare"></a>
                           </div>
                         </div>
@@ -196,8 +186,7 @@ function MainListPage(props) {
                           background: 'none',
                           border: 'none',
                           padding: '0',
-                        }}
-                      >
+                        }}>
                         <i className="fas fa-arrow-left"></i>Prev
                       </button>
                     </li>
@@ -215,8 +204,7 @@ function MainListPage(props) {
                           border: 'none',
                           padding: '0',
                         }}
-                        disabled={products && products.next === null ? true : false}
-                      >
+                        disabled={products && products.next === null ? true : false}>
                         Next<i className="fas fa-arrow-right"></i>
                       </button>
                     </li>
@@ -231,8 +219,7 @@ function MainListPage(props) {
                   alignItems: 'center',
                   width: '100%',
                   height: '70vh',
-                }}
-              >
+                }}>
                 <div style={{ width: '100px' }}>
                   <LargeLoader />
                 </div>

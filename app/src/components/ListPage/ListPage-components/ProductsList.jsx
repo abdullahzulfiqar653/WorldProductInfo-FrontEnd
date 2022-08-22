@@ -23,8 +23,7 @@ class ProductsList extends Component {
                 <HashLink
                   to={`/product/${product.productid}#header`}
                   className="btn-product-icon btn-quickview w-icon-search"
-                  title="Quick View"
-                ></HashLink>
+                  title="Quick View"></HashLink>
               </div>
             </figure>
             <div className="product-details">
@@ -59,8 +58,7 @@ class ProductsList extends Component {
                 <a
                   // href="product-default.html"
                   className="btn-product btn-cart"
-                  title="Add to Cart"
-                >
+                  title="Add to Cart">
                   <i className="w-icon-cart"></i>Select Options
                 </a>
                 <a href="#" className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></a>

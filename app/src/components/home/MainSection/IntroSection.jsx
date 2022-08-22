@@ -82,10 +82,7 @@ class IntroSection extends Component {
                   </h5>
                   <h3 className="banner-title font-weight-bolder text-dark mb-0 ls-25 slide-animate">Hot & Packback</h3>
                   <p className="font-weight-normal text-default slide-animate">Only until the end of this week.</p>
-                  <a
-                    href="shop-banner-sidebar.html"
-                    className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate"
-                  >
+                  <a href="#" className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate">
                     SHOP NOW<i className="w-icon-long-arrow-right"></i>
                   </a>
                 </div>
