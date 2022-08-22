@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-
 import queryString from 'query-string';
 import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
@@ -22,7 +21,6 @@ function FiltersList(props) {
   const category = state.categoryFilter;
   const productType = state.productTypeFilter;
   const manufacturer = state.manufacturerFilter;
-  console.log(manufacturer && manufacturer);
 
   return (
     <div className="sidebar-content scrollable">

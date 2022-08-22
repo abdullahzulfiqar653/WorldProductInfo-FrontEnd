@@ -2,7 +2,6 @@ import axios from 'axios';
 import * as actions from './actionTypes';
 import config from '../components/services/config';
 import { REQUEST_URL } from '../constant/constantURL';
-import { checkManufacturer, checkProductTypes } from './utils';
 
 export const pageLoaded = (des) => ({
   type: actions.PAGE_LOADED,
@@ -105,7 +104,6 @@ export const categoryFilterLoaded = (parentcategoryid) => async (dispatch) => {
       }
     })
     .catch(function (error) {
-      // console.log(error);
       dispatch({
         type: actions.CATEGORY_FILTER_LOAD_FAIL,
       });
@@ -131,7 +129,6 @@ export const productTypeFilterLoaded = (parentcategoryid) => async (dispatch) =>
       }
     })
     .catch(function (error) {
-      // console.log(error);
       dispatch({
         type: actions.PRODUCT_TYPE_FILTER_LOAD_FAIL,
       });
@@ -157,7 +154,6 @@ export const manufacturerFilterLoaded = (parentcategoryid) => async (dispatch) =
       }
     })
     .catch(function (error) {
-      // console.log(error);
       dispatch({
         type: actions.MANUFACTURER_FILTER_LOAD_FAIL,
       });
@@ -177,7 +173,6 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_BASIC_OVERVIEW_LOAD_FAIL,
       });
@@ -197,7 +192,6 @@ export const loadSpecifications = (productid) => async (dispatch) => {
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_SPECIFICATIONS_LOAD_FAIL,
       });
@@ -217,7 +211,6 @@ export const loadGallery = (productid) => async (dispatch) => {
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_GALLERY_LOAD_FAIL,
       });
@@ -237,7 +230,6 @@ export const loadSimilarProducts = (productid) => async (dispatch) => {
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_SIMILAR_LOAD_FAIL,
       });

@@ -11,7 +11,6 @@ class MiddleNav extends Component {
     this.setState({ searchQuery: query });
   };
   render() {
-    console.log(this.state.searchQuery);
     return (
       <div className="header-middle">
         <div className="container">

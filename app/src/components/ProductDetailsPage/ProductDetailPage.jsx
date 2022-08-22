@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
 import Footer from '../common/Footer';
-
+import React, { useMemo } from 'react';
 import Navbar from '../common/NavBar/Navbar';
 import LargeLoader from '../common/LargeLoader';
 import { productLoaded } from '../../actions/actions';

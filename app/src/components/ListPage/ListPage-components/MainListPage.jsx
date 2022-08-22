@@ -2,7 +2,7 @@ import queryString from 'query-string';
 import FiltersList from './FiltersList';
 import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import LargeLoader from '../../common/LargeLoader';
 import { getFormBody } from '../../../actions/utils';
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,12 +42,12 @@ function MainListPage(props) {
   };
 
   const pageNext = () => {
-    setOffSet(parseInt(offSet) + parseInt(Limit));
+    setOffSet(parseInt(offSet,10) + parseInt(Limit,10));
     setCurrentPage(currentPage + 1);
   };
 
   const pagePrevious = () => {
-    setOffSet(parseInt(offSet) - parseInt(Limit));
+    setOffSet(parseInt(offSet,10) - parseInt(Limit,10));
     setCurrentPage(currentPage - 1);
   };
 
