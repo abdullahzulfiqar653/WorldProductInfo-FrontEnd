@@ -23,7 +23,7 @@ jobs: # list of things to do
  
       - name: Install Dependencies
         working-directory: ./app
-        run: npm ci
+        run: npm install
  
       - name: Code Linting
         working-directory: ./app
