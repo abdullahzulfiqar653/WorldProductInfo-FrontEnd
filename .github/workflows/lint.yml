@@ -27,9 +27,5 @@ jobs: # list of things to do
         run: npm ci
  
       - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint_dir: ./app
-          eslint: true
-          prettier_dir: ./app
-          prettier: true
+        working-directory: ./app
+        run: npm run lint
