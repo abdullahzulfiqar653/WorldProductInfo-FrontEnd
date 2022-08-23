@@ -1,20 +1,19 @@
-import { useState } from "react";
-import Footer from "../common/Footer";
-import React, { useEffect } from "react";
-import Navbar from "../common/NavBar/Navbar";
-import LargeLoader from "../common/LargeLoader";
-import { productLoaded } from "../../actions/actions";
-import { useDispatch, useSelector } from "react-redux";
-import DetailPageContent from "./ProductDetails-components/DetailPageContent";
-import { useMemo } from "react";
+import React, { useMemo } from 'react';
+import Footer from '../common/Footer';
+
+import Navbar from '../common/NavBar/Navbar';
+import LargeLoader from '../common/LargeLoader';
+import { productLoaded } from '../../actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import DetailPageContent from './ProductDetails-components/DetailPageContent';
 
 function ProductDetailPage(props) {
   const productid = props.match.params.productid;
   const dispatch = useDispatch();
   useMemo(() => {
     dispatch(productLoaded(productid));
-  }, [productid]);
-  const state = useSelector((state) => state);
+  }, [productid, dispatch]);
+  const state = useSelector((s) => s);
   const product = state.singleProduct;
   return (
     <div className="page-wrapper">
@@ -25,13 +24,13 @@ function ProductDetailPage(props) {
         <div
           className="row"
           style={{
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            height: "70vh",
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+            height: '70vh',
           }}
         >
-          <div style={{ width: "100px" }}>
+          <div style={{ width: '100px' }}>
             <LargeLoader />
           </div>
         </div>

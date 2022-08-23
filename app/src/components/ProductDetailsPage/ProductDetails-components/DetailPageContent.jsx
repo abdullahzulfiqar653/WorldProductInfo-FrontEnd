@@ -1,6 +1,6 @@
-import ProductNav from "./ProductNav";
-import React, { Component } from "react";
-import ProductDescription from "./ProductDescription";
+import ProductNav from './ProductNav';
+import React, { Component } from 'react';
+import ProductDescription from './ProductDescription';
 
 class DetailPageContent extends Component {
   render() {

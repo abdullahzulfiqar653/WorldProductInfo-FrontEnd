@@ -1,10 +1,6 @@
-import React, { Component } from "react";
-import { HashLink } from "react-router-hash-link";
-import Img1 from "../../../assets/images/shop/1.jpg";
+import React, { Component } from 'react';
+import { HashLink } from 'react-router-hash-link';
 class ProductsList extends Component {
-  componentDidMount() {
-    console.log(this.props.products);
-  }
   render() {
     return (
       <div className="product-wrapper row cols-xl-2 cols-sm-1 cols-xs-2 cols-1">
@@ -28,62 +24,39 @@ class ProductsList extends Component {
               </div>
             </figure>
             <div className="product-details">
-              <h4
-                className="product-name"
-                style={{ fontSize: "15px !impotant" }}
-              >
+              <h4 className="product-name" style={{ fontSize: '15px !impotant' }}>
                 {product.productDescription.map((description) =>
                   description.type === 2 ? (
-                    <HashLink to={`/product/${product.productid}#header`}>
-                      {description.description}
-                    </HashLink>
+                    <HashLink to={`/product/${product.productid}#header`}>{description.description}</HashLink>
                   ) : (
-                    ""
-                  )
+                    ''
+                  ),
                 )}
               </h4>
               {product.productDescription.map((description) =>
                 description.type === 3 ? (
-                  <div
-                    className="product-desc"
-                    style={{ margin: "0", color: "black" }}
-                  >
+                  <div className="product-desc" style={{ margin: '0', color: 'black' }}>
                     {description.description}
                   </div>
                 ) : (
-                  ""
-                )
+                  ''
+                ),
               )}
-              <div
-                className="product-desc"
-                style={{ margin: "0", color: "gray" }}
-              >
+              <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
                 SKUS :
                 {product.productSkus.map((Sku) => (
-                  <span style={{ paddingRight: "5px" }}>
+                  <span style={{ paddingRight: '5px' }}>
                     {Sku.name} : {Sku.sku}
                   </span>
                 ))}
               </div>
               <p>Mfg Number : {product.mfgpartno}</p>
               <div className="product-action">
-                <a
-                  // href="product-default.html"
-                  className="btn-product btn-cart"
-                  title="Add to Cart"
-                >
+                <button className="btn-product btn-cart" title="Add to Cart">
                   <i className="w-icon-cart"></i>Select Options
-                </a>
-                <a
-                  href="#"
-                  className="btn-product-icon btn-wishlist w-icon-heart"
-                  title="Add to wishlist"
-                ></a>
-                <a
-                  href="#"
-                  className="btn-product-icon btn-compare w-icon-compare"
-                  title="Compare"
-                ></a>
+                </button>
+                <button className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></button>
+                <button className="btn-product-icon btn-compare w-icon-compare" title="Compare"></button>
               </div>
             </div>
           </div>

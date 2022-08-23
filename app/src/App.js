@@ -1,11 +1,11 @@
-import "./App.css";
-import "./main.css";
-import store from "./store/store";
-import { Provider } from "react-redux";
-import Home from "./components/home/Home";
-import { Redirect, Route, Switch } from "react-router-dom";
-import ListDetails from "./components/ListPage/ListDetails";
-import ProductDetailPage from "./components/ProductDetailsPage/ProductDetailPage";
+import './App.css';
+import './main.css';
+import store from './store/store';
+import { Provider } from 'react-redux';
+import Home from './components/home/Home';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import ListDetails from './components/ListPage/ListDetails';
+import ProductDetailPage from './components/ProductDetailsPage/ProductDetailPage';
 function App() {
   return (
     <Provider store={store}>

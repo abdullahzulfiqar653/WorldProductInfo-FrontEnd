@@ -1,12 +1,11 @@
-import axios from "axios";
-import * as actions from "./actionTypes";
-import config from "../components/services/config";
-import { REQUEST_URL } from "../constant/constantURL";
-import { checkManufacturer, checkProductTypes } from "./utils";
+import axios from 'axios';
+import * as actions from './actionTypes';
+import config from '../components/services/config';
+import { REQUEST_URL } from '../constant/constantURL';
 
 export const pageLoaded = (des) => ({
   type: actions.PAGE_LOADED,
-  payload: "haha",
+  payload: 'haha',
 });
 
 export const loadAccessories = (productid) => async (dispatch) => {
@@ -14,10 +13,7 @@ export const loadAccessories = (productid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(
-      REQUEST_URL + `/products/?productid=${productid}&flag=accessories`,
-      config
-    )
+    .get(REQUEST_URL + `/products/?productid=${productid}&flag=accessories`, config)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_ACCESSORIES_LOADED,
@@ -94,10 +90,7 @@ export const categoryFilterLoaded = (parentcategoryid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(
-      REQUEST_URL + `/category/filter/name/?categoryid=${parentcategoryid}`,
-      config
-    )
+    .get(REQUEST_URL + `/category/filter/name/?categoryid=${parentcategoryid}`, config)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -111,74 +104,61 @@ export const categoryFilterLoaded = (parentcategoryid) => async (dispatch) => {
       }
     })
     .catch(function (error) {
-      // console.log(error);
       dispatch({
         type: actions.CATEGORY_FILTER_LOAD_FAIL,
       });
     });
 };
 
-export const productTypeFilterLoaded =
-  (parentcategoryid) => async (dispatch) => {
-    dispatch({
-      type: actions.REQUEST_START,
-    });
-    await axios
-      .get(
-        REQUEST_URL +
-          `/product/type/filter/name/?categoryid=${parentcategoryid}`,
-        config
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          dispatch({
-            type: actions.PRODUCT_TYPE_FILTER_LOADED,
-            payload: res.data,
-          });
-        } else {
-          dispatch({
-            type: actions.PRODUCT_TYPE_FILTER_LOAD_FAIL,
-          });
-        }
-      })
-      .catch(function (error) {
-        // console.log(error);
+export const productTypeFilterLoaded = (parentcategoryid) => async (dispatch) => {
+  dispatch({
+    type: actions.REQUEST_START,
+  });
+  await axios
+    .get(REQUEST_URL + `/product/type/filter/name/?categoryid=${parentcategoryid}`, config)
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch({
+          type: actions.PRODUCT_TYPE_FILTER_LOADED,
+          payload: res.data,
+        });
+      } else {
         dispatch({
           type: actions.PRODUCT_TYPE_FILTER_LOAD_FAIL,
         });
+      }
+    })
+    .catch(function (error) {
+      dispatch({
+        type: actions.PRODUCT_TYPE_FILTER_LOAD_FAIL,
       });
-  };
-
-export const manufacturerFilterLoaded =
-  (parentcategoryid) => async (dispatch) => {
-    dispatch({
-      type: actions.REQUEST_START,
     });
-    await axios
-      .get(
-        REQUEST_URL +
-          `/manufacturer/filter/name/?categoryid=${parentcategoryid}`,
-        config
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          dispatch({
-            type: actions.MANUFACTURER_FILTER_LOADED,
-            payload: res.data,
-          });
-        } else {
-          dispatch({
-            type: actions.MANUFACTURER_FILTER_LOAD_FAIL,
-          });
-        }
-      })
-      .catch(function (error) {
-        // console.log(error);
+};
+
+export const manufacturerFilterLoaded = (parentcategoryid) => async (dispatch) => {
+  dispatch({
+    type: actions.REQUEST_START,
+  });
+  await axios
+    .get(REQUEST_URL + `/manufacturer/filter/name/?categoryid=${parentcategoryid}`, config)
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch({
+          type: actions.MANUFACTURER_FILTER_LOADED,
+          payload: res.data,
+        });
+      } else {
         dispatch({
           type: actions.MANUFACTURER_FILTER_LOAD_FAIL,
         });
+      }
+    })
+    .catch(function (error) {
+      dispatch({
+        type: actions.MANUFACTURER_FILTER_LOAD_FAIL,
       });
-  };
+    });
+};
 
 export const loadBasicOverview = (productid) => async (dispatch) => {
   dispatch({
@@ -193,7 +173,6 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_BASIC_OVERVIEW_LOAD_FAIL,
       });
@@ -213,7 +192,6 @@ export const loadSpecifications = (productid) => async (dispatch) => {
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_SPECIFICATIONS_LOAD_FAIL,
       });
@@ -233,7 +211,6 @@ export const loadGallery = (productid) => async (dispatch) => {
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_GALLERY_LOAD_FAIL,
       });
@@ -253,7 +230,6 @@ export const loadSimilarProducts = (productid) => async (dispatch) => {
       });
     })
     .catch(function (error) {
-      console.log(error);
       dispatch({
         type: actions.PRODUCT_SIMILAR_LOAD_FAIL,
       });

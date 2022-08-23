@@ -1,40 +1,39 @@
-import queryString from "query-string";
-import FiltersList from "./FiltersList";
-import { useLocation } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
-import React, { useState, useEffect } from "react";
-import LargeLoader from "../../common/LargeLoader";
-import { getFormBody } from "../../../actions/utils";
-import { useDispatch, useSelector } from "react-redux";
-import { loadProductList } from "../../../actions/actions";
-import "../../ProductDetailsPage/ProductDetails-components/css/button.css";
-import { useMemo } from "react";
-import { useCallback } from "react";
+import queryString from 'query-string';
+import FiltersList from './FiltersList';
+import { Link, useLocation } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+import React, { useState, useMemo } from 'react';
+import LargeLoader from '../../common/LargeLoader';
+import { getFormBody } from '../../../actions/utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadProductList } from '../../../actions/actions';
+import '../../ProductDetailsPage/ProductDetails-components/css/button.css';
 
 function MainListPage(props) {
-  let location = useLocation();
+  const location = useLocation();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const state = useSelector((s) => s);
   let products = {};
   const loading = state.loading;
   products = state.products;
 
   const values = queryString.parse(location.search);
+  const formBody = getFormBody(values);
   const [Limit, setLimit] = useState(10);
   const [offSet, setOffSet] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filterStatus, setFilterStatus] = useState("page-content mb-10");
+  const [filterStatus, setFilterStatus] = useState('page-content mb-10');
 
   useMemo(() => {
-    dispatch(loadProductList(Limit, offSet, getFormBody(values)));
-  }, [props.id, Limit, offSet]);
+    dispatch(loadProductList(Limit, offSet, formBody));
+  }, [Limit, offSet, dispatch, formBody]);
 
   const openFilters = () => {
-    setFilterStatus("page-content mb-10 sidebar-active");
+    setFilterStatus('page-content mb-10 sidebar-active');
   };
 
   const closeFilters = () => {
-    setFilterStatus("page-content mb-10");
+    setFilterStatus('page-content mb-10');
   };
 
   const handelChange = (e) => {
@@ -44,12 +43,12 @@ function MainListPage(props) {
   };
 
   const pageNext = () => {
-    setOffSet(parseInt(offSet) + parseInt(Limit));
+    setOffSet(Number(offSet) + Number(Limit));
     setCurrentPage(currentPage + 1);
   };
 
   const pagePrevious = () => {
-    setOffSet(parseInt(offSet) - parseInt(Limit));
+    setOffSet(Number(offSet) - Number(Limit));
     setCurrentPage(currentPage - 1);
   };
 
@@ -59,9 +58,9 @@ function MainListPage(props) {
         <div className="shop-content">
           <aside className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
             <div className="sidebar-overlay" onClick={closeFilters}></div>
-            <a className="sidebar-close" href="#" onClick={closeFilters}>
+            <button className="sidebar-close" href="#" onClick={closeFilters}>
               <i className="close-icon"></i>
-            </a>
+            </button>
             <FiltersList />
           </aside>
 
@@ -71,7 +70,7 @@ function MainListPage(props) {
                 <button
                   onClick={openFilters}
                   href="#"
-                  className="btn btn-primary btn-outline btn-rounded left-sidebar-toggle 
+                  className="btn btn-primary btn-outline btn-rounded left-sidebar-toggle
                                    btn-icon-left"
                 >
                   <i className="w-icon-category"></i>
@@ -81,11 +80,7 @@ function MainListPage(props) {
               <div className="toolbox-right">
                 <div className="toolbox-item toolbox-show select-box">
                   <label>Results Per Page :</label>
-                  <select
-                    name="count"
-                    className="form-control"
-                    onChange={handelChange}
-                  >
+                  <select name="count" className="form-control" onChange={handelChange}>
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
@@ -100,10 +95,7 @@ function MainListPage(props) {
                 {products.count !== 0 ? (
                   <div className="product-wrapper row cols-xl-2 cols-sm-1 cols-xs-2 cols-1">
                     {products.results.map((product) => (
-                      <div
-                        className="product product-list product-select"
-                        key={product.productid}
-                      >
+                      <div className="product product-list product-select" key={product.productid}>
                         <figure className="product-media">
                           <HashLink to={`/product/${product.productid}#header`}>
                             <img
@@ -125,21 +117,18 @@ function MainListPage(props) {
                           <h4
                             className="product-name"
                             style={{
-                              fontSize: "15px !impotant",
-                              whiteSpace: "pre-wrap",
+                              fontSize: '15px !impotant',
+                              whiteSpace: 'pre-wrap',
                             }}
                           >
                             {product.productDescription.map((description) =>
                               description.type === 2 ? (
-                                <HashLink
-                                  to={`/product/${product.productid}#header`}
-                                  key={"alpha"}
-                                >
+                                <HashLink to={`/product/${product.productid}#header`} key={'alpha'}>
                                   {description.description}
                                 </HashLink>
                               ) : (
-                                ""
-                              )
+                                ''
+                              ),
                             )}
                           </h4>
 
@@ -147,48 +136,32 @@ function MainListPage(props) {
                             description.type === 3 ? (
                               <div
                                 className="product-desc"
-                                style={{ margin: "0", color: "black" }}
+                                style={{ margin: '0', color: 'black' }}
                                 key={description.type + product.productid}
                               >
                                 {description.description}
                               </div>
                             ) : (
-                              ""
-                            )
+                              ''
+                            ),
                           )}
-                          <div
-                            className="product-desc"
-                            style={{ margin: "0", color: "gray" }}
-                          >
+                          <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
                             SKUS :
                             {product.productSkus.map((Sku) => (
-                              <span
-                                style={{ paddingRight: "5px" }}
-                                key={product.productid + Sku.sku + Sku.name}
-                              >
+                              <span style={{ paddingRight: '5px' }} key={product.productid + Sku.sku + Sku.name}>
                                 {Sku.name} : {Sku.sku}
                               </span>
                             ))}
                           </div>
                           <p>Mfg Number : {product.mfgpartno}</p>
                           <div className="product-action">
-                            <a
-                              // href="product-default.html"
+                            <Link
+                              to={`/product/${product.productid}#header`}
                               className="btn-product btn-cart"
                               title="Add to Cart"
                             >
                               <i className="w-icon-cart"></i>Select Options
-                            </a>
-                            <a
-                              href="#"
-                              className="btn-product-icon btn-wishlist w-icon-heart"
-                              title="Add to wishlist"
-                            ></a>
-                            <a
-                              href="#"
-                              className="btn-product-icon btn-compare w-icon-compare"
-                              title="Compare"
-                            ></a>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -196,9 +169,7 @@ function MainListPage(props) {
                   </div>
                 ) : (
                   <div className="row">
-                    <h1 style={{ textAlign: "center" }}>
-                      There are no products.
-                    </h1>
+                    <h1 style={{ textAlign: 'center' }}>There are no products.</h1>
                   </div>
                 )}
 
@@ -206,7 +177,7 @@ function MainListPage(props) {
                   <p className="showing-info mb-2 mb-sm-0">
                     Showing
                     <span>
-                      {Limit} of {products ? products.count : ""}
+                      {Limit} of {products ? products.count : ''}
                     </span>
                     Products
                   </p>
@@ -215,13 +186,11 @@ function MainListPage(props) {
                       <button
                         aria-label="Previous"
                         onClick={pagePrevious}
-                        disabled={
-                          products && products.previous === null ? true : false
-                        }
+                        disabled={products && products.previous === null ? true : false}
                         style={{
-                          background: "none",
-                          border: "none",
-                          padding: "0",
+                          background: 'none',
+                          border: 'none',
+                          padding: '0',
                         }}
                       >
                         <i className="fas fa-arrow-left"></i>Prev
@@ -229,8 +198,7 @@ function MainListPage(props) {
                     </li>
 
                     <li>
-                      {currentPage} /{" "}
-                      {Math.ceil(products ? products.count / Limit : 1)}
+                      {currentPage} / {Math.ceil(products ? products.count / Limit : 1)}
                     </li>
                     <li className="next">
                       <button
@@ -238,13 +206,11 @@ function MainListPage(props) {
                         aria-label="Next"
                         onClick={pageNext}
                         style={{
-                          background: "none",
-                          border: "none",
-                          padding: "0",
+                          background: 'none',
+                          border: 'none',
+                          padding: '0',
                         }}
-                        disabled={
-                          products && products.next === null ? true : false
-                        }
+                        disabled={products && products.next === null ? true : false}
                       >
                         Next<i className="fas fa-arrow-right"></i>
                       </button>
@@ -256,13 +222,13 @@ function MainListPage(props) {
               <div
                 className="row"
                 style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "100%",
-                  height: "70vh",
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '100%',
+                  height: '70vh',
                 }}
               >
-                <div style={{ width: "100px" }}>
+                <div style={{ width: '100px' }}>
                   <LargeLoader />
                 </div>
               </div>
