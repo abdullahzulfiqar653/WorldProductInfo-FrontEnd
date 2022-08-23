@@ -1,10 +1,8 @@
 {
   "editor.tabSize": 2,
-  // 保存時にeslintが実行されるようにする
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  // javascriptとjsonはeslintの設定が効かなかったので、prettierのデフォルトを利用する
   "[javascript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
