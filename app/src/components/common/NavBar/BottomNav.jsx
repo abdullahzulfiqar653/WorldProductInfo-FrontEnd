@@ -58,10 +58,10 @@ class BottomNav extends Component {
           <div className="inner-wrap">
             <div className="header-left">
               <div className="dropdown category-dropdown has-border" data-visible="true">
-                <a
+                <Link
                   className="category-toggle text-dark"
-                  role="button"
                   data-toggle="dropdown"
+                  role="button"
                   aria-haspopup="true"
                   aria-expanded="true"
                   data-display="static"
@@ -69,7 +69,7 @@ class BottomNav extends Component {
                 >
                   <i className="w-icon-category"></i>
                   <span style={{ display: 'flex' }}>Browse Categories {loading === true ? <Loader /> : ''}</span>
-                </a>
+                </Link>
                 <div className="dropdown-box">{categories && this.displayCategories()}</div>
               </div>
               <nav className="main-nav">

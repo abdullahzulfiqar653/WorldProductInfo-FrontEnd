@@ -3,7 +3,6 @@ import UpperNav from './UpperNav';
 import MiddleNav from './MiddleNav';
 import BottomNav from './BottomNav';
 import React, { Component } from 'react';
-import category from '../../services/FakeApi/category';
 
 class Navbar extends Component {
   render() {

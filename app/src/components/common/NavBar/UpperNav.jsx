@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import ENGFlag from '../../../assets/images/flags/eng.png';
 import FRAFlag from '../../../assets/images/flags/fra.png';
@@ -12,38 +13,36 @@ class UpperNav extends Component {
           </div>
           <div className="header-right">
             <div className="dropdown">
-              <a href="#">USD</a>
+              <Link>USD</Link>
               <div className="dropdown-box">
-                <a href="#">USD</a>
-                <a href="#">EUR</a>
+                <Link>USD</Link>
+                <Link>EUR</Link>
               </div>
             </div>
             <div className="dropdown">
-              <a href="#">
+              <Link>
                 <img src={ENGFlag} alt="ENG Flag" width={14} height={8} className="dropdown-image" />
                 ENG
-              </a>
+              </Link>
               <div className="dropdown-box">
-                <a href="#">
+                <Link>
                   <img src={ENGFlag} alt="ENG Flag" width={14} height={8} className="dropdown-image" />
                   ENG
-                </a>
-                <a href="#">
+                </Link>
+                <Link>
                   <img src={FRAFlag} alt="FRA Flag" width={14} height={8} className="dropdown-image" />
                   FRA
-                </a>
+                </Link>
               </div>
             </div>
 
             <span className="divider d-lg-show"></span>
 
-            <a href="#" className="d-lg-show login sign-in">
+            <Link className="d-lg-show login sign-in">
               <i className="w-icon-account"></i>Sign In
-            </a>
+            </Link>
             <span className="delimiter d-lg-show">/</span>
-            <a href="#" className="ml-0 d-lg-show login register">
-              Register
-            </a>
+            <Link className="ml-0 d-lg-show login register">Register</Link>
           </div>
         </div>
       </div>

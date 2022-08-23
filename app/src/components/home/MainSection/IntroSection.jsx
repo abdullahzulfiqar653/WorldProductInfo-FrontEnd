@@ -50,9 +50,9 @@ class IntroSection extends Component {
                     Sale up to <span className="font-weight-bolder text-secondary">30% OFF</span>
                   </p>
 
-                  <a href="#" className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate">
-                    SHOP NOW<i className="w-icon-long-arrow-right"></i>
-                  </a>
+                  <button className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate">
+                    SHOP NOW<i className="fa fa-arrow-right"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -82,12 +82,9 @@ class IntroSection extends Component {
                   </h5>
                   <h3 className="banner-title font-weight-bolder text-dark mb-0 ls-25 slide-animate">Hot & Packback</h3>
                   <p className="font-weight-normal text-default slide-animate">Only until the end of this week.</p>
-                  <a
-                    href="shop-banner-sidebar.html"
-                    className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate"
-                  >
-                    SHOP NOW<i className="w-icon-long-arrow-right"></i>
-                  </a>
+                  <button className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate">
+                    SHOP NOW<i className="fa fa-arrow-right"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -119,9 +116,9 @@ class IntroSection extends Component {
                   <h3 className="banner-title p-relative font-weight-bolder ls-50 slide-animate">
                     <span className="text-white mr-4">Roller</span>-skate
                   </h3>
-                  <a href="#" className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate">
-                    SHOP NOW<i className="w-icon-long-arrow-right"></i>
-                  </a>
+                  <button className="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate">
+                    SHOP NOW<i className="fa fa-arrow-right"></i>
+                  </button>
                 </div>
               </div>
             </div>

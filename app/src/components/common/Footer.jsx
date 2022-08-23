@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Logo from '../../assets/images/logo_footer.png';
+import { Link } from 'react-router-dom';
 class Footer extends Component {
   render() {
     return (
@@ -12,7 +12,7 @@ class Footer extends Component {
                   <h4 className="widget-title">Customer Service</h4>
                   <ul className="widget-body">
                     <li>
-                      <a href="#">Term and Conditions</a>
+                      <Link to="/home">Term and Conditions</Link>
                     </li>
                   </ul>
                 </div>
@@ -23,16 +23,16 @@ class Footer extends Component {
             <div className="widget widget-category">
               <div className="category-box">
                 <h6 className="category-name">Clothing & Apparel:</h6>
-                <a href="#">Men's T-shirt</a>
-                <a href="#">Dresses</a>
-                <a href="#">Men's Sneacker</a>
-                <a href="#">Leather Backpack</a>
-                <a href="#">Watches</a>
-                <a href="#">Jeans</a>
-                <a href="#">Sunglasses</a>
-                <a href="#">Boots</a>
-                <a href="#">Rayban</a>
-                <a href="#">Acccessories</a>
+                <Link to="/home">Men's T-shirt</Link>
+                <Link to="/home">Dresses</Link>
+                <Link to="/home">Men's Sneacker</Link>
+                <Link to="/home">Leather Backpack</Link>
+                <Link to="/home">Watches</Link>
+                <Link to="/home">Jeans</Link>
+                <Link to="/home">Sunglasses</Link>
+                <Link to="/home">Boots</Link>
+                <Link to="/home">Rayban</Link>
+                <Link to="/home">Acccessories</Link>
               </div>
             </div>
           </div>

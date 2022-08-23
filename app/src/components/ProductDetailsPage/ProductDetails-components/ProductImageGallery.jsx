@@ -1,10 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import '../../../assets/swiper/swiper-bundle.min.css';
 function ProductImageGallery(props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  console.log(props);
   return (
     <>
       <div className="product-gallery product-gallery-sticky">
@@ -18,9 +17,9 @@ function ProductImageGallery(props) {
           >
             {props.elements
               ? props.elements.productElements.map((element) =>
-                  element.type != 'Manufacturer-Brochure' &&
-                  element.type != 'Original' &&
-                  element.type != 'User-Manual' ? (
+                  element.type !== 'Manufacturer-Brochure' &&
+                  element.type !== 'Original' &&
+                  element.type !== 'User-Manual' ? (
                     <SwiperSlide key={element.type}>
                       <figure className="product-image">
                         <img
@@ -50,9 +49,9 @@ function ProductImageGallery(props) {
           >
             {props.elements
               ? props.elements.productElements.map((element) =>
-                  element.type != 'Manufacturer-Brochure' &&
-                  element.type != 'Original' &&
-                  element.type != 'User-Manual' ? (
+                  element.type !== 'Manufacturer-Brochure' &&
+                  element.type !== 'Original' &&
+                  element.type !== 'User-Manual' ? (
                     <SwiperSlide key={element.type}>
                       <figure className="product-image">
                         <img

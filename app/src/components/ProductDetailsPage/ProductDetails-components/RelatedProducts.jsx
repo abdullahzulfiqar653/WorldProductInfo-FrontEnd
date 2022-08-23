@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { HashLink } from 'react-router-hash-link';
 class RelatedProducts extends Component {
   render() {
-    console.log(this.props);
     return (
       <section className="vendor-product-section">
         <div className="title-link-wrapper mb-4">

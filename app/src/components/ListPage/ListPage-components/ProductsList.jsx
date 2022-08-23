@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { HashLink } from 'react-router-hash-link';
-import Img1 from '../../../assets/images/shop/1.jpg';
 class ProductsList extends Component {
-  componentDidMount() {
-    console.log(this.props.products);
-  }
   render() {
     return (
       <div className="product-wrapper row cols-xl-2 cols-sm-1 cols-xs-2 cols-1">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Footer from '../common/Footer';
 
 import Navbar from '../common/NavBar/Navbar';
@@ -13,7 +13,7 @@ function ProductDetailPage(props) {
   useMemo(() => {
     dispatch(productLoaded(productid));
   }, [productid]);
-  const state = useSelector((state) => state);
+  const state = useSelector((s) => s);
   const product = state.singleProduct;
   return (
     <div className="page-wrapper">

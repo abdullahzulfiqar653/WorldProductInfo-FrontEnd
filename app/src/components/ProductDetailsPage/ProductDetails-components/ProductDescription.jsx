@@ -1,8 +1,7 @@
 import './css/Tabs.css';
-import React, { useEffect } from 'react';
 import './css/button.css';
 import { show } from './custome';
-
+import React, { useMemo } from 'react';
 import Parser from 'html-react-parser';
 import Accessories from './Accessories';
 import SimilarProducts from './SimilarProducts';
@@ -19,7 +18,7 @@ import {
 const ProductDescription = (props) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useMemo(() => {
     dispatch(loadBasicOverview(props.id));
     dispatch(loadSpecifications(props.id));
     dispatch(loadGallery(props.id));
@@ -27,7 +26,7 @@ const ProductDescription = (props) => {
     dispatch(loadAccessories(props.id));
   }, [props.product]);
 
-  const state = useSelector((state) => state);
+  const state = useSelector((s) => s);
   const gallery = state.gallery;
   const loading = state.loading;
   const accessories = state.accessories;

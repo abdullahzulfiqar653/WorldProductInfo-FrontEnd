@@ -2,7 +2,7 @@ import queryString from 'query-string';
 import FiltersList from './FiltersList';
 import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import LargeLoader from '../../common/LargeLoader';
 import { getFormBody } from '../../../actions/utils';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +12,7 @@ import '../../ProductDetailsPage/ProductDetails-components/css/button.css';
 function MainListPage(props) {
   const location = useLocation();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const state = useSelector((s) => s);
   let products = {};
   const loading = state.loading;
   products = state.products;

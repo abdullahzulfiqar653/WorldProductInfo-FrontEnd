@@ -11,12 +11,11 @@ class MiddleNav extends Component {
     this.setState({ searchQuery: query });
   };
   render() {
-    console.log(this.state.searchQuery);
     return (
       <div className="header-middle">
         <div className="container">
           <div className="header-left mr-md-4">
-            <a href="#" className="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle"></a>
+            <Link className="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle"></Link>
             <NavLink to={'/home'} className="logo ml-lg-0">
               <img src={Logo} alt="logo" width="144" height="45" />
             </NavLink>
@@ -42,10 +41,10 @@ class MiddleNav extends Component {
             </div>
           </div>
           <div className="header-right ml-4">
-            <a className="compare label-down link d-xs-show" href="#">
+            <Link className="compare label-down link d-xs-show">
               <i className="w-icon-compare"></i>
               <span className="compare-label d-lg-show">Compare</span>
-            </a>
+            </Link>
             <Cart />
           </div>
         </div>
