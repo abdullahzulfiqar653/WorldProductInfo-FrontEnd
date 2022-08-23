@@ -36,9 +36,9 @@ class SimilarProducts extends Component {
               </figure>
               <div className="product-details">
                 <h4 className="product-name">
-                  {product.productDescription.map((description, key) =>
+                  {product.productDescription.map((description) =>
                     description.type === 2 ? (
-                      <HashLink key={description.description + key} to={`/product/${product.productid}#header`}>
+                      <HashLink key={description.id} to={`/product/${product.productid}#header`}>
                         {description.description}
                       </HashLink>
                     ) : (

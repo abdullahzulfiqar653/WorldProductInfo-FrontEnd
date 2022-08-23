@@ -52,15 +52,11 @@ class ProductsList extends Component {
               </div>
               <p>Mfg Number : {product.mfgpartno}</p>
               <div className="product-action">
-                <a
-                  // href="product-default.html"
-                  className="btn-product btn-cart"
-                  title="Add to Cart"
-                >
+                <button className="btn-product btn-cart" title="Add to Cart">
                   <i className="w-icon-cart"></i>Select Options
-                </a>
-                <a href="#" className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></a>
-                <a href="#" className="btn-product-icon btn-compare w-icon-compare" title="Compare"></a>
+                </button>
+                <button className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></button>
+                <button className="btn-product-icon btn-compare w-icon-compare" title="Compare"></button>
               </div>
             </div>
           </div>

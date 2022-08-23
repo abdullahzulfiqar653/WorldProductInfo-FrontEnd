@@ -21,9 +21,9 @@ class RelatedProducts extends Component {
                   />
                 </HashLink>
                 <div className="product-action-vertical">
-                  <a href="#" className="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-                  <a href="#" className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></a>
-                  <a href="#" className="btn-product-icon btn-compare w-icon-compare" title="Add to Compare"></a>
+                  <button className="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></button>
+                  <button className="btn-product-icon btn-wishlist w-icon-heart" title="Add to wishlist"></button>
+                  <button className="btn-product-icon btn-compare w-icon-compare" title="Add to Compare"></button>
                 </div>
                 <div className="product-action">
                   <HashLink

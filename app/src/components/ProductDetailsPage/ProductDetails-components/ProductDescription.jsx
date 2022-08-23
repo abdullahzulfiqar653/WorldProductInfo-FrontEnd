@@ -58,9 +58,9 @@ const ProductDescription = (props) => {
   const tabSpecifications = () => {
     const uniqueHeaders = setUniqueHeaders();
     return uniqueHeaders.map(
-      (header, i) =>
+      (header) =>
         isPreasentinAttributes(header.headerid) && (
-          <div key={header.headerid + i}>
+          <div key={header.headerid}>
             <h4 style={{ marginBottom: '5px' }}>{header.header_label}</h4>
             <hr
               style={{
@@ -129,7 +129,7 @@ const ProductDescription = (props) => {
           element.type !== 'Tour' &&
           // element.type !== "Original" &&
           element.type !== 'User-Manual' ? (
-            <div className="col-md-2" key={`${element.type}1`}>
+            <div className="col-md-2" key={element.productelementid}>
               <img
                 src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
                 alt={element.type}
@@ -249,25 +249,24 @@ const ProductDescription = (props) => {
           )}
           <div className="tab tab-nav-boxed tab-nav-underline product-tabs">
             <ul className="nav nav-tabs" role="tablist" id="tabs">
-              {props.product !== undefined
-                ? props.product.productDescription.map((description) =>
-                    description.type === 5 ? (
-                      <li className="nav-item">
-                        <button className="nav-link" onClick={navigation} id="enhanced-overview" key={101}>
-                          Enhanced View
-                        </button>
-                      </li>
-                    ) : description.type === 6 ? (
-                      <li className="nav-item">
-                        <button className="nav-link" onClick={navigation} id="enhanced-manufacturer-overview" key={102}>
-                          Enhanced View Manufacturer
-                        </button>
-                      </li>
-                    ) : (
-                      ''
-                    ),
-                  )
-                : ''}
+              {props.product &&
+                props.product.productDescription.map((description) =>
+                  description.type === 5 ? (
+                    <li className="nav-item">
+                      <button className="nav-link" onClick={navigation} id="enhanced-overview" key={101}>
+                        Enhanced View
+                      </button>
+                    </li>
+                  ) : description.type === 6 ? (
+                    <li className="nav-item">
+                      <button className="nav-link" onClick={navigation} id="enhanced-manufacturer-overview" key={102}>
+                        Enhanced View Manufacturer
+                      </button>
+                    </li>
+                  ) : (
+                    ''
+                  ),
+                )}
               <li className="nav-item">
                 <button className="nav-link" onClick={navigation} id="basic-overview">
                   Basic Overview
@@ -313,7 +312,7 @@ const ProductDescription = (props) => {
                 <h4>Main Features</h4>
                 <ol style={{ listStyleType: 'square' }}>
                   {basicOverview
-                    ? basicOverview.productAttribute.map((basic, i) =>
+                    ? basicOverview.productAttribute.map((basic) =>
                         basic.atrribute_label !== 'Manufacturer Website Address' &&
                         basic.atrribute_label !== 'Certifications & Standards' &&
                         basic.atrribute_label !== 'Marketing Information' &&
@@ -325,7 +324,7 @@ const ProductDescription = (props) => {
                         basic.atrribute_label !== 'Minimum Operating Temperature' &&
                         basic.atrribute_label !== 'Maximum Operating Temperature' &&
                         basic.atrribute_label !== 'Package Contents' ? (
-                          <li key={basic.atrribute_label + basic.displayvalue + props.id + i}>
+                          <li key={basic.atrribute_label + basic.displayvalue + props.id}>
                             {basic.atrribute_label}: {Parser(basic.displayvalue)}
                           </li>
                         ) : (
@@ -423,16 +422,8 @@ const ProductDescription = (props) => {
                 </div>
               </div>
             </div>
-            {similarProducts ? (
-              similarProducts.count !== 0 ? (
-                <SimilarProducts products={similarProducts.results} />
-              ) : (
-                ''
-              )
-            ) : (
-              ''
-            )}
-            {accessories ? accessories.count !== 0 ? <Accessories products={accessories.results} /> : '' : ''}
+            {similarProducts && similarProducts.count !== 0 && <SimilarProducts products={similarProducts.results} />}
+            {accessories && accessories.count !== 0 && <Accessories products={accessories.results} />}
           </div>
         </div>
       </div>

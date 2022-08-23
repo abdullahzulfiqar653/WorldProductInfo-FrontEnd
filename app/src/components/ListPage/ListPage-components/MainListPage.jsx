@@ -1,6 +1,6 @@
 import queryString from 'query-string';
 import FiltersList from './FiltersList';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import React, { useState, useMemo } from 'react';
 import LargeLoader from '../../common/LargeLoader';
@@ -42,12 +42,12 @@ function MainListPage(props) {
   };
 
   const pageNext = () => {
-    setOffSet(parseInt(offSet) + parseInt(Limit));
+    setOffSet(Number(offSet) + Number(Limit));
     setCurrentPage(currentPage + 1);
   };
 
   const pagePrevious = () => {
-    setOffSet(parseInt(offSet) - parseInt(Limit));
+    setOffSet(Number(offSet) - Number(Limit));
     setCurrentPage(currentPage - 1);
   };
 
@@ -57,9 +57,9 @@ function MainListPage(props) {
         <div className="shop-content">
           <aside className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
             <div className="sidebar-overlay" onClick={closeFilters}></div>
-            <a className="sidebar-close" href="#" onClick={closeFilters}>
+            <button className="sidebar-close" href="#" onClick={closeFilters}>
               <i className="close-icon"></i>
-            </a>
+            </button>
             <FiltersList />
           </aside>
 
@@ -154,19 +154,13 @@ function MainListPage(props) {
                           </div>
                           <p>Mfg Number : {product.mfgpartno}</p>
                           <div className="product-action">
-                            <a
-                              // href="product-default.html"
+                            <Link
+                              to={`/product/${product.productid}#header`}
                               className="btn-product btn-cart"
                               title="Add to Cart"
                             >
                               <i className="w-icon-cart"></i>Select Options
-                            </a>
-                            <a
-                              href="#"
-                              className="btn-product-icon btn-wishlist w-icon-heart"
-                              title="Add to wishlist"
-                            ></a>
-                            <a href="#" className="btn-product-icon btn-compare w-icon-compare" title="Compare"></a>
+                            </Link>
                           </div>
                         </div>
                       </div>
