@@ -40,7 +40,7 @@
       }
     ],
     "curly": "warn",
-    "complexity": ["error", 8],
+    "complexity": ["error", 30],
     "eol-last": "error",
     "guard-for-in": "error",
     "no-unused-labels": "error",
