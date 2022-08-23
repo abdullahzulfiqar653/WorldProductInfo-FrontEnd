@@ -18,14 +18,15 @@ function MainListPage(props) {
   products = state.products;
 
   const values = queryString.parse(location.search);
+  const formBody = getFormBody(values);
   const [Limit, setLimit] = useState(10);
   const [offSet, setOffSet] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterStatus, setFilterStatus] = useState('page-content mb-10');
 
   useMemo(() => {
-    dispatch(loadProductList(Limit, offSet, getFormBody(values)));
-  }, [props.id, Limit, offSet]);
+    dispatch(loadProductList(Limit, offSet, formBody));
+  }, [Limit, offSet, dispatch, formBody]);
 
   const openFilters = () => {
     setFilterStatus('page-content mb-10 sidebar-active');

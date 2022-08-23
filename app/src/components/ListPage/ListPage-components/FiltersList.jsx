@@ -14,7 +14,7 @@ function FiltersList(props) {
     dispatch(categoryFilterLoaded(categoryid));
     dispatch(productTypeFilterLoaded(categoryid));
     dispatch(manufacturerFilterLoaded(categoryid));
-  }, [categoryid]);
+  }, [categoryid, dispatch]);
 
   // setting the states to the variables to use in the components
   // all of these states are comming from the store

@@ -12,7 +12,7 @@ function ProductDetailPage(props) {
   const dispatch = useDispatch();
   useMemo(() => {
     dispatch(productLoaded(productid));
-  }, [productid]);
+  }, [productid, dispatch]);
   const state = useSelector((s) => s);
   const product = state.singleProduct;
   return (

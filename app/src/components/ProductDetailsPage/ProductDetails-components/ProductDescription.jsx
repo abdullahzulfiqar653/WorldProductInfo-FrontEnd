@@ -24,7 +24,7 @@ const ProductDescription = (props) => {
     dispatch(loadGallery(props.id));
     dispatch(loadSimilarProducts(props.id));
     dispatch(loadAccessories(props.id));
-  }, [props.product]);
+  }, [props.id, dispatch]);
 
   const state = useSelector((s) => s);
   const gallery = state.gallery;
