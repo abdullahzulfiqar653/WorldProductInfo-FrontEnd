@@ -24,15 +24,18 @@ class BottomNav extends Component {
       (category) => category.catlevel === catLevel && category.parentcategoryid === parent,
     );
   }
+  getClassName(level) {
+    if (level > 1) {
+      return 'submenu';
+    } else if (level > 0) {
+      return 'custom-megamenu';
+    }
+    return 'menu vertical-menu category-menu';
+  }
 
   displayCategories(catLevel = 0, categoryid = null) {
     return (
-      <ul
-        className={
-          categoryid && catLevel > 1 ? 'submenu' : catLevel > 0 ? 'custom-megamenu' : 'menu vertical-menu category-menu'
-        }
-        style={{ top: '0', padding: '0' }}
-      >
+      <ul className={this.getClassName(catLevel)} style={{ top: '0', padding: '0' }}>
         {this.getCategoryList(catLevel + 1, categoryid).map((category, range) => {
           return (
             <li key={category.categoryid} className={this.isParent(category.categoryid) ? 'has-submenu' : ''}>
