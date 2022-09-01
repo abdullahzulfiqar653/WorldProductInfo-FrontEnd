@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Men from '../../../assets/images/demos/demo1/sliders/men.png';
 import Shose from '../../../assets/images/demos/demo1/sliders/shoes.png';
 import Skate from '../../../assets/images/demos/demo1/sliders/skate.png';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import SwiperCore, { Navigation, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 class IntroSection extends Component {
   render() {
@@ -10,7 +10,7 @@ class IntroSection extends Component {
     return (
       <section className="intro-section">
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          modules={[Navigation, Autoplay]}
           spaceBetween={50}
           slidesPerView={1}
           autoplay={{

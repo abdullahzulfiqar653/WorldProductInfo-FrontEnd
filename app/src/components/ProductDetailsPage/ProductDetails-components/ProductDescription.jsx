@@ -1,7 +1,7 @@
 import './css/Tabs.css';
 import './css/button.css';
 import { show } from './custome';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import Parser from 'html-react-parser';
 import Accessories from './Accessories';
 import SimilarProducts from './SimilarProducts';
@@ -14,6 +14,8 @@ import {
   loadSimilarProducts,
   loadSpecifications,
 } from '../../../actions/actions';
+import { FreeMode, Navigation, Thumbs } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const ProductDescription = (props) => {
   const dispatch = useDispatch();
@@ -38,12 +40,12 @@ const ProductDescription = (props) => {
     show(`#${e.target.id}-section`, e.target);
   };
 
-  const galleryShow = (source, tagname, banner) => {
-    const destination = document.getElementById(banner);
-    const tag = document.getElementById(banner + '-tag');
-    tag.innerHTML = tagname;
-    destination.src = source;
-  };
+  // const galleryShow = (source, tagname, banner) => {
+  //   const destination = document.getElementById(banner);
+  //   const tag = document.getElementById(banner + '-tag');
+  //   tag.innerHTML = tagname;
+  //   destination.src = source;
+  // };
 
   const isPreasentinAttributes = (id) => {
     return specifications.productAttribute.some((obj) => obj.header_id === id);
@@ -93,53 +95,90 @@ const ProductDescription = (props) => {
     );
   };
 
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   const viewGallery = (section = null) => (
     <div className="col-md-6 mb-5">
       <div className="banner banner-video product-video br-xs">
-        {gallery ? (
-          <figure className="banner-media">
-            <img
-              src={`https://content.etilize.com/Main/${props.product.productid}.jpg`}
-              alt="banner"
-              id={section ? 'gallery-image' : 'swiper-image'}
-              width="610"
-              height="300"
-            />
-            <h3 id={section ? 'gallery-image-tag' : 'swiper-image-tag'} style={{ textAlign: 'center' }}>
-              Main
-            </h3>
-          </figure>
-        ) : (
-          ''
-        )}
+        <Swiper
+          loop={true}
+          spaceBetween={10}
+          navigation={true}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="mySwiper2"
+        >
+          {gallery.productElements.map((element) =>
+            element.type !== 'Manufacturer-Brochure' &&
+            element.type !== 'Additional-pdf1' &&
+            element.type !== 'Additional-pdf2' &&
+            element.type !== 'Additional-pdf3' &&
+            element.type !== 'Additional-pdf4' &&
+            element.type !== 'Additional-pdf5' &&
+            element.type !== 'Additional-pdf6' &&
+            element.type !== 'Additional-pdf7' &&
+            element.type !== 'Assembly-Instructions' &&
+            element.type !== '360-main-view' &&
+            element.type !== '220-Canvas' &&
+            element.type !== 'Tour' &&
+            element.type !== 'User-Manual' ? (
+              <SwiperSlide>
+                <img
+                  src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
+                  alt="banner"
+                  id={section ? 'gallery-image' : 'swiper-image'}
+                  width="610"
+                  height="300"
+                />
+                <h3 id={section ? 'gallery-image-tag' : 'swiper-image-tag'} style={{ textAlign: 'center' }}>
+                  {element.type}
+                </h3>
+              </SwiperSlide>
+            ) : (
+              ''
+            ),
+          )}
+        </Swiper>
       </div>
-      <div className="row mb-4 thumb" style={{ overflow: 'auto', flexWrap: 'nowrap' }}>
-        {gallery.productElements.map((element) =>
-          element.type !== 'Manufacturer-Brochure' &&
-          element.type !== 'Additional-pdf1' &&
-          element.type !== 'Additional-pdf2' &&
-          element.type !== 'Additional-pdf3' &&
-          element.type !== 'Additional-pdf4' &&
-          element.type !== 'Additional-pdf5' &&
-          element.type !== 'Additional-pdf6' &&
-          element.type !== 'Additional-pdf7' &&
-          element.type !== 'Assembly-Instructions' &&
-          element.type !== '360-main-view' &&
-          element.type !== '220-Canvas' &&
-          element.type !== 'Tour' &&
-          // element.type !== "Original" &&
-          element.type !== 'User-Manual' ? (
-            <div className="col-md-2" key={element.productelementid}>
-              <img
-                src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
-                alt={element.type}
-                onClick={(e) => galleryShow(e.target.src, e.target.alt, section ? 'gallery-image' : 'swiper-image')}
-              />
-            </div>
-          ) : (
-            ''
-          ),
-        )}
+      <div className="row mb-4 thumb" style={{ maxWidth: '500px', overflow: 'hidden' }}>
+        <Swiper
+          onSwiper={setThumbsSwiper}
+          loop={false}
+          spaceBetween={10}
+          slidesPerView={4}
+          freeMode={true}
+          watchSlidesProgress={true}
+          navigation={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="mySwiper"
+        >
+          {gallery.productElements.map((element) =>
+            element.type !== 'Manufacturer-Brochure' &&
+            element.type !== 'Additional-pdf1' &&
+            element.type !== 'Additional-pdf2' &&
+            element.type !== 'Additional-pdf3' &&
+            element.type !== 'Additional-pdf4' &&
+            element.type !== 'Additional-pdf5' &&
+            element.type !== 'Additional-pdf6' &&
+            element.type !== 'Additional-pdf7' &&
+            element.type !== 'Assembly-Instructions' &&
+            element.type !== '360-main-view' &&
+            element.type !== '220-Canvas' &&
+            element.type !== 'Tour' &&
+            element.type !== 'User-Manual' ? (
+              <SwiperSlide>
+                <img
+                  onClick={() => console.log(setThumbsSwiper)}
+                  src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
+                  alt={element.type}
+                  // onClick={(e) => galleryShow(e.target.src, e.target.alt, section ? 'gallery-image' : 'swiper-image')}
+                />
+              </SwiperSlide>
+            ) : (
+              ''
+            ),
+          )}
+        </Swiper>
       </div>
     </div>
   );

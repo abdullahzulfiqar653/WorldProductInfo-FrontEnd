@@ -98,12 +98,7 @@ function MainListPage(props) {
                       <div className="product product-list product-select" key={product.productid}>
                         <figure className="product-media">
                           <HashLink to={`/product/${product.productid}#header`}>
-                            <img
-                              src={`https://content.etilize.com/images/60/${product.productid}.jpg?noimage=logo`}
-                              alt="Product"
-                              width="330"
-                              height="338"
-                            />
+                            <img src={product.image_url} alt="Product" width="330" height="338" />
                           </HashLink>
                           <div className="product-action-vertical">
                             <HashLink
