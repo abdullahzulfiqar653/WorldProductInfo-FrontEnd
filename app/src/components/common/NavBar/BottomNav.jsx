@@ -33,19 +33,37 @@ class BottomNav extends Component {
     return 'menu vertical-menu category-menu';
   }
 
-  displayCategories(catLevel = 0, categoryid = null) {
+  // displayCategories(catLevel = 0, categoryid = null) {
+  //   return (
+  //     <ul className={this.getClassName(catLevel)} style={{ top: '0', padding: '0' }}>
+  //       {this.getCategoryList(catLevel + 1, categoryid).map((category, range) => {
+  //         return (
+  //           <li key={category.categoryid} className={this.isParent(category.categoryid) ? 'has-submenu' : ''}>
+  //             <Link
+  //               to={`/product-list/?categoryid=${category.categoryid}&flag=category#header`}
+  //               style={{ padding: '8px 10px' }}
+  //             >
+  //               {category.category_label}
+  //             </Link>
+  //             {this.displayCategories(catLevel + 1, category.categoryid)}
+  //           </li>
+  //         );
+  //       })}
+  //     </ul>
+  //   );
+  // }
+  displayCategories() {
     return (
-      <ul className={this.getClassName(catLevel)} style={{ top: '0', padding: '0' }}>
-        {this.getCategoryList(catLevel + 1, categoryid).map((category, range) => {
+      <ul className="menu vertical-menu category-menu" style={{ top: '0', padding: '0' }}>
+        {this.props.categories.map((category) => {
           return (
-            <li key={category.categoryid} className={this.isParent(category.categoryid) ? 'has-submenu' : ''}>
+            <li key={category.categoryid}>
               <Link
                 to={`/product-list/?categoryid=${category.categoryid}&flag=category#header`}
                 style={{ padding: '8px 10px' }}
               >
                 {category.category_label}
               </Link>
-              {this.displayCategories(catLevel + 1, category.categoryid)}
             </li>
           );
         })}
