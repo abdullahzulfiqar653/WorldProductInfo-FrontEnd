@@ -8,6 +8,7 @@ import { getFormBody } from '../../../actions/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadProductList } from '../../../actions/actions';
 import '../../ProductDetailsPage/ProductDetails-components/css/button.css';
+import { MEDIA_URL } from '../../../constant/constantURL';
 
 function MainListPage(props) {
   const location = useLocation();
@@ -98,7 +99,7 @@ function MainListPage(props) {
                       <div className="product product-list product-select" key={product.productid}>
                         <figure className="product-media">
                           <HashLink to={`/product/${product.productid}#header`}>
-                            <img src={product.image_url} alt="Product" width="330" height="338" />
+                            <img src={MEDIA_URL + product.image_url} alt="Product" width="330" height="338" />
                           </HashLink>
                           <div className="product-action-vertical">
                             <HashLink
