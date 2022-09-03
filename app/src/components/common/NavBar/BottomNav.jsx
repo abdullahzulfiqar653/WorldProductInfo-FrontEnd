@@ -1,5 +1,5 @@
 import './Navbar.css';
-import Loader from '../SmallLoader';
+// import Loader from '../SmallLoader';
 // import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
