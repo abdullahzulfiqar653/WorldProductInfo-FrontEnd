@@ -1,38 +1,34 @@
 import './Navbar.css';
 import Loader from '../SmallLoader';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { loadCategory } from '../../../actions/actions';
+// import { loadCategory } from '../../../actions/actions';
 import { categoryList } from './categories';
 class BottomNav extends Component {
-  state = {
-    categoryRange: 15,
-    opacity: 0,
-  };
-  componentDidMount() {
-    this.props.loadCategories();
-  }
-  isParent(id) {
-    return this.props.categories.some((obj) => obj.parentcategoryid === id);
-  }
+  // componentDidMount() {
+  //   this.props.loadCategories();
+  // }
+  // isParent(id) {
+  //   return this.props.categories.some((obj) => obj.parentcategoryid === id);
+  // }
 
-  getCategoryList(catLevel, parent = null) {
-    if (!parent) {
-      return this.props.categories.filter((category) => category.catlevel === catLevel);
-    }
-    return this.props.categories.filter(
-      (category) => category.catlevel === catLevel && category.parentcategoryid === parent,
-    );
-  }
-  getClassName(level) {
-    if (level > 1) {
-      return 'submenu';
-    } else if (level > 0) {
-      return 'custom-megamenu';
-    }
-    return 'menu vertical-menu category-menu';
-  }
+  // getCategoryList(catLevel, parent = null) {
+  //   if (!parent) {
+  //     return this.props.categories.filter((category) => category.catlevel === catLevel);
+  //   }
+  //   return this.props.categories.filter(
+  //     (category) => category.catlevel === catLevel && category.parentcategoryid === parent,
+  //   );
+  // }
+  // getClassName(level) {
+  //   if (level > 1) {
+  //     return 'submenu';
+  //   } else if (level > 0) {
+  //     return 'custom-megamenu';
+  //   }
+  //   return 'menu vertical-menu category-menu';
+  // }
 
   // displayCategories(catLevel = 0, categoryid = null) {
   //   return (
@@ -109,16 +105,17 @@ class BottomNav extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  categories: state.category,
-  loading: state.loading,
-});
+// const mapStateToProps = (state) => ({
+//   categories: state.category,
+//   loading: state.loading,
+// });
 
-const mapDispatchToProps = (disptch) => ({
-  loadCategories: () => disptch(loadCategory()),
-});
+// const mapDispatchToProps = (disptch) => ({
+//   // loadCategories: () => disptch(loadCategory()),
+// });
 
 // container component
 // wraps presentation component (BottomNav)
 
-export default connect(mapStateToProps, mapDispatchToProps)(BottomNav);
+// export default connect(mapStateToProps, mapDispatchToProps)(BottomNav);
+export default BottomNav;
