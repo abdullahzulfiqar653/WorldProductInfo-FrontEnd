@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { loadCategory } from '../../../actions/actions';
+import { categoryList } from './categories';
 class BottomNav extends Component {
   state = {
     categoryRange: 15,
@@ -55,7 +56,7 @@ class BottomNav extends Component {
   displayCategories() {
     return (
       <ul className="menu vertical-menu category-menu" style={{ top: '0', padding: '0' }}>
-        {this.props.categories.map((category) => {
+        {categoryList.map((category) => {
           return (
             <li key={category.categoryid}>
               <Link
