@@ -69,7 +69,7 @@ class BottomNav extends Component {
   }
 
   render() {
-    const { categories, loading } = this.props;
+    // const { categories, loading } = this.props;
     return (
       <div className="header-bottom sticky-content fix-top sticky-header">
         <div className="container">
@@ -86,9 +86,11 @@ class BottomNav extends Component {
                   title="Browse Categories"
                 >
                   <i className="w-icon-category"></i>
-                  <span style={{ display: 'flex' }}>Browse Categories {loading === true ? <Loader /> : ''}</span>
+                  {/* <span style={{ display: 'flex' }}>Browse Categories {loading === true ? <Loader /> : ''}</span> */}
+                  <span style={{ display: 'flex' }}>Browse Categories</span>
                 </Link>
-                <div className="dropdown-box">{categories && this.displayCategories()}</div>
+                {/* <div className="dropdown-box">{categories && this.displayCategories()}</div> */}
+                <div className="dropdown-box">{this.displayCategories()}</div>
               </div>
               <nav className="main-nav">
                 <ul className="menu active-underline">
