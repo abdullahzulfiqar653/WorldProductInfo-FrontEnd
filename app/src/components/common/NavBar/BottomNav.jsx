@@ -79,6 +79,12 @@ class BottomNav extends Component {
                   <li className="active">
                     <NavLink to={'/home'}>Home</NavLink>
                   </li>
+                  <li>
+                    <NavLink to={`/product-list/?categoryid=4900&flag=category#header`}>Accessories</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={`/product-list/?categoryid=10153&flag=category#header`}>Printers</NavLink>
+                  </li>
                 </ul>
               </nav>
             </div>

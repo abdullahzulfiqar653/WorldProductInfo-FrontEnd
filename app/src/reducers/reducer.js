@@ -13,6 +13,7 @@ const initialState = {
   singleProduct: {},
   productTypeFilter: [],
   manufacturerFilter: [],
+  latest: [],
   error: null,
   loading: false,
 };
@@ -58,6 +59,20 @@ export function reducer(state = initialState, action) {
         loading: false,
       };
     case actions.PRODUCTS_LIST_LOAD_FAIL:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+
+    case actions.PRODUCTS_LATEST_LOADED:
+      return {
+        ...state,
+        latest: payload,
+        error: null,
+        loading: false,
+      };
+    case actions.PRODUCTS_LATEST_LOAD_FAIL:
       return {
         ...state,
         error: action.error,

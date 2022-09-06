@@ -217,6 +217,25 @@ export const loadGallery = (productid) => async (dispatch) => {
     });
 };
 
+export const loadLatestProducts = () => async (dispatch) => {
+  dispatch({
+    type: actions.REQUEST_START,
+  });
+  await axios
+    .get(REQUEST_URL + `/products/?flag=latest`)
+    .then((res) => {
+      dispatch({
+        type: actions.PRODUCTS_LATEST_LOADED,
+        payload: res.data,
+      });
+    })
+    .catch(function (error) {
+      dispatch({
+        type: actions.PRODUCTS_LATEST_LOAD_FAIL,
+      });
+    });
+};
+
 export const loadSimilarProducts = (productid) => async (dispatch) => {
   dispatch({
     type: actions.REQUEST_START,
