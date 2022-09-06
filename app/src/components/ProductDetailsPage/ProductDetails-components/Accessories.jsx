@@ -40,15 +40,9 @@ class Accessories extends Component {
               </figure>
               <div className="product-details">
                 <h4 className="product-name">
-                  {product.productDescription.map((description) =>
-                    description.type === 2 ? (
-                      <HashLink to={`/product/${product.productid}#header`}>{description.description}</HashLink>
-                    ) : (
-                      ''
-                    ),
-                  )}
+                  <HashLink to={`/product/${product.productid}#header`}>{product.product_description}</HashLink>
                 </h4>
-                {product.productDescription.map((description) =>
+                {/* {product.productDescription.map((description) =>
                   description.type === 3 ? (
                     <div className="product-desc" style={{ margin: '0', color: 'black' }}>
                       {description.description}
@@ -56,15 +50,15 @@ class Accessories extends Component {
                   ) : (
                     ''
                   ),
-                )}
-                <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
+                )} */}
+                {/* <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
                   SKUS :
                   {product.productSkus.map((Sku) => (
                     <span style={{ paddingRight: '5px' }}>
                       {Sku.name} : {Sku.sku}
                     </span>
                   ))}
-                </div>
+                </div> */}
                 <div className="ratings-container">
                   <p>Mfg Number : {product.mfgpartno}</p>
                 </div>

@@ -1,6 +1,6 @@
 import queryString from 'query-string';
 import FiltersList from './FiltersList';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import React, { useState, useMemo } from 'react';
 import LargeLoader from '../../common/LargeLoader';
@@ -29,9 +29,9 @@ function MainListPage(props) {
     dispatch(loadProductList(Limit, offSet, formBody));
   }, [Limit, offSet, dispatch, formBody]);
 
-  const openFilters = () => {
-    setFilterStatus('page-content mb-10 sidebar-active');
-  };
+  // const openFilters = () => {
+  //   setFilterStatus('page-content mb-10 sidebar-active');
+  // };
 
   const closeFilters = () => {
     setFilterStatus('page-content mb-10');
@@ -61,9 +61,9 @@ function MainListPage(props) {
   };
   return (
     <div className={filterStatus}>
-      <div className="container-fluid">
-        <div className="shop-content">
-          <aside className="sidebar shop-sidebar left-sidebar sticky-sidebar-wrapper">
+      <div className="container">
+        <div className="shop-content row gutter-lg mb-10">
+          <aside className="sidebar shop-sidebar sticky-sidebar-wrapper sidebar-fixed">
             <div className="sidebar-overlay" onClick={closeFilters}></div>
             <button className="sidebar-close" href="#" onClick={closeFilters}>
               <i className="close-icon"></i>
@@ -74,15 +74,14 @@ function MainListPage(props) {
           <div className="main-content">
             <nav className="toolbox sticky-toolbox sticky-content fix-top">
               <div className="toolbox-left">
-                <button
+                {/* <button
                   onClick={openFilters}
                   href="#"
                   className="btn btn-primary btn-outline btn-rounded left-sidebar-toggle
-                                   btn-icon-left"
-                >
+                                   btn-icon-left">
                   <i className="w-icon-category"></i>
                   <span>Filters</span>
-                </button>
+                </button> */}
               </div>
               <div className="toolbox-right">
                 <div className="toolbox-item toolbox-show select-box">
@@ -98,72 +97,60 @@ function MainListPage(props) {
               </div>
             </nav>
             {!loading && products ? (
-              <div>
+              <React.Fragment>
                 {products.count !== 0 ? (
-                  <div className="product-wrapper row cols-xl-2 cols-sm-1 cols-xs-2 cols-1">
+                  <div className="product-wrapper row cols-md-3 cols-sm-2 cols-2">
                     {products.results.map((product) => (
-                      <div className="product product-list product-select" key={product.productid}>
-                        <figure className="product-media">
-                          <HashLink to={`/product/${product.productid}#header`}>
-                            <img src={getImage(product.image_url)} alt="Product" width="330" height="338" />
-                          </HashLink>
-                          <div className="product-action-vertical">
-                            <HashLink
-                              to={`/product/${product.productid}#header`}
-                              className="btn-product-icon btn-quickview w-icon-search"
-                              title="Quick View"
-                            ></HashLink>
-                          </div>
-                        </figure>
-                        <div className="product-details">
-                          <h4
-                            className="product-name"
-                            style={{
-                              fontSize: '15px !impotant',
-                              whiteSpace: 'pre-wrap',
-                            }}
-                          >
-                            {product.productDescription.map((description) =>
-                              description.type === 2 ? (
-                                <HashLink to={`/product/${product.productid}#header`} key={'alpha'}>
+                      <div className="product-wrap" key={product.productid}>
+                        <div className="product text-center">
+                          <figure className="product-media">
+                            <HashLink to={`/product/${product.productid}#header`}>
+                              <img src={getImage(product.image_url)} alt="Product" width="330" height="338" />
+                            </HashLink>
+                            <div className="product-action-horizontal">
+                              <HashLink
+                                to={`/product/${product.productid}#header`}
+                                className="btn-product-icon btn-quickview w-icon-search"
+                                title="Quick View"
+                              ></HashLink>
+                            </div>
+                          </figure>
+                          <div className="product-details">
+                            <h4 className="product-name" style={{ fontSize: '13px' }}>
+                              <HashLink to={`/product/${product.productid}#header`}>
+                                {product.product_description}
+                              </HashLink>
+                              {/* {product.productDescription.map((description) =>
+                                description.type === 2 ? (
+                                  <HashLink to={`/product/${product.productid}#header`} key={'alpha'}>
+                                    {description.description}
+                                  </HashLink>
+                                ) : (
+                                  ''
+                                ),
+                              )} */}
+                            </h4>
+                            {/* {product.productDescription.map((description) =>
+                              description.type === 3 ? (
+                                <div
+                                  className="product-desc"
+                                  style={{ margin: '0', color: 'black' }}
+                                  key={description.type + product.productid}>
                                   {description.description}
-                                </HashLink>
+                                </div>
                               ) : (
                                 ''
-                              ),
+                              )
                             )}
-                          </h4>
-
-                          {product.productDescription.map((description) =>
-                            description.type === 3 ? (
-                              <div
-                                className="product-desc"
-                                style={{ margin: '0', color: 'black' }}
-                                key={description.type + product.productid}
-                              >
-                                {description.description}
-                              </div>
-                            ) : (
-                              ''
-                            ),
-                          )}
-                          <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
-                            SKUS :
-                            {product.productSkus.map((Sku) => (
-                              <span style={{ paddingRight: '5px' }} key={product.productid + Sku.sku + Sku.name}>
-                                {Sku.name} : {Sku.sku}
-                              </span>
-                            ))}
-                          </div>
-                          <p>Mfg Number : {product.mfgpartno}</p>
-                          <div className="product-action">
-                            <Link
-                              to={`/product/${product.productid}#header`}
-                              className="btn-product btn-cart"
-                              title="Add to Cart"
-                            >
-                              <i className="w-icon-cart"></i>Select Options
-                            </Link>
+                            <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
+                              SKUS :
+                              {product.productSkus.map((Sku) => (
+                                <span style={{ paddingRight: '5px' }} key={product.productid + Sku.sku + Sku.name}>
+                                  {Sku.name} : {Sku.sku}
+                                </span>
+                              ))}
+                            </div> */}
+                            <p>Mfg Number : {product.mfgpartno}</p>
                           </div>
                         </div>
                       </div>
@@ -174,12 +161,11 @@ function MainListPage(props) {
                     <h1 style={{ textAlign: 'center' }}>There are no products.</h1>
                   </div>
                 )}
-
                 <div className="toolbox toolbox-pagination justify-content-between">
                   <p className="showing-info mb-2 mb-sm-0">
                     Showing
                     <span>
-                      {Limit} of {products ? products.count : ''}
+                      {products && Limit > products.count ? products.count : Limit} of {products ? products.count : ''}
                     </span>
                     Products
                   </p>
@@ -198,7 +184,6 @@ function MainListPage(props) {
                         <i className="fas fa-arrow-left"></i>Prev
                       </button>
                     </li>
-
                     <li>
                       {currentPage} / {Math.ceil(products ? products.count / Limit : 1)}
                     </li>
@@ -219,7 +204,7 @@ function MainListPage(props) {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </React.Fragment>
             ) : (
               <div
                 className="row"

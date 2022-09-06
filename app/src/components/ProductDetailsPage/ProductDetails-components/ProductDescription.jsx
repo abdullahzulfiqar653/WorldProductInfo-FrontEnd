@@ -108,35 +108,49 @@ const ProductDescription = (props) => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2"
         >
-          {gallery.productElements.map((element) =>
-            element.type !== 'Manufacturer-Brochure' &&
-            element.type !== 'Additional-pdf1' &&
-            element.type !== 'Additional-pdf2' &&
-            element.type !== 'Additional-pdf3' &&
-            element.type !== 'Additional-pdf4' &&
-            element.type !== 'Additional-pdf5' &&
-            element.type !== 'Additional-pdf6' &&
-            element.type !== 'Additional-pdf7' &&
-            element.type !== 'Assembly-Instructions' &&
-            element.type !== '360-main-view' &&
-            element.type !== '220-Canvas' &&
-            element.type !== 'Tour' &&
-            element.type !== 'User-Manual' ? (
-              <SwiperSlide>
-                <img
-                  src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
-                  alt="banner"
-                  id={section ? 'gallery-image' : 'swiper-image'}
-                  width="610"
-                  height="300"
-                />
-                <h3 id={section ? 'gallery-image-tag' : 'swiper-image-tag'} style={{ textAlign: 'center' }}>
-                  {element.type}
-                </h3>
-              </SwiperSlide>
-            ) : (
-              ''
-            ),
+          {gallery.length > 0 ? (
+            gallery.productElements.map((element) =>
+              element.type !== 'Manufacturer-Brochure' &&
+              element.type !== 'Additional-pdf1' &&
+              element.type !== 'Additional-pdf2' &&
+              element.type !== 'Additional-pdf3' &&
+              element.type !== 'Additional-pdf4' &&
+              element.type !== 'Additional-pdf5' &&
+              element.type !== 'Additional-pdf6' &&
+              element.type !== 'Additional-pdf7' &&
+              element.type !== 'Energy-Guide' &&
+              element.type !== 'Assembly-Instructions' &&
+              element.type !== '360-main-view' &&
+              element.type !== '220-Canvas' &&
+              element.type !== 'Tour' &&
+              element.type !== 'User-Manual' ? (
+                <SwiperSlide>
+                  <img
+                    src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg?noimage=logo`}
+                    alt="banner"
+                    id={section ? 'gallery-image' : 'swiper-image'}
+                    width="610"
+                    height="300"
+                  />
+                  <h3 id={section ? 'gallery-image-tag' : 'swiper-image-tag'} style={{ textAlign: 'center' }}>
+                    {element.type}
+                  </h3>
+                </SwiperSlide>
+              ) : (
+                ''
+              ),
+            )
+          ) : (
+            <SwiperSlide>
+              <img
+                src={`https://content.etilize.com/main/${props.product.productid}.jpg?noimage=logo`}
+                alt="banner"
+                id={section ? 'gallery-image' : 'swiper-image'}
+              />
+              <h3 id={section ? 'gallery-image-tag' : 'swiper-image-tag'} style={{ textAlign: 'center' }}>
+                Logo
+              </h3>
+            </SwiperSlide>
           )}
         </Swiper>
       </div>
@@ -161,6 +175,7 @@ const ProductDescription = (props) => {
             element.type !== 'Additional-pdf5' &&
             element.type !== 'Additional-pdf6' &&
             element.type !== 'Additional-pdf7' &&
+            element.type !== 'Energy-Guide' &&
             element.type !== 'Assembly-Instructions' &&
             element.type !== '360-main-view' &&
             element.type !== '220-Canvas' &&
@@ -169,7 +184,7 @@ const ProductDescription = (props) => {
               <SwiperSlide>
                 <img
                   onClick={() => console.log(setThumbsSwiper)}
-                  src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg`}
+                  src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg?noimage=logo`}
                   alt={element.type}
                   // onClick={(e) => galleryShow(e.target.src, e.target.alt, section ? 'gallery-image' : 'swiper-image')}
                 />
@@ -349,15 +364,19 @@ const ProductDescription = (props) => {
                   ),
                 )}
               <li className="nav-item">
-                <button className="nav-link" onClick={navigation} id="basic-overview">
+                <button className="nav-link active" onClick={navigation} id="basic-overview">
                   Basic Overview
                 </button>
               </li>
-              <li className="nav-item">
-                <button className="nav-link" onClick={navigation} id="specifications">
-                  Specifications
-                </button>
-              </li>
+              {specifications && specifications.productAttribute.length === 0 ? (
+                ''
+              ) : (
+                <li className="nav-item">
+                  <button className="nav-link" onClick={navigation} id="specifications">
+                    Specifications
+                  </button>
+                </li>
+              )}
               <li className="nav-item">
                 <button onClick={navigation} className="nav-link" id="gallery">
                   Gallery
@@ -384,11 +403,16 @@ const ProductDescription = (props) => {
                     ''
                   ),
                 )}
-              <div className="tab-pane" id="basic-overview-section">
-                <h4>Main Features</h4>
-                <ol style={{ listStyleType: 'square' }}>
-                  {basicOverview
-                    ? basicOverview.productAttribute.map((basic) =>
+              <div className="tab-pane active" id="basic-overview-section">
+                {!basicOverview ? (
+                  <p>Product does not have Basic Overview</p>
+                ) : basicOverview.productAttribute.length === 0 ? (
+                  <p>Product does not have Basic Overview</p>
+                ) : (
+                  <React.Fragment>
+                    <h4>Main Features</h4>
+                    <ol style={{ listStyleType: 'square' }}>
+                      {basicOverview.productAttribute.map((basic) =>
                         basic.atrribute_label !== 'Manufacturer Website Address' &&
                         basic.atrribute_label !== 'Certifications & Standards' &&
                         basic.atrribute_label !== 'Marketing Information' &&
@@ -406,12 +430,13 @@ const ProductDescription = (props) => {
                         ) : (
                           ''
                         ),
-                      )
-                    : ''}
-                </ol>
-                <hr style={{ background: 'rgb(80 79 79)' }} />
-                {basicOverview
-                  ? basicOverview.productAttribute.map((basic) =>
+                      )}
+                    </ol>
+                  </React.Fragment>
+                )}
+                {basicOverview && (
+                  <React.Fragment>
+                    {basicOverview.productAttribute.map((basic) =>
                       basic.atrribute_label === 'Marketing Information' ? (
                         <>
                           <h4 key={basic.atrribute_label}>{basic.atrribute_label}</h4>
@@ -420,9 +445,9 @@ const ProductDescription = (props) => {
                       ) : (
                         ''
                       ),
-                    )
-                  : ''}
-                <hr style={{ background: 'rgb(80 79 79)' }} />
+                    )}
+                  </React.Fragment>
+                )}
                 {basicOverview
                   ? basicOverview.productAttribute.map((basic) =>
                       basic.atrribute_label === 'Package Contents' ? (
@@ -436,7 +461,11 @@ const ProductDescription = (props) => {
                     )
                   : ''}
               </div>
-              <div className="tab-pane" id="specifications-section">
+              <div
+                className="tab-pane"
+                id="specifications-section"
+                onLoad={() => show('#basic-overview-section', 'basic-overview')}
+              >
                 {specifications && tabSpecifications()}
               </div>
               <div className="tab-pane" id="gallery-section">
