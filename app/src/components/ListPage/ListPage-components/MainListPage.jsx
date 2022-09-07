@@ -111,8 +111,7 @@ function MainListPage(props) {
                               <HashLink
                                 to={`/product/${product.productid}#header`}
                                 className="btn-product-icon btn-quickview w-icon-search"
-                                title="Quick View"
-                              ></HashLink>
+                                title="Quick View"></HashLink>
                             </div>
                           </figure>
                           <div className="product-details">
@@ -179,8 +178,7 @@ function MainListPage(props) {
                           background: 'none',
                           border: 'none',
                           padding: '0',
-                        }}
-                      >
+                        }}>
                         <i className="fas fa-arrow-left"></i>Prev
                       </button>
                     </li>
@@ -197,8 +195,7 @@ function MainListPage(props) {
                           border: 'none',
                           padding: '0',
                         }}
-                        disabled={products && products.next === null ? true : false}
-                      >
+                        disabled={products && products.next === null ? true : false}>
                         Next<i className="fas fa-arrow-right"></i>
                       </button>
                     </li>
@@ -213,8 +210,7 @@ function MainListPage(props) {
                   alignItems: 'center',
                   width: '100%',
                   height: '70vh',
-                }}
-              >
+                }}>
                 <div style={{ width: '100px' }}>
                   <LargeLoader />
                 </div>

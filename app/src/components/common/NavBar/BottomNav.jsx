@@ -74,7 +74,7 @@ class BottomNav extends Component {
               </div>
               <nav className="main-nav">
                 <ul className="menu active-underline">
-                  <li className="active">
+                  <li>
                     <NavLink to={'/home'}>Home</NavLink>
                   </li>
                   <li>
