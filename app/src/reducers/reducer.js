@@ -5,7 +5,7 @@ const initialState = {
   categoryFilter: [],
   basicOverview: [],
   specifications: [],
-  gallery: [],
+  gallery: undefined,
   similarProducts: {},
   accessories: {},
   products: [],
@@ -22,7 +22,7 @@ export function reducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case actions.REQUEST_START:
-      return { ...state, error: null, loading: true };
+      return { ...state, error: null, loading: true, gallery: undefined };
 
     case actions.PAGE_LOADED:
       return {

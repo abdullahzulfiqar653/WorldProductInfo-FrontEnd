@@ -106,7 +106,7 @@ const ProductDescription = (props) => {
           thumbs={{ swiper: thumbsSwiper }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2">
-          {gallery.length > 0 ? (
+          {gallery && gallery.productElements.length > 0 ? (
             gallery.productElements.map((element) =>
               element.type !== 'Manufacturer-Brochure' &&
               element.type !== 'Additional-pdf1' &&

@@ -40,8 +40,7 @@ function FiltersList(props) {
                   } else {
                     setCategoryCollapsed(false);
                   }
-                }}
-              >
+                }}>
                 <span>{category ? 'Categories Filter' : ''}</span>
                 <span class="toggle-btn"></span>
               </h3>
@@ -68,8 +67,7 @@ function FiltersList(props) {
                   } else {
                     setTypeCollapsed(false);
                   }
-                }}
-              >
+                }}>
                 <span>Product Type</span>
                 <span class="toggle-btn"></span>
               </h3>
@@ -78,8 +76,7 @@ function FiltersList(props) {
                   {productType.map((type) => (
                     <li key={type.valueid}>
                       <HashLink
-                        to={`/product-list/?categoryid=${categoryid}&flag=producttype&valueid=${type.valueid}#header`}
-                      >
+                        to={`/product-list/?categoryid=${categoryid}&flag=producttype&valueid=${type.valueid}#header`}>
                         {type.value} ({type.category_product_count})
                       </HashLink>
                     </li>
@@ -98,8 +95,7 @@ function FiltersList(props) {
                   } else {
                     setManufacturerCollapsed(false);
                   }
-                }}
-              >
+                }}>
                 <span>Manufacturer Filter</span>
                 <span class="toggle-btn"></span>
               </h3>
@@ -108,8 +104,7 @@ function FiltersList(props) {
                   {manufacturer.map((obj) => (
                     <li key={obj.manufacturerid}>
                       <HashLink
-                        to={`/product-list/?categoryid=${categoryid}&flag=manufacturer&manufacturerid=${obj.manufacturerid}#header`}
-                      >
+                        to={`/product-list/?categoryid=${categoryid}&flag=manufacturer&manufacturerid=${obj.manufacturerid}#header`}>
                         {obj.name} ({obj.manufacturer_product_count})
                       </HashLink>
                     </li>
