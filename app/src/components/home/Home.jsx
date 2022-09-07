@@ -6,12 +6,10 @@ import Navbar from '../common/NavBar/Navbar';
 class Home extends Component {
   render() {
     return (
-      <div className="home">
-        <div className="page-wrapper">
-          <Navbar />
-          <HomeMain />
-          <Footer />
-        </div>
+      <div className="page-wrapper">
+        <Navbar />
+        <HomeMain />
+        <Footer />
       </div>
     );
   }

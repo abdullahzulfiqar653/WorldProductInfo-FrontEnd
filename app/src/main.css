@@ -15656,9 +15656,10 @@ body .product-popup {
 }
 .dropdown:hover .dropdown-box,
 .dropdown.show .dropdown-box {
+  display: flex;
   visibility: visible;
   opacity: 1;
-  top: 100%;
+  top: 0;
 }
 .dropdown:hover::after,
 .dropdown.show::after {
@@ -16021,6 +16022,7 @@ body .product-popup {
   transition: z-index 0.3s, transform 0.3s;
   transition: z-index 0.3s, transform 0.3s, -webkit-transform 0.3s;
   visibility: hidden;
+  display: none;
   opacity: 0;
   -webkit-transform: translate3d(0, -1rem, 0);
   transform: translate3d(0, -1rem, 0);

@@ -40,8 +40,7 @@ class BottomNav extends Component {
             <li key={category.categoryid} className={this.isParent(category.categoryid) ? 'has-submenu' : ''}>
               <Link
                 to={`/product-list/?categoryid=${category.categoryid}&flag=category#header`}
-                style={{ padding: '8px 10px' }}
-              >
+                style={{ padding: '8px 10px' }}>
                 {category.category_label}
               </Link>
               {this.displayCategories(catLevel + 1, category.categoryid)}
@@ -67,10 +66,9 @@ class BottomNav extends Component {
                   aria-haspopup="true"
                   aria-expanded="true"
                   data-display="static"
-                  title="Browse Categories"
-                >
+                  title="Browse Categories">
                   <i className="w-icon-category"></i>
-                  <span style={{ display: 'flex' }}>Browse Categories </span>
+                  <span style={{ display: 'flex' }}>Browse Categories</span>
                 </Link>
                 <div className="dropdown-box">{this.displayCategories()}</div>
               </div>
@@ -80,10 +78,22 @@ class BottomNav extends Component {
                     <NavLink to={'/home'}>Home</NavLink>
                   </li>
                   <li>
-                    <NavLink to={`/product-list/?categoryid=4900&flag=category#header`}>Accessories</NavLink>
+                    <NavLink to={`/product-list/?categoryid=10468&flag=category#header`}>Systems</NavLink>
                   </li>
                   <li>
                     <NavLink to={`/product-list/?categoryid=10153&flag=category#header`}>Printers</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={`/product-list/?categoryid=10145&flag=category#header`}>Display</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={`/product-list/?categoryid=10040&flag=category#header`}>Network</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={`/product-list/?categoryid=5132&flag=category#header`}>Devices</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={`/product-list/?categoryid=4900&flag=category#header`}>Accessories</NavLink>
                   </li>
                 </ul>
               </nav>
