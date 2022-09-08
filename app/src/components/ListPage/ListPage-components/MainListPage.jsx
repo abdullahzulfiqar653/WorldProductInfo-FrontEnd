@@ -20,7 +20,7 @@ function MainListPage(props) {
 
   const values = queryString.parse(location.search);
   const formBody = getFormBody(values);
-  const [Limit, setLimit] = useState(10);
+  const [Limit, setLimit] = useState(12);
   const [offSet, setOffSet] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterStatus, setFilterStatus] = useState('page-content mb-10');
@@ -87,11 +87,11 @@ function MainListPage(props) {
                 <div className="toolbox-item toolbox-show select-box">
                   <label>Results Per Page :</label>
                   <select name="count" className="form-control" onChange={handelChange}>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
+                    <option value="12">12</option>
+                    <option value="24">24</option>
                     <option value="30">30</option>
-                    <option value="40">40</option>
-                    <option value="50">50</option>
+                    <option value="42">42</option>
+                    <option value="51">51</option>
                   </select>
                 </div>
               </div>

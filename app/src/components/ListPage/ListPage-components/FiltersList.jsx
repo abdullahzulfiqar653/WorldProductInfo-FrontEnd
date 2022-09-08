@@ -41,7 +41,7 @@ function FiltersList(props) {
                     setCategoryCollapsed(false);
                   }
                 }}>
-                <span>{category ? 'Categories Filter' : ''}</span>
+                <span>{category ? 'Sub Categories' : ''}</span>
                 <span class="toggle-btn"></span>
               </h3>
               <div className="widget-body">
