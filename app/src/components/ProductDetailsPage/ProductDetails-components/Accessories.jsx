@@ -32,15 +32,25 @@ class Accessories extends Component {
                   <HashLink
                     to={`/product/${product.productid}#header`}
                     className="btn-product btn-quickview"
-                    title="Quick View"
-                  >
+                    title="Quick View">
                     Quick View
                   </HashLink>
                 </div>
               </figure>
               <div className="product-details">
-                <h4 className="product-name">
+                {/* <h4 className="product-name">
                   <HashLink to={`/product/${product.productid}#header`}>{product.product_description}</HashLink>
+                </h4> */}
+                <h4 className="product-name">
+                  {product.productDescription.map((description) =>
+                    description.type === 2 ? (
+                      <HashLink key={description.id} to={`/product/${product.productid}#header`}>
+                        {description.description}
+                      </HashLink>
+                    ) : (
+                      ''
+                    ),
+                  )}
                 </h4>
                 {/* {product.productDescription.map((description) =>
                   description.type === 3 ? (

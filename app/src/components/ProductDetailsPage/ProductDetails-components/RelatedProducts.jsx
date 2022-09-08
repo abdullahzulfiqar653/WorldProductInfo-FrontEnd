@@ -29,8 +29,7 @@ class RelatedProducts extends Component {
                   <HashLink
                     to={`/product/${product.productid}#header`}
                     className="btn-product btn-quickview"
-                    title="Quick View"
-                  >
+                    title="Quick View">
                     Quick View
                   </HashLink>
                 </div>
@@ -45,7 +44,7 @@ class RelatedProducts extends Component {
                     ),
                   )}
                 </h4>
-                {product.productDescription.map((description) =>
+                {/* {product.productDescription.map((description) =>
                   description.type === 3 ? (
                     <div className="product-desc" style={{ margin: '0', color: 'black' }}>
                       {description.description}
@@ -53,15 +52,15 @@ class RelatedProducts extends Component {
                   ) : (
                     ''
                   ),
-                )}
-                <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
+                )} */}
+                {/* <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
                   SKUS :
                   {product.productSkus.map((Sku) => (
                     <span style={{ paddingRight: '5px' }}>
                       {Sku.name} : {Sku.sku}
                     </span>
                   ))}
-                </div>
+                </div> */}
                 <div className="ratings-container">
                   <p>Mfg Number : {product.mfgpartno}</p>
                 </div>
