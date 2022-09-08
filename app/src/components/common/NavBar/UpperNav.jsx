@@ -9,7 +9,7 @@ class UpperNav extends Component {
       <div className="header-top">
         <div className="container">
           <div className="header-left">
-            <div className="welcome-msg">Welcome To GFK Etilize</div>
+            <div className="welcome-msg">Welcome To World Product Info</div>
           </div>
           <div className="header-right">
             <div className="dropdown">

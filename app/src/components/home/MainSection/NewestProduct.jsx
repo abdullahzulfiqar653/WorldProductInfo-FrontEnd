@@ -57,19 +57,13 @@ function NewestProduct(props) {
                             <HashLink to={`/product/${product.productid}#header`}>
                               <img src={getImage(product.image_url)} alt="Product" width="330" height="338" />
                             </HashLink>
-                            <div className="product-action-horizontal">
-                              <HashLink
-                                to={`/product/${product.productid}#header`}
-                                className="btn-product-icon btn-quickview w-icon-search"
-                                title="Quick View"></HashLink>
-                            </div>
                           </figure>
                           <div className="product-details">
                             <h4 className="product-name" style={{ fontSize: '13px' }}>
-                              <HashLink to={`/product/${product.productid}#header`}>
+                              {/* <HashLink to={`/product/${product.productid}#header`}>
                                 {product.product_description}
-                              </HashLink>
-                              {/* {product.productDescription.map((description) =>
+                              </HashLink> */}
+                              {product.productDescription.map((description) =>
                                 description.type === 2 ? (
                                   <HashLink to={`/product/${product.productid}#header`} key={'alpha'}>
                                     {description.description}
@@ -77,7 +71,7 @@ function NewestProduct(props) {
                                 ) : (
                                   ''
                                 ),
-                              )} */}
+                              )}
                             </h4>
                             {/* {product.productDescription.map((description) =>
                               description.type === 3 ? (
