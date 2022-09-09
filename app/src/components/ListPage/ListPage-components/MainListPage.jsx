@@ -24,15 +24,12 @@ function MainListPage(props) {
   const [offSet, setOffSet] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterStatus, setFilterStatus] = useState('page-content mb-10');
-
   useMemo(() => {
     dispatch(loadProductList(Limit, offSet, formBody));
   }, [Limit, offSet, dispatch, formBody]);
-
   // const openFilters = () => {
   //   setFilterStatus('page-content mb-10 sidebar-active');
   // };
-
   const closeFilters = () => {
     setFilterStatus('page-content mb-10');
   };
@@ -109,7 +106,7 @@ function MainListPage(props) {
                             </HashLink>
                           </figure>
                           <div className="product-details">
-                            <h4 className="product-name" style={{ fontSize: '13px' }}>
+                            <h4 className="product-name" style={{ fontSize: '13px', fontWeight: '700' }}>
                               {/* <HashLink to={`/product/${product.productid}#header`}>
                                 {product.product_description}
                               </HashLink> */}
@@ -143,7 +140,7 @@ function MainListPage(props) {
                                 </span>
                               ))}
                             </div> */}
-                            <p>Mfg Number : {product.mfgpartno}</p>
+                            <p style={{ fontWeight: '300' }}>Mfg Number : {product.mfgpartno}</p>
                           </div>
                         </div>
                       </div>

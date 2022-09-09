@@ -34,10 +34,13 @@ class SimilarProducts extends Component {
                 </div>
               </figure>
               <div className="product-details">
-                <h4 className="product-name">
+                <h4 className="product-name" style={{ fontSize: '13px', fontWeight: '700' }}>
+                  {/* <HashLink to={`/product/${product.productid}#header`}>
+                                {product.product_description}
+                              </HashLink> */}
                   {product.productDescription.map((description) =>
                     description.type === 2 ? (
-                      <HashLink key={description.id} to={`/product/${product.productid}#header`}>
+                      <HashLink to={`/product/${product.productid}#header`} key={'alpha'}>
                         {description.description}
                       </HashLink>
                     ) : (
@@ -46,25 +49,26 @@ class SimilarProducts extends Component {
                   )}
                 </h4>
                 {/* {product.productDescription.map((description) =>
-                  description.type === 3 ? (
-                    <div className="product-desc" style={{ margin: '0', color: 'black' }}>
-                      {description.description}
-                    </div>
-                  ) : (
-                    ''
-                  ),
-                )} */}
-                {/* <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
-                  SKUS :
-                  {product.productSkus.map((Sku) => (
-                    <span style={{ paddingRight: '5px' }}>
-                      {Sku.name} : {Sku.sku}
-                    </span>
-                  ))}
-                </div> */}
-                <div className="ratings-container">
-                  <p>Mfg Number : {product.mfgpartno}</p>
-                </div>
+                              description.type === 3 ? (
+                                <div
+                                  className="product-desc"
+                                  style={{ margin: '0', color: 'black' }}
+                                  key={description.type + product.productid}>
+                                  {description.description}
+                                </div>
+                              ) : (
+                                ''
+                              )
+                            )}
+                            <div className="product-desc" style={{ margin: '0', color: 'gray' }}>
+                              SKUS :
+                              {product.productSkus.map((Sku) => (
+                                <span style={{ paddingRight: '5px' }} key={product.productid + Sku.sku + Sku.name}>
+                                  {Sku.name} : {Sku.sku}
+                                </span>
+                              ))}
+                            </div> */}
+                <p style={{ fontWeight: '300' }}>Mfg Number : {product.mfgpartno}</p>
               </div>
             </div>
           ))}

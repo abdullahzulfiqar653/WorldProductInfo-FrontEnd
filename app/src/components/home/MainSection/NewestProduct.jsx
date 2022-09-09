@@ -59,7 +59,7 @@ function NewestProduct(props) {
                             </HashLink>
                           </figure>
                           <div className="product-details">
-                            <h4 className="product-name" style={{ fontSize: '13px' }}>
+                            <h4 className="product-name" style={{ fontSize: '13px', fontWeight: '700' }}>
                               {/* <HashLink to={`/product/${product.productid}#header`}>
                                 {product.product_description}
                               </HashLink> */}
@@ -93,7 +93,7 @@ function NewestProduct(props) {
                                 </span>
                               ))}
                             </div> */}
-                            <p>Mfg Number : {product.mfgpartno}</p>
+                            <p style={{ fontWeight: '300' }}>Mfg Number : {product.mfgpartno}</p>
                           </div>
                         </div>
                       </div>
