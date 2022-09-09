@@ -63,7 +63,7 @@ const ProductDescription = (props) => {
       (header) =>
         isPreasentinAttributes(header.headerid) && (
           <div key={header.headerid}>
-            <h4 style={{ marginBottom: '5px' }}>{header.header_label}</h4>
+            <h4 style={{ marginBottom: '10px', marginTop: '20px' }}>{header.header_label}</h4>
             <hr
               style={{
                 margin: '5px',
@@ -76,6 +76,7 @@ const ProductDescription = (props) => {
                     <td
                       style={{
                         padding: '0 15px',
+                        margin: '0 20px',
                         width: '200px',
                       }}
                       align="right">
@@ -240,6 +241,29 @@ const ProductDescription = (props) => {
       );
     }
   };
+
+  const checkmanuals = () => {
+    let result = false;
+    for (let i = 0; i < gallery.productElements.length; i++) {
+      if (
+        gallery.productElements[i].type === 'Manufacturer-Brochure' ||
+        gallery.productElements[i].type === 'Additional-pdf1' ||
+        gallery.productElements[i].type === 'Additional-pdf2' ||
+        gallery.productElements[i].type === 'Additional-pdf3' ||
+        gallery.productElements[i].type === 'Additional-pdf4' ||
+        gallery.productElements[i].type === 'Additional-pdf5' ||
+        gallery.productElements[i].type === 'Additional-pdf6' ||
+        gallery.productElements[i].type === 'Additional-pdf7' ||
+        gallery.productElements[i].type === 'Assembly-Instructions' ||
+        gallery.productElements[i].type === 'User-Manual' ||
+        gallery.productElements[i].type === 'Tour'
+      ) {
+        result = true;
+      }
+    }
+    return result;
+  };
+
   return (
     <div className="page-content">
       <div className="container">
@@ -369,11 +393,15 @@ const ProductDescription = (props) => {
                   </button>
                 </li>
               )}
-              <li className="nav-item">
-                <button onClick={navigation} className="nav-link" id="gallery">
-                  Gallery
-                </button>
-              </li>
+              {gallery && checkmanuals() === true ? (
+                <li className="nav-item">
+                  <button onClick={navigation} className="nav-link" id="gallery">
+                    Additional Documents
+                  </button>
+                </li>
+              ) : (
+                ''
+              )}
             </ul>
             <div className="tab-content" id="tab-content">
               {props.product &&
@@ -430,7 +458,9 @@ const ProductDescription = (props) => {
                     {basicOverview.productAttribute.map((basic) =>
                       basic.atrribute_label === 'Marketing Information' ? (
                         <>
-                          <h4 key={basic.atrribute_label}>{basic.atrribute_label}</h4>
+                          <h4 key={basic.atrribute_label} style={{ marginTop: 20 }}>
+                            {basic.atrribute_label}
+                          </h4>
                           <div key={basic.atrributeid}>{Parser(basic.displayvalue)}</div>
                         </>
                       ) : (
@@ -443,7 +473,9 @@ const ProductDescription = (props) => {
                   ? basicOverview.productAttribute.map((basic) =>
                       basic.atrribute_label === 'Package Contents' ? (
                         <>
-                          <h4 key={basic.atrribute_label}>{basic.atrribute_label}</h4>
+                          <h4 key={basic.atrribute_label} style={{ marginTop: 20 }}>
+                            {basic.atrribute_label}
+                          </h4>
                           <div key={basic.atrributeid}>{Parser(basic.displayvalue)}</div>
                         </>
                       ) : (
@@ -458,17 +490,20 @@ const ProductDescription = (props) => {
                 onLoad={() => show('#basic-overview-section', 'basic-overview')}>
                 {specifications && tabSpecifications()}
               </div>
-              <div className="tab-pane" id="gallery-section">
-                <div className="row mb-4">
-                  <div className="col-md-6 mb-5">
-                    <h4 className="title tab-pane-title font-weight-bold mb-2">Gallery</h4>
-                    <div className="row manuals">
-                      {gallery && gallery.productElements.map((element) => viewManuals(element.type))}
+              {gallery && checkmanuals() === true ? (
+                <div className="tab-pane" id="gallery-section">
+                  <div className="row mb-4">
+                    <div className="col-md-6 mb-5">
+                      {/* <div className="row manuals">
+                        {gallery.productElements.map((element) => viewManuals(element.type))}
+                      </div> */}
+                      {gallery.productElements.map((element) => viewManuals(element.type))}
                     </div>
                   </div>
-                  {gallery && viewGallery('gallery')}
                 </div>
-              </div>
+              ) : (
+                ''
+              )}
             </div>
             {similarProducts && similarProducts.count !== 0 && <SimilarProducts products={similarProducts.results} />}
             {accessories && accessories.count !== 0 && <Accessories products={accessories.results} />}
