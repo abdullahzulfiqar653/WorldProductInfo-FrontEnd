@@ -313,7 +313,7 @@ const ProductDescription = (props) => {
                     <ul className="list-type-check list-style-none">
                       {props.product !== undefined
                         ? props.product.productDescription.map((description) =>
-                            description.type !== 2 && description.type !== 5 && description.type !== 6 ? (
+                            description.type !== 2 && description.type !== 5 && description.type !== 4 ? (
                               <li key={`${description.type}20000`}>{description.description}</li>
                             ) : (
                               ''
@@ -410,7 +410,7 @@ const ProductDescription = (props) => {
             <div className="tab-content" id="tab-content">
               {props.product &&
                 props.product.productDescription.map((description) =>
-                  description.type === 5 || description.type === 6 ? (
+                  description.type === 5 || description.type === 4 ? (
                     <div
                       className="tab-pane"
                       id="enhanced-overview-section"
