@@ -373,7 +373,7 @@ const ProductDescription = (props) => {
             <ul className="nav nav-tabs" role="tablist" id="tabs">
               {props.product &&
                 props.product.productDescription.map((description) =>
-                  description.type === 5 || description.type === 6 ? (
+                  description.type === 5 || description.type === 4 ? (
                     <li className="nav-item">
                       <button className="nav-link" onClick={navigation} id="enhanced-overview" key={101}>
                         Enhanced View
