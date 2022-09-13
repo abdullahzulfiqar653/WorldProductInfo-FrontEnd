@@ -13,8 +13,7 @@ function Products() {
   const dispatch = useDispatch();
   const state = useSelector((s) => s);
   const loading = state.loading;
-  let products = {};
-  products = state.products;
+  const products = state.products;
 
   const values = queryString.parse(location.search);
   const formBody = getFormBody(values);
@@ -100,7 +99,7 @@ function Products() {
                             </HashLink>
                           ) : (
                             ''
-                          ),
+                          )
                         )}
                       </h4>
                       {/* {product.productDescription.map((description) =>
