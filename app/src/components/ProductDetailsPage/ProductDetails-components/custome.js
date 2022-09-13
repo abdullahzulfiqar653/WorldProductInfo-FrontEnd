@@ -10,6 +10,7 @@ export function show(which, id) {
       tab.firstChild.classList.remove('active');
     }
   });
+
   html.forEach((div) => {
     if (div === document.querySelector(which)) {
       div.classList.add('active');

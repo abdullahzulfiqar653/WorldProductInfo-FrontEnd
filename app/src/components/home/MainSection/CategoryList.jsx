@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
-import '../../ListPage/ListPage-components/scroll.css';
+import '../../ListPage/childs/ListDetails/childs/scroll.css';
 import { categoryList } from '../../common/NavBar/categories';
+
 function CategoryList(props) {
   const [categoryCollapsed, setCategoryCollapsed] = useState(false);
   return (
