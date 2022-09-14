@@ -1,12 +1,12 @@
-import { HashLink } from 'react-router-hash-link';
 import React, { useMemo } from 'react';
+import CategoryList from './CategoryList';
+import IntroSection from './IntroSection';
+import { HashLink } from 'react-router-hash-link';
 import LargeLoader from '../../common/LargeLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { MEDIA_URL } from '../../../constant/constantURL';
 import { loadLatestProducts } from '../../../actions/actions';
-import '../../ProductDetailsPage/ProductDetails-components/css/button.css';
-import CategoryList from './CategoryList';
-import IntroSection from './IntroSection';
+import '../../ProductDetailsPage/ProductDetails-components/childs/tabs/css/button.css';
 
 function NewestProduct(props) {
   const dispatch = useDispatch();

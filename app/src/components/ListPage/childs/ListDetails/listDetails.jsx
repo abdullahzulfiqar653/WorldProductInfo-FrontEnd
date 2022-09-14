@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Products from './childs/products';
 import FiltersList from './childs/FiltersList';
 import ProductNav from '../../../common/productnav';
-import '../../../ProductDetailsPage/ProductDetails-components/css/button.css';
+import '../../../ProductDetailsPage/ProductDetails-components/childs/tabs/css/button.css';
 
 function ListDetails() {
   const [filterStatus, setFilterStatus] = useState('page-content mb-10');
