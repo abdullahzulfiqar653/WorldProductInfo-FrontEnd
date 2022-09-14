@@ -66,7 +66,7 @@ export const loadProductList = (limit, offset, params) => async (dispatch) => {
     });
 };
 
-export const productLoaded = (productid) => async (dispatch) => {
+export const loadProductDetail = (productid) => async (dispatch) => {
   dispatch({
     type: actions.REQUEST_START,
   });

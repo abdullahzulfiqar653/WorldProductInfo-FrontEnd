@@ -19,3 +19,8 @@ export function show(which, id) {
     }
   });
 }
+
+export const urlList = [
+  { link: '/home', title: 'Home' },
+  { link: '', title: 'Products List' },
+];

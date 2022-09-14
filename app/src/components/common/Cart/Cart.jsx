@@ -15,16 +15,14 @@ class Cart extends Component {
             this.setState({
               cartstate: 'dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2',
             })
-          }
-        ></div>
+          }></div>
         <Link
           onClick={() =>
             this.setState({
               cartstate: 'dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2 opened',
             })
           }
-          className="cart-toggle label-down link"
-        >
+          className="cart-toggle label-down link">
           <i className="w-icon-cart">
             <span className="cart-count">0</span>
           </i>

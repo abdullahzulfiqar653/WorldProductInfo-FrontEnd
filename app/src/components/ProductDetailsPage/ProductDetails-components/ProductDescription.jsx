@@ -1,11 +1,11 @@
 import './css/Tabs.css';
 import './css/button.css';
 import { show } from './custome';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import Parser from 'html-react-parser';
 import Accessories from './Accessories';
 import SimilarProducts from './SimilarProducts';
-import LargeLoader from '../../common/LargeLoader';
+import ProductMainDetail from './childs/productMainDetail/productMainDetail';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   loadAccessories,
@@ -14,8 +14,6 @@ import {
   loadSimilarProducts,
   loadSpecifications,
 } from '../../../actions/actions';
-import { FreeMode, Navigation, Thumbs } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 const ProductDescription = (props) => {
   const dispatch = useDispatch();
@@ -30,12 +28,10 @@ const ProductDescription = (props) => {
 
   const state = useSelector((s) => s);
   const gallery = state.gallery;
-  const loading = state.loading;
   const accessories = state.accessories;
   const basicOverview = state.basicOverview;
   const specifications = state.specifications;
   const similarProducts = state.similarProducts;
-
   const navigation = (e) => {
     show(`#${e.target.id}-section`, e.target);
   };
@@ -94,107 +90,6 @@ const ProductDescription = (props) => {
         ),
     );
   };
-
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
-  const viewGallery = (section = null) => (
-    <div className="col-md-6 mb-5">
-      <div className="banner banner-video product-video br-xs">
-        <Swiper
-          loop={false}
-          spaceBetween={10}
-          navigation={true}
-          thumbs={{ swiper: thumbsSwiper }}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper2">
-          {gallery && gallery.productElements.length > 0 ? (
-            gallery.productElements.map((element) =>
-              element.type !== 'Manufacturer-Brochure' &&
-              element.type !== 'Additional-pdf1' &&
-              element.type !== 'Additional-pdf2' &&
-              element.type !== 'Additional-pdf3' &&
-              element.type !== 'Additional-pdf4' &&
-              element.type !== 'Additional-pdf5' &&
-              element.type !== 'Additional-pdf6' &&
-              element.type !== 'Additional-pdf7' &&
-              element.type !== 'Energy-Guide' &&
-              element.type !== 'Assembly-Instructions' &&
-              element.type !== '360-main-view' &&
-              element.type !== '220-Canvas' &&
-              element.type !== 'Tour' &&
-              element.type !== 'User-Manual' ? (
-                <SwiperSlide>
-                  <img
-                    src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg?noimage=logo`}
-                    alt="banner"
-                    id={section ? 'gallery-image' : 'swiper-image'}
-                    width="610"
-                    height="300"
-                  />
-                  <h3 id={section ? 'gallery-image-tag' : 'swiper-image-tag'} style={{ textAlign: 'center' }}>
-                    {element.type}
-                  </h3>
-                </SwiperSlide>
-              ) : (
-                ''
-              ),
-            )
-          ) : (
-            <SwiperSlide>
-              <img
-                src={`https://content.etilize.com/main/${props.product.productid}.jpg?noimage=logo`}
-                alt="banner"
-                id={section ? 'gallery-image' : 'swiper-image'}
-              />
-              <h3 id={section ? 'gallery-image-tag' : 'swiper-image-tag'} style={{ textAlign: 'center' }}>
-                Logo
-              </h3>
-            </SwiperSlide>
-          )}
-        </Swiper>
-      </div>
-      <div className="row mb-4 thumb" style={{ maxWidth: '500px', overflow: 'hidden' }}>
-        <Swiper
-          onSwiper={setThumbsSwiper}
-          loop={false}
-          spaceBetween={10}
-          slidesPerView={4}
-          freeMode={true}
-          watchSlidesProgress={true}
-          navigation={true}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper">
-          {gallery.productElements.map((element) =>
-            element.type !== 'Manufacturer-Brochure' &&
-            element.type !== 'Additional-pdf1' &&
-            element.type !== 'Additional-pdf2' &&
-            element.type !== 'Additional-pdf3' &&
-            element.type !== 'Additional-pdf4' &&
-            element.type !== 'Additional-pdf5' &&
-            element.type !== 'Additional-pdf6' &&
-            element.type !== 'Additional-pdf7' &&
-            element.type !== 'Energy-Guide' &&
-            element.type !== 'Assembly-Instructions' &&
-            element.type !== '360-main-view' &&
-            element.type !== '220-Canvas' &&
-            element.type !== 'Tour' &&
-            element.type !== 'User-Manual' ? (
-              <SwiperSlide>
-                <img
-                  onClick={() => console.log(setThumbsSwiper)}
-                  src={`https://content.etilize.com/${element.type}/${props.product.productid}.jpg?noimage=logo`}
-                  alt={element.type}
-                  // onClick={(e) => galleryShow(e.target.src, e.target.alt, section ? 'gallery-image' : 'swiper-image')}
-                />
-              </SwiperSlide>
-            ) : (
-              ''
-            ),
-          )}
-        </Swiper>
-      </div>
-    </div>
-  );
 
   const viewManuals = (type) => {
     if (
@@ -267,108 +162,11 @@ const ProductDescription = (props) => {
     }
     return result;
   };
-
   return (
     <div className="page-content">
       <div className="container">
         <div className="main-content">
-          {!loading ? (
-            <div className="product product-single row">
-              {gallery && viewGallery()}
-              <div className="col-md-6 mb-4 mb-md-6">
-                <div className="product-details" data-sticky-options="{'minWidth': 767}">
-                  {props.product !== undefined
-                    ? props.product.productDescription.map((title) =>
-                        title.type === 2 ? (
-                          <h1 key={title.type} className="product-title">
-                            {title.description}
-                          </h1>
-                        ) : (
-                          ''
-                        ),
-                      )
-                    : ''}
-                  <div className="product-bm-wrapper">
-                    <div className="product-meta">
-                      <div className="product-sku">
-                        SKUS :
-                        {props.product !== undefined
-                          ? props.product.productSkus.map((sku) => (
-                              <span
-                                style={{ padding: '0 3px' }}
-                                key={props.product.productSkus.map((s) =>
-                                  s.name !== sku.name && s.sku === sku.sku ? sku.name : sku.sku,
-                                )}>
-                                {sku.name} : {sku.sku}
-                              </span>
-                            ))
-                          : ''}
-                      </div>
-                    </div>
-                  </div>
-
-                  <hr className="product-divider" />
-
-                  <div className="product-short-desc">
-                    <ul className="list-type-check list-style-none">
-                      {props.product !== undefined
-                        ? props.product.productDescription.map((description) =>
-                            description.type !== 2 && description.type !== 5 && description.type !== 4 ? (
-                              <li key={`${description.type}20000`}>{description.description}</li>
-                            ) : (
-                              ''
-                            ),
-                          )
-                        : ''}
-                    </ul>
-                  </div>
-                  <div className="ratings-container">
-                    <div className="ratings-full">
-                      <span className="ratings" style={{ width: '0%' }}></span>
-                    </div>
-                  </div>
-                  <hr className="product-divider" />
-                  <div className="product-variation-price">
-                    <span></span>
-                  </div>
-
-                  <div className="fix-bottom product-sticky-content sticky-content">
-                    <div className="product-form container">
-                      <div className="product-qty-form">
-                        <div className="input-group">
-                          <input
-                            className="quantity form-control"
-                            type="number"
-                            min="1"
-                            max="10000000"
-                            // value={1}
-                            placeholder="Quantity"
-                          />
-                        </div>
-                      </div>
-                      <button className="btn btn-primary btn-cart">
-                        <i className="w-icon-cart"></i>
-                        <span>Add to Cart</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div
-              className="row"
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                height: '70vh',
-              }}>
-              <div style={{ width: '100px' }}>
-                <LargeLoader />
-              </div>
-            </div>
-          )}
+          {props.product && <ProductMainDetail product={props.product} />}
           <div className="tab tab-nav-boxed tab-nav-underline product-tabs">
             <ul className="nav nav-tabs" role="tablist" id="tabs">
               {props.product &&

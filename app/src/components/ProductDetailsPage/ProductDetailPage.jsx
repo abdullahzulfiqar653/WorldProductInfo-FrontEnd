@@ -1,17 +1,16 @@
-import React, { useMemo } from 'react';
 import Footer from '../common/Footer';
-
+import React, { useMemo } from 'react';
 import Navbar from '../common/NavBar/Navbar';
 import LargeLoader from '../common/LargeLoader';
-import { productLoaded } from '../../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import DetailPageContent from './ProductDetails-components/DetailPageContent';
+import { loadProductDetail } from '../../actions/actions';
+import DetailPage from './ProductDetails-components/DetailPage';
 
 function ProductDetailPage(props) {
   const productid = props.match.params.productid;
   const dispatch = useDispatch();
   useMemo(() => {
-    dispatch(productLoaded(productid));
+    dispatch(loadProductDetail(productid));
   }, [productid, dispatch]);
   const state = useSelector((s) => s);
   const product = state.singleProduct;
@@ -19,7 +18,7 @@ function ProductDetailPage(props) {
     <div className="page-wrapper">
       <Navbar />
       {product ? (
-        <DetailPageContent id={productid} product={product} />
+        <DetailPage id={productid} product={product} />
       ) : (
         <div
           className="row"
@@ -28,8 +27,7 @@ function ProductDetailPage(props) {
             alignItems: 'center',
             width: '100%',
             height: '70vh',
-          }}
-        >
+          }}>
           <div style={{ width: '100px' }}>
             <LargeLoader />
           </div>

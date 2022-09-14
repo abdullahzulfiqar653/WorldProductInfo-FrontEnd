@@ -270,7 +270,7 @@ table {
   border-right: 2px solid rgba(51, 102, 153, 0.4) !important;
   border-bottom: 2px solid #336699 !important;
   border-left: 2px solid rgba(51, 102, 153, 0.4) !important;
-  content: "";
+  content: '';
   display: block;
   height: 20px;
   top: 50%;
@@ -286,10 +286,10 @@ table {
   position: relative;
 }
 .load-more-overlay.loading::after {
-  content: "";
+  content: '';
 }
 .load-more-overlay::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;
@@ -1446,7 +1446,7 @@ table {
   padding: 0;
 }
 .grid::after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }
@@ -2727,8 +2727,8 @@ blockquote {
   display: block;
   left: 0;
   top: 1px;
-  content: "";
-  font-family: "wolmart";
+  content: '';
+  font-family: 'wolmart';
   font-weight: 600;
   font-size: 1.3rem;
 }
@@ -2995,7 +2995,7 @@ blockquote {
 }
 
 .font-secondary {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 .text-left {
@@ -3052,7 +3052,7 @@ blockquote {
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
-  content: "";
+  content: '';
 }
 .text-hover-underline:hover::after {
   -webkit-transform: scaleX(1);
@@ -3197,7 +3197,7 @@ blockquote {
 
 .swiper-container-rtl .swiper-button-next::after,
 .swiper-container-rtl .swiper-button-prev::after {
-  content: "";
+  content: '';
 }
 .swiper-container-rtl .swiper-button-next::before {
   /* content: ""; */
@@ -3217,11 +3217,11 @@ blockquote {
 }
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  content: "";
+  content: '';
 }
 .swiper-button-next::before,
 .swiper-button-prev::before {
-  font-family: "Wolmart";
+  font-family: 'Wolmart';
 }
 .swiper-button-next.swiper-button-disabled,
 .swiper-button-prev.swiper-button-disabled {
@@ -3642,7 +3642,7 @@ blockquote {
   top: 50%;
   right: 2rem;
   margin-top: -0.1rem;
-  font-family: "wolmart";
+  font-family: 'wolmart';
   font-size: 1.2rem;
   font-weight: 400;
   color: #333;
@@ -3656,7 +3656,7 @@ blockquote {
 
 .expand::after,
 .collapse::after {
-  content: "";
+  content: '';
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
@@ -3735,7 +3735,7 @@ blockquote {
 
 .accordion-plus .expand::before,
 .accordion-plus .collapse::before {
-  content: "";
+  content: '';
   width: 1px;
   height: 1rem;
   right: 2.4rem;
@@ -3746,7 +3746,7 @@ blockquote {
 }
 .accordion-plus .expand::after,
 .accordion-plus .collapse::after {
-  content: "";
+  content: '';
   width: 1rem;
   height: 1px;
   -webkit-transition: -webkit-transform 0.3s;
@@ -3852,8 +3852,8 @@ blockquote {
 }
 .alert ul li::before {
   position: absolute;
-  content: "";
-  font-family: "wolmart";
+  content: '';
+  font-family: 'wolmart';
   font-weight: 600;
   font-size: 1.3rem;
   left: -1.9rem;
@@ -4692,19 +4692,14 @@ blockquote {
 }
 
 .banner-border-gradient::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 69%;
   padding-top: 30%;
-  background: linear-gradient(
-    30deg,
-    #999999 0%,
-    #999999 50%,
-    transparent 50.1%
-  );
+  background: linear-gradient(30deg, #999999 0%, #999999 50%, transparent 50.1%);
 }
 
 .banner-divider {
@@ -4738,10 +4733,10 @@ blockquote {
   color: #fff;
 }
 .banner-video .btn-play-video::before {
-  content: "";
+  content: '';
   position: absolute;
   margin-left: 0.2rem;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-size: 2.8rem;
   font-weight: 600;
   color: #333;
@@ -4782,7 +4777,7 @@ blockquote {
   display: block;
 }
 .banner-video.playing .btn-play-video::before {
-  content: "";
+  content: '';
 }
 
 @media (max-width: 1199px) {
@@ -4840,13 +4835,13 @@ blockquote {
   opacity: 0.8;
 }
 .breadcrumb li:not(:last-child)::after {
-  content: "";
+  content: '';
   position: relative;
   display: inline-block;
   margin-left: 0.5rem;
   font-size: 1rem;
   font-weight: 500;
-  font-family: "wolmart";
+  font-family: 'wolmart';
 }
 .breadcrumb li:not(:last-child):hover {
   opacity: 1;
@@ -5116,7 +5111,7 @@ blockquote {
   position: relative;
 }
 .post-mask::before {
-  content: "";
+  content: '';
   display: block;
   height: 50%;
   position: absolute;
@@ -5124,13 +5119,7 @@ blockquote {
   left: 0;
   right: 0;
   opacity: 0.75;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(rgba(125, 185, 232, 0)),
-    to(#000)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(125, 185, 232, 0)), to(#000));
   background: linear-gradient(to bottom, rgba(125, 185, 232, 0) 0%, #000 100%);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -5181,8 +5170,8 @@ blockquote {
   padding-left: 2.8rem;
 }
 .post-mask .post-comment::before {
-  content: "";
-  font-family: "wolmart";
+  content: '';
+  font-family: 'wolmart';
   position: absolute;
   font-size: 1.8rem;
   left: 0;
@@ -5301,14 +5290,10 @@ blockquote {
   line-height: 1;
   text-transform: uppercase;
   text-align: center;
-  -webkit-transition: color 0.3s, border-color 0.3s, background-color 0.3s,
-    -webkit-box-shadow 0.3s;
-  transition: color 0.3s, border-color 0.3s, background-color 0.3s,
-    -webkit-box-shadow 0.3s;
-  transition: color 0.3s, border-color 0.3s, background-color 0.3s,
-    box-shadow 0.3s;
-  transition: color 0.3s, border-color 0.3s, background-color 0.3s,
-    box-shadow 0.3s, -webkit-box-shadow 0.3s;
+  -webkit-transition: color 0.3s, border-color 0.3s, background-color 0.3s, -webkit-box-shadow 0.3s;
+  transition: color 0.3s, border-color 0.3s, background-color 0.3s, -webkit-box-shadow 0.3s;
+  transition: color 0.3s, border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+  transition: color 0.3s, border-color 0.3s, background-color 0.3s, box-shadow 0.3s, -webkit-box-shadow 0.3s;
   white-space: nowrap;
   cursor: pointer;
 }
@@ -5408,7 +5393,7 @@ blockquote {
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
-  content: "";
+  content: '';
 }
 
 .btn-link {
@@ -5460,7 +5445,7 @@ blockquote {
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
-  content: "";
+  content: '';
 }
 .btn-underline.sm::after {
   width: 46%;
@@ -6264,9 +6249,9 @@ blockquote {
   line-height: 1.9;
 }
 .category-content .category-list li::before {
-  content: "";
+  content: '';
   color: inherit;
-  font-family: "wolmart";
+  font-family: 'wolmart';
   font-size: 1.3rem;
   margin-right: 0.3rem;
   margin-left: -0.3rem;
@@ -6778,7 +6763,7 @@ blockquote {
 }
 .banner-newsletter::before,
 .banner-newsletter::after {
-  content: "";
+  content: '';
   position: absolute;
   height: 59.2rem;
   width: 58.8rem;
@@ -6821,11 +6806,11 @@ blockquote {
   min-height: 4.8rem;
 }
 .banner-newsletter .input-wrapper::before {
-  content: "";
+  content: '';
   display: inline-block;
   position: absolute;
   font-weight: 600;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-size: 1.8rem;
   color: #666;
   line-height: 1;
@@ -6907,7 +6892,7 @@ blockquote {
 }
 
 .sale-banner::before {
-  content: "";
+  content: '';
   position: absolute;
   z-index: 2;
   left: 1px;
@@ -6952,7 +6937,7 @@ blockquote {
 }
 .sale-banner .banner-subtitle::before,
 .sale-banner .banner-subtitle::after {
-  content: "";
+  content: '';
   position: absolute;
   right: -24px;
   top: -25px;
@@ -7168,8 +7153,7 @@ blockquote {
   display: block;
   padding: 3.1rem 0 3.6rem;
   background-color: #fff;
-  -webkit-box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.05),
-    0 0 5px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.05), 0 0 5px rgba(0, 0, 0, 0.05);
   box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.05), 0 0 5px rgba(0, 0, 0, 0.05);
   border-radius: 1rem;
 }
@@ -7192,8 +7176,7 @@ blockquote {
   -webkit-transition: fill 0.5s, stroke-dashoffset 6s, -webkit-transform 0.3s;
   transition: fill 0.5s, stroke-dashoffset 6s, -webkit-transform 0.3s;
   transition: transform 0.3s, fill 0.5s, stroke-dashoffset 6s;
-  transition: transform 0.3s, fill 0.5s, stroke-dashoffset 6s,
-    -webkit-transform 0.3s;
+  transition: transform 0.3s, fill 0.5s, stroke-dashoffset 6s, -webkit-transform 0.3s;
 }
 .element-section .element:hover p {
   color: #336699;
@@ -7225,20 +7208,20 @@ blockquote {
     Wolmart Font icon
 -----------------------------------------*/
 @font-face {
-  font-family: "wolmart";
-  src: url("./assets/fonts/wolmart.eot?png09e");
-  src: url("./assets/fonts/wolmart.woff?png09e") format("woff"),
-    url("./assets/fonts/wolmart.eot?png09e#iefix") format("embedded-opentype"),
-    url("./assets/fonts/wolmart.ttf?png09e") format("truetype"),
-    url("./assets/fonts/wolmart.svg?png09e#wolmart") format("svg");
+  font-family: 'wolmart';
+  src: url('./assets/fonts/wolmart.eot?png09e');
+  src: url('./assets/fonts/wolmart.woff?png09e') format('woff'),
+    url('./assets/fonts/wolmart.eot?png09e#iefix') format('embedded-opentype'),
+    url('./assets/fonts/wolmart.ttf?png09e') format('truetype'),
+    url('./assets/fonts/wolmart.svg?png09e#wolmart') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
-[class^="w-icon-"],
-[class*=" w-icon-"] {
+[class^='w-icon-'],
+[class*=' w-icon-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "wolmart" !important;
+  font-family: 'wolmart' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -7251,555 +7234,555 @@ blockquote {
 }
 
 .w-icon-shipping:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-truck2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-comments-solid:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-heart-full:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-instagram:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-youtube:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-pinterest:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-pinterest-p:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-google:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-twitter:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-facebook:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-minus:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-plus:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-angle-down:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-angle-up:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-angle-left:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-angle-right:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-hamburger:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-star-square-full:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-exclamation-triangle:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-times-circle:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-cog:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-star-square:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-exclamation-circle:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-check-solid:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-check:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-comments:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-envelop:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-envelop2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-youtube-solid:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-times-solid:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-call:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-call2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-cart:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-category:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-bars:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-compare:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-computer:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-electronics:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-tshirt:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-account:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-search2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-android:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-ios:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-art-class:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-bag:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-basketball:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-bathtub:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-bed:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-birthday-cake:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-bow:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-bridge-lamp:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-calendar:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-camera:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-cart2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-dots-circle:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-chat:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-desktop:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-dish:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-display:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-download:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-envelop-closed:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-fax:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-furniture:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-gamepad:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-gift:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-grid:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-headphone:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-heartbeat:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-home:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-honour:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-hotline:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-ice-cream:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-list:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-mobile:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-money:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-motocycle:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-net-world:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-orders:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-phone:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-return:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-rice-cooker:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-ruby:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-search:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-search-minus:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-search-plus:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-service:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-shopify:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-sofa:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-sport:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-star:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-star-full:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-table:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-table2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-truck:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-tshirt2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-user:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-wallet:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-heart:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-gift2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-dashboard:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-power-off:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-wallet2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-products:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-reports:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-return2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-reviews:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-return3:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-cog2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-ship-station:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-social:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-store-seo:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-store:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-support:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-tools:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-vendor-store:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-verification:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-visit:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-withdraw:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-rotate-3d:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-movie:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-prev:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-play:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-next:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-map-marker:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-long-arrow-down:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-long-arrow-left:before {
-  content: "f177";
+  content: 'f177';
 }
 
 .w-icon-long-arrow-right:before {
-  content: "f30b";
+  content: 'f30b';
 }
 
 .w-icon-long-arrow-up:before {
-  content: "f176";
+  content: 'f176';
 }
 
 .w-icon-comment:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-envelop3:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-logout:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-envelop4:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-orders2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-quote:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-sale:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-heart2:before {
-  content: "";
+  content: '';
 }
 
 .w-icon-zoom:before {
-  content: "";
+  content: '';
 }
 
 /*------------------------
@@ -7910,8 +7893,8 @@ textarea {
 }
 .select-box::before,
 .select-menu::before {
-  content: "";
-  font-family: "Wolmart";
+  content: '';
+  font-family: 'Wolmart';
   font-size: 9px;
   font-weight: 600;
   line-height: 1;
@@ -8039,7 +8022,7 @@ textarea {
   padding-left: 3rem;
 }
 .custom-radio .custom-control-label::after {
-  content: "";
+  content: '';
   position: absolute;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -8054,29 +8037,26 @@ textarea {
   border: 1px solid;
   border-radius: 2px;
   color: #999;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-size: 1rem;
   font-weight: 900;
   width: 1.8rem;
   height: 1.8rem;
   cursor: pointer;
-  -webkit-transition: color 0.3s, background-color 0.3s, content 0.3s,
-    border 0.3s;
+  -webkit-transition: color 0.3s, background-color 0.3s, content 0.3s, border 0.3s;
   transition: color 0.3s, background-color 0.3s, content 0.3s, border 0.3s;
 }
 .custom-radio .custom-control-label.round::after {
   border-radius: 50%;
 }
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
-  content: "";
+  content: '';
   background-color: #336699;
   color: #fff;
   border: 2px solid #336699;
   padding-left: 2px;
 }
-.custom-radio
-  .custom-control-input:checked
-  ~ .custom-control-label.color-dark::after {
+.custom-radio .custom-control-input:checked ~ .custom-control-label.color-dark::after {
   background-color: #333;
   border-color: #333;
 }
@@ -8096,7 +8076,7 @@ textarea {
   cursor: pointer;
 }
 .custom-checkbox + label::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -8115,13 +8095,13 @@ textarea {
 }
 .custom-checkbox:checked + label::before,
 .custom-checkbox.checked + label::before {
-  content: "";
+  content: '';
   border-color: #222;
   background: #222;
   color: #fff;
   font-size: 9px;
   font-weight: 600;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   text-align: center;
 }
 
@@ -8155,7 +8135,7 @@ textarea {
 }
 .user-icon::before,
 .user-icon::after {
-  content: "";
+  content: '';
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -8166,20 +8146,16 @@ textarea {
   border-radius: 50%;
   margin-bottom: 1px;
   border: 1px solid #333;
-  -webkit-box-shadow: 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 2px #333,
-    0px 0px 1px #333, 0px 0px 2px #333;
-  box-shadow: 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 2px #333,
-    0px 0px 1px #333, 0px 0px 2px #333;
+  -webkit-box-shadow: 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 2px #333, 0px 0px 1px #333, 0px 0px 2px #333;
+  box-shadow: 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 2px #333, 0px 0px 1px #333, 0px 0px 2px #333;
 }
 .user-icon::after {
   width: 22px;
   height: 12px;
   border-radius: 7px 7px 0 0;
   border: 1px solid #333;
-  -webkit-box-shadow: 0px 0px 2px #333, 0px 0px 1px #333, 0px 0px 1px #333,
-    0px 0px 1px #333, 0px 0px 1px #333;
-  box-shadow: 0px 0px 2px #333, 0px 0px 1px #333, 0px 0px 1px #333,
-    0px 0px 1px #333, 0px 0px 1px #333;
+  -webkit-box-shadow: 0px 0px 2px #333, 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 1px #333;
+  box-shadow: 0px 0px 2px #333, 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 1px #333, 0px 0px 1px #333;
 }
 
 .minicart-icon {
@@ -8193,7 +8169,7 @@ textarea {
   border-color: #333333;
 }
 .minicart-icon::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: -0.3em;
@@ -8206,7 +8182,7 @@ textarea {
   border-bottom: none;
 }
 .minicart-icon::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 29px;
   height: 24px;
@@ -8225,7 +8201,7 @@ textarea {
 .menu-icon::before,
 .menu-icon::after {
   display: block;
-  content: "";
+  content: '';
   width: 100%;
 }
 .menu-icon::before {
@@ -8239,16 +8215,16 @@ textarea {
 }
 
 .icon-angle-left::before {
-  content: "";
+  content: '';
 }
 
 .icon-angle-right::before {
-  content: "";
+  content: '';
 }
 
 .icon-angle-left,
 .icon-angle-right {
-  font-family: "wolmart";
+  font-family: 'wolmart';
   font-style: normal;
 }
 
@@ -8265,7 +8241,7 @@ textarea {
   display: block;
   position: absolute;
   background-color: #ccc;
-  content: "";
+  content: '';
 }
 .close-icon::before {
   height: 2px;
@@ -8526,7 +8502,7 @@ textarea {
   height: 100%;
 }
 .instagram a::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   right: 0;
@@ -8539,14 +8515,14 @@ textarea {
   z-index: 1;
 }
 .instagram a::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%) rotate(90deg) scale(2);
   transform: translate(-50%, -50%) rotate(90deg) scale(2);
   font-size: 3rem;
-  font-family: "wolmart";
+  font-family: 'wolmart';
   color: #fff;
   opacity: 0;
   -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
@@ -8649,7 +8625,7 @@ textarea {
 }
 
 .mfp-container:before {
-  content: "";
+  content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
@@ -8843,7 +8819,7 @@ button::-moz-focus-inner {
 
 .mfp-arrow:before,
 .mfp-arrow:after {
-  content: "";
+  content: '';
   display: block;
   width: 0;
   height: 0;
@@ -8947,7 +8923,7 @@ img.mfp-img {
 }
 
 .mfp-figure:after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 40px;
@@ -8998,8 +8974,7 @@ img.mfp-img {
   cursor: pointer;
 }
 
-@media screen and (max-width: 800px) and (orientation: landscape),
-  screen and (max-height: 300px) {
+@media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
   /**
        * Remove all paddings around the image on small screen
        */
@@ -9099,8 +9074,7 @@ img.mfp-img {
   -webkit-transition: opacity 0.3s, left 0.3s ease-out, -webkit-transform 0.3s;
   transition: opacity 0.3s, left 0.3s ease-out, -webkit-transform 0.3s;
   transition: opacity 0.3s, left 0.3s ease-out, transform 0.3s;
-  transition: opacity 0.3s, left 0.3s ease-out, transform 0.3s,
-    -webkit-transform 0.3s;
+  transition: opacity 0.3s, left 0.3s ease-out, transform 0.3s, -webkit-transform 0.3s;
   z-index: 3000;
 }
 .minipopup-box.show {
@@ -9172,7 +9146,7 @@ img.mfp-img {
 .overlay-light figure::after,
 .overlay-light figure > a::after,
 .overlay-light.banner::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;
@@ -9183,8 +9157,7 @@ img.mfp-img {
   -webkit-transition: opacity 0.3s, background 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, background 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, background 0.3s, transform 0.3s;
-  transition: opacity 0.3s, background 0.3s, transform 0.3s,
-    -webkit-transform 0.3s;
+  transition: opacity 0.3s, background 0.3s, transform 0.3s, -webkit-transform 0.3s;
 }
 .overlay-dark:hover figure::after,
 .overlay-dark:hover figure > a::after,
@@ -9366,7 +9339,7 @@ img.mfp-img {
   white-space: nowrap;
 }
 .page-item-dots::before {
-  content: "...";
+  content: '...';
   display: inline-block;
   vertical-align: middle;
   font-size: 0.9rem;
@@ -9428,7 +9401,7 @@ img.mfp-img {
   color: #fff;
   font-size: 1.6rem;
   font-weight: 500;
-  font-family: "wolmart";
+  font-family: 'wolmart';
   border: 0;
   opacity: 0.5;
   right: 10%;
@@ -9446,7 +9419,7 @@ img.mfp-img {
 }
 
 .pswp__button--arrow--right::before {
-  content: "";
+  content: '';
 }
 
 .pswp__button--arrow--left {
@@ -9454,7 +9427,7 @@ img.mfp-img {
   right: auto;
 }
 .pswp__button--arrow--left::before {
-  content: "";
+  content: '';
 }
 
 .pswp {
@@ -9476,10 +9449,8 @@ img.mfp-img {
 
 .pswp__top-bar,
 .pswp__caption {
-  -webkit-transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1),
-    background-color 0.3s 0.5s;
-  transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1),
-    background-color 0.3s 0.5s;
+  -webkit-transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1), background-color 0.3s 0.5s;
+  transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1), background-color 0.3s 0.5s;
 }
 
 .pswp:not(.pswp--animated-in) .pswp__top-bar,
@@ -9526,7 +9497,7 @@ img.mfp-img {
   border-radius: 50%;
   font-size: 1.6rem;
   font-weight: 900;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   text-align: center;
   opacity: 0.5;
   right: 10%;
@@ -9545,7 +9516,7 @@ img.mfp-img {
 }
 
 .pswp__button--arrow--right::before {
-  content: "";
+  content: '';
 }
 
 .pswp__button--arrow--left {
@@ -9553,7 +9524,7 @@ img.mfp-img {
   right: auto;
 }
 .pswp__button--arrow--left::before {
-  content: "";
+  content: '';
 }
 
 .newsletter-popup {
@@ -9732,7 +9703,7 @@ body .product-popup {
 }
 .mfp-close::before,
 .mfp-close::after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   width: 2px;
@@ -10060,14 +10031,13 @@ body .product-popup {
   font-weight: 400;
   line-height: 3.5rem;
   overflow: hidden;
-  -webkit-transition: background-color 0.3s, border-color 0.3s, color 0.3s,
-    visibility 0.3s, opacity 0.3s, -webkit-transform 0.3s;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s,
-    visibility 0.3s, opacity 0.3s, -webkit-transform 0.3s;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s,
-    visibility 0.3s, opacity 0.3s, transform 0.3s;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s,
-    visibility 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transition: background-color 0.3s, border-color 0.3s, color 0.3s, visibility 0.3s, opacity 0.3s,
+    -webkit-transform 0.3s;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, visibility 0.3s, opacity 0.3s,
+    -webkit-transform 0.3s;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, visibility 0.3s, opacity 0.3s, transform 0.3s;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, visibility 0.3s, opacity 0.3s, transform 0.3s,
+    -webkit-transform 0.3s;
 }
 .btn-product-icon:hover,
 .btn-product-icon:active {
@@ -10340,7 +10310,7 @@ body .product-popup {
 .ratings-full,
 .ratings {
   position: relative;
-  font-family: "wolmart";
+  font-family: 'wolmart';
   letter-spacing: 0.2em;
 }
 
@@ -10349,7 +10319,7 @@ body .product-popup {
   margin-right: 0.5rem;
 }
 .ratings-full::before {
-  content: "" "" "" "" "";
+  content: '' '' '' '' '';
   color: rgba(0, 0, 0, 0.16);
   white-space: nowrap;
 }
@@ -10366,7 +10336,7 @@ body .product-popup {
   overflow: hidden;
 }
 .ratings::before {
-  content: "" "" "" "" "";
+  content: '' '' '' '' '';
   color: #f93;
 }
 
@@ -10628,8 +10598,8 @@ body .product-popup {
   display: block;
   left: 0;
   top: 1px;
-  content: "";
-  font-family: "wolmart";
+  content: '';
+  font-family: 'wolmart';
   font-weight: 700;
 }
 .product-list .btn-product {
@@ -10659,7 +10629,7 @@ body .product-popup {
 }
 
 .product-absolute::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -10825,7 +10795,7 @@ body .product-popup {
   background-color: #fff;
 }
 .product-nav .product-nav-popup::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -0.8rem;
   right: 1rem;
@@ -10958,19 +10928,14 @@ body .product-popup {
 .product-gallery:not(.product-gallery-vertical) .swiper-slide img {
   width: 100%;
 }
-.product-gallery:not(.product-gallery-vertical)
-  .product-thumbs:not(.swiper-wrapper) {
+.product-gallery:not(.product-gallery-vertical) .product-thumbs:not(.swiper-wrapper) {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
 }
-.product-gallery:not(.product-gallery-vertical)
-  .product-thumbs:not(.swiper-wrapper)
-  .product-thumb {
+.product-gallery:not(.product-gallery-vertical) .product-thumbs:not(.swiper-wrapper) .product-thumb {
   margin: 0;
 }
-.product-gallery:not(.product-gallery-vertical)
-  .product-thumbs:not(.swiper-wrapper)
-  .product-thumb::before {
+.product-gallery:not(.product-gallery-vertical) .product-thumbs:not(.swiper-wrapper) .product-thumb::before {
   content: none;
 }
 
@@ -10979,7 +10944,7 @@ body .product-popup {
   cursor: pointer;
 }
 .product-thumb::before {
-  content: "";
+  content: '';
   -webkit-transition: border-color 0.3s;
   transition: border-color 0.3s;
   border: 1px solid transparent;
@@ -11023,12 +10988,12 @@ body .product-popup {
   width: 1.4rem;
 }
 .rating-stars a:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   height: 14px;
   line-height: 1;
-  font-family: "wolmart";
+  font-family: 'wolmart';
   text-indent: 0;
   overflow: hidden;
   white-space: nowrap;
@@ -11036,7 +11001,7 @@ body .product-popup {
 }
 .rating-stars a.active:before,
 .rating-stars a:hover:before {
-  content: "";
+  content: '';
   color: #f93;
 }
 .rating-stars .star-1 {
@@ -11067,7 +11032,7 @@ body .product-popup {
   width: 80%;
 }
 .rating-stars .star-5:before {
-  content: "";
+  content: '';
 }
 
 .stock {
@@ -11086,12 +11051,21 @@ body .product-popup {
   padding: 0;
 }
 .product-single .product-title {
-  margin-bottom: 0.9rem;
+  margin-bottom: 0;
   font-size: 2.4rem;
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.6;
 }
+
+.product-title3 {
+  margin-bottom: 0.9rem;
+  font-size: 1.5rem;
+  font-weight: normal;
+  letter-spacing: -0.025em;
+  line-height: 1.6;
+}
+
 .product-single .product-title a {
   color: inherit;
 }
@@ -11111,10 +11085,10 @@ body .product-popup {
   border-radius: 0.5rem;
 }
 .product-single .product-meta {
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 }
 .product-single .product-divider {
-  margin: 1.4rem 0 2rem;
+  margin: 1rem 0 1rem !important;
 }
 .product-single .social-icon {
   margin-right: 0.8rem;
@@ -11127,13 +11101,14 @@ body .product-popup {
   line-height: 1;
   letter-spacing: 0;
 }
+
 .product-single .product-categories span,
 .product-single .product-sku span {
   color: #999;
 }
 .product-single .product-categories span:not(:last-child)::after,
 .product-single .product-sku span:not(:last-child)::after {
-  content: ",";
+  content: ',';
   display: inline-block;
   vertical-align: middle;
 }
@@ -11176,7 +11151,7 @@ body .product-popup {
   color: #999;
 }
 .product-single .product-short-desc {
-  margin-bottom: 1.6rem;
+  margin-bottom: 0.5rem !important;
   font-size: 1.3rem;
 }
 .product-single .product-form {
@@ -11246,9 +11221,9 @@ body .product-popup {
   margin-left: 0.8rem;
 }
 .product-single .product-color-swatch .color::before {
-  content: "";
+  content: '';
   display: inline-block;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -0.025em;
@@ -11256,7 +11231,7 @@ body .product-popup {
   line-height: 2.2;
 }
 .product-single .product-color-swatch .color.active::before {
-  content: "";
+  content: '';
 }
 .product-single .product-size-swatch {
   margin-bottom: 2rem;
@@ -11447,19 +11422,13 @@ body .product-popup {
   font-size: 1.3rem;
   font-weight: 600;
 }
-.single-product
-  .nav-top
-  > .swiper-button-next:not(.swiper-button-disabled):hover,
-.single-product
-  .nav-top
-  > .swiper-button-prev:not(.swiper-button-disabled):hover {
+.single-product .nav-top > .swiper-button-next:not(.swiper-button-disabled):hover,
+.single-product .nav-top > .swiper-button-prev:not(.swiper-button-disabled):hover {
   color: #336699;
 }
 
 @media (min-width: 992px) {
-  .product-gallery-vertical
-    .product-thumbs-wrap:not(.swiper-container-initialized)
-    .product-thumb {
+  .product-gallery-vertical .product-thumbs-wrap:not(.swiper-container-initialized) .product-thumb {
     margin-bottom: 1rem;
   }
 
@@ -11470,12 +11439,8 @@ body .product-popup {
     max-width: 9rem;
     margin: 0 1rem 0 0;
   }
-  .product-gallery-vertical
-    .product-thumbs-wrap:hover
-    .swiper-button-prev:not(.swiper-button-disabled),
-  .product-gallery-vertical
-    .product-thumbs-wrap:hover
-    .swiper-button-next:not(.swiper-button-disabled) {
+  .product-gallery-vertical .product-thumbs-wrap:hover .swiper-button-prev:not(.swiper-button-disabled),
+  .product-gallery-vertical .product-thumbs-wrap:hover .swiper-button-next:not(.swiper-button-disabled) {
     opacity: 0.9;
     -webkit-transform: none;
     transform: none;
@@ -11495,7 +11460,7 @@ body .product-popup {
     transform: translateY(-100%);
   }
   .product-gallery-vertical .product-thumbs-wrap .swiper-button-prev::before {
-    content: "";
+    content: '';
   }
   .product-gallery-vertical .product-thumbs-wrap .swiper-button-next {
     bottom: 0;
@@ -11806,7 +11771,7 @@ body .product-popup {
   padding-left: 2.8rem !important;
 }
 .filter-items.item-check a::before {
-  content: "";
+  content: '';
   position: absolute;
   border: 1px solid;
   border-radius: 2px;
@@ -11819,20 +11784,18 @@ body .product-popup {
   color: #999;
   font-size: 1rem;
   font-weight: 900;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   text-align: center;
   text-indent: 1px;
   line-height: 1.3em;
 }
-@media (-webkit-min-device-pixel-ratio: 1.5),
-  (min--moz-device-pixel-ratio: 1.5),
-  (min-device-pixel-ratio: 1.5) {
+@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
   .filter-items.item-check a::before {
     text-indent: 0;
   }
 }
 .filter-items.item-check .active > a::before {
-  content: "";
+  content: '';
   background-color: #336699;
   width: 20px;
   height: 20px;
@@ -11876,7 +11839,7 @@ body .product-popup {
   margin: 0.2rem 0;
 }
 .filter-items ul::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0px;
   top: 7px;
@@ -12011,8 +11974,8 @@ body .product-popup {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     right: 0.9rem;
-    font-family: "wolmart";
-    content: "";
+    font-family: 'wolmart';
+    content: '';
     font-size: 1.1rem;
     font-weight: 600;
     line-height: 1;
@@ -12245,7 +12208,7 @@ body .product-popup {
   padding: 1rem 0;
 }
 .widget-time label::after {
-  content: "-";
+  content: '-';
   display: inline-block;
   margin-left: 0.4rem;
 }
@@ -12780,7 +12743,7 @@ body .product-popup {
   border-bottom: 0;
 }
 .tab-nav-outline3 .nav-item .nav-link::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   left: 0;
@@ -12816,7 +12779,7 @@ body .product-popup {
   padding: 1.4rem 0;
 }
 .tab-nav-underline .nav-link::after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   bottom: -1px;
@@ -12939,7 +12902,7 @@ body .product-popup {
 }
 
 .filter-underline .nav-filter::after {
-  content: "";
+  content: '';
   display: block;
   height: 2px;
   border: 1px solid;
@@ -13131,7 +13094,7 @@ body .product-popup {
   border: 1px solid #eee;
 }
 .testimonial-blockquote blockquote::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 5.3rem;
@@ -13256,7 +13219,7 @@ body .product-popup {
   position: relative;
 }
 .timeline::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   -webkit-transform: translate3d(-50%, 0, 0);
@@ -13374,7 +13337,7 @@ body .product-popup {
 }
 .title.title-link::before {
   position: absolute;
-  content: "";
+  content: '';
   width: 100%;
   height: 3px;
   left: 0;
@@ -13401,7 +13364,7 @@ body .product-popup {
   content: none;
 }
 .title-underline::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
@@ -13416,7 +13379,7 @@ body .product-popup {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  content: "";
+  content: '';
   height: 2px;
   background-color: #eeeeee;
 }
@@ -13464,7 +13427,7 @@ body .product-popup {
   font-size: 1.35rem;
 }
 .title-link-wrapper::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
@@ -13691,7 +13654,7 @@ body .product-popup {
 }
 
 .tooltip-top::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 96%;
   left: 50%;
@@ -13792,7 +13755,7 @@ body .product-popup {
 }
 .widget-collapsible .widget-title label::after {
   position: absolute;
-  content: "";
+  content: '';
   left: 0;
   bottom: -1.2rem;
   width: 100%;
@@ -13808,7 +13771,7 @@ body .product-popup {
 }
 .widget-collapsible .toggle-btn::before,
 .widget-collapsible .toggle-btn::after {
-  content: "";
+  content: '';
   position: absolute;
   border-top: 2px solid #666;
   width: 12px;
@@ -15059,7 +15022,7 @@ body .product-popup {
   bottom: 100%;
 }
 .header-top .header-right .dropdown-box::before {
-  content: "";
+  content: '';
   position: absolute;
   z-index: 1002;
   left: 50%;
@@ -15071,8 +15034,7 @@ body .product-popup {
   -webkit-transition: opacity 0.2s ease-out, -webkit-transform 0.2s ease-out;
   transition: opacity 0.2s ease-out, -webkit-transform 0.2s ease-out;
   transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-  transition: opacity 0.2s ease-out, transform 0.2s ease-out,
-    -webkit-transform 0.2s ease-out;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out, -webkit-transform 0.2s ease-out;
   visibility: hidden;
   opacity: 0;
   cursor: pointer;
@@ -15319,8 +15281,7 @@ body .product-popup {
   -webkit-transition: visibility 0.3s, opacity 0.3s, -webkit-transform 0.3s;
   transition: visibility 0.3s, opacity 0.3s, -webkit-transform 0.3s;
   transition: transform 0.3s, visibility 0.3s, opacity 0.3s;
-  transition: transform 0.3s, visibility 0.3s, opacity 0.3s,
-    -webkit-transform 0.3s;
+  transition: transform 0.3s, visibility 0.3s, opacity 0.3s, -webkit-transform 0.3s;
 }
 .header-search.hs-toggle:hover {
   color: #336699;
@@ -15371,7 +15332,7 @@ body .product-popup {
   color: #666666;
 }
 .header-search.hs-expanded .select-box::after {
-  content: "";
+  content: '';
   height: 35px;
   width: 1px;
   background: #e5e5e5;
@@ -15541,7 +15502,7 @@ body .product-popup {
 }
 .header-call::after {
   position: absolute;
-  content: "";
+  content: '';
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -15632,8 +15593,7 @@ body .product-popup {
   .welcome-msg {
     -webkit-transform: translateX(0);
     transform: translateX(0);
-    -webkit-animation: 6s linear 2s 1 showMsgFirst,
-      12s linear 8s infinite showMsg;
+    -webkit-animation: 6s linear 2s 1 showMsgFirst, 12s linear 8s infinite showMsg;
     animation: 6s linear 2s 1 showMsgFirst, 12s linear 8s infinite showMsg;
   }
 
@@ -15699,8 +15659,8 @@ body .product-popup {
 .dropdown > a::after {
   display: inline-block;
   margin-left: 6px;
-  content: "";
-  font-family: "Font Awesome 5 Free";
+  content: '';
+  font-family: 'Font Awesome 5 Free';
   font-size: 8px;
   font-weight: 900;
 }
@@ -15945,7 +15905,7 @@ body .product-popup {
   color: #999;
 }
 .product.product-cart .product-quantity::after {
-  content: "x";
+  content: 'x';
   font-size: 1.8rem;
   font-weight: 400;
   margin-left: 0.7rem;
@@ -15996,8 +15956,8 @@ body .product-popup {
   margin-left: 0.7rem;
 }
 .category-dropdown > a::after {
-  font-family: "wolmart";
-  content: "";
+  font-family: 'wolmart';
+  content: '';
   font-weight: 600;
   font-size: 0.9rem;
 }
@@ -16062,7 +16022,7 @@ body .product-popup {
   border-radius: 0.5rem;
 }
 .category-dropdown.show-dropdown .dropdown-box::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 100%;
   left: 1.7rem;
@@ -16141,7 +16101,7 @@ body .product-popup {
   color: #666666;
 }
 .menu .submenu .has-submenu > a::after {
-  content: "";
+  content: '';
   font-weight: 600;
   font-size: 0.9rem;
   -webkit-transform: translateY(-50%);
@@ -16242,7 +16202,7 @@ body .product-popup {
 }
 
 .active-underline > li > a::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   margin-top: 17px;
@@ -16273,10 +16233,10 @@ body .product-popup {
   top: 50%;
   line-height: 0;
   vertical-align: middle;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-size: 1rem;
   color: inherit;
-  content: "\f105";
+  content: '\f105';
 }
 
 /* Mega Menu */
@@ -16702,11 +16662,11 @@ body .product-popup {
   opacity: 0.6;
 }
 .toggle-btn::before {
-  content: "";
+  content: '';
   display: block;
   font-size: 0.8rem;
   font-weight: 600;
-  font-family: "wolmart";
+  font-family: 'wolmart';
   line-height: 1;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
@@ -16833,7 +16793,7 @@ body .product-popup {
   top: -1rem;
 }
 .vertical-menu > .has-submenu > a::after {
-  content: "";
+  content: '';
   position: absolute;
   right: 1rem;
   line-height: 0;
@@ -16985,7 +16945,7 @@ body .product-popup {
   width: 100%;
 }
 .footer .category-box a::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 1px;
   height: 13px;
@@ -17178,8 +17138,7 @@ body .product-popup {
   -webkit-transition: opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
   transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
-  transition: transform 0.3s, opacity 0.3s, visibility 0.3s,
-    -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
 }
 .sticky-footer .cart-dropdown:hover .dropdown-box {
   -webkit-transform: translateY(0);
@@ -17713,7 +17672,7 @@ body .product-popup {
 }
 .post-single-content .post-navigation .nav .nav-content::after {
   display: block;
-  content: "";
+  content: '';
   width: 100%;
   height: 2px;
   background-color: #333;
@@ -18064,7 +18023,7 @@ body .product-popup {
   line-height: 1.9;
 }
 .btn-section p::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0.5rem;
   right: 1rem;
@@ -18678,7 +18637,7 @@ body .product-popup {
   font-weight: 400;
 }
 .order-summary .card-header a::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   width: 18px;
@@ -18689,7 +18648,7 @@ body .product-popup {
   transform: translateY(-50%);
 }
 .order-summary .card-header a::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 5px;
   width: 8px;
@@ -18863,7 +18822,7 @@ body .product-popup {
   margin-left: 3.5rem;
 }
 .coming-content .countdown-section:not(:first-child) .countdown-amount::before {
-  content: ":";
+  content: ':';
   position: absolute;
   left: -2.2rem;
   color: #999;
@@ -19028,7 +18987,7 @@ body .product-popup {
   margin-left: 3rem;
 }
 .compare-product-list li:empty::before {
-  content: "+";
+  content: '+';
   position: absolute;
   left: 50%;
   top: 50%;
@@ -19045,7 +19004,7 @@ body .product-popup {
   box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.12);
 }
 .compare-product-list li::after {
-  content: "";
+  content: '';
   position: absolute;
   border: 1px solid #eee;
   top: 0;
@@ -19665,7 +19624,7 @@ body .product-popup {
   background: transparent;
 }
 .login-page .checkbox-round + label::after {
-  content: "";
+  content: '';
   width: 0.8rem;
   height: 0.8rem;
   background-color: #333;
@@ -19898,8 +19857,8 @@ body .product-popup {
   background-color: #666;
 }
 
-.product-wrapper.row [class*="col-"] {
-  margin-bottom: 2rem;
+.product-wrapper.row [class*='col-'] {
+  margin-bottom: 1rem;
 }
 
 .product:not(.product-single) .product-countdown-container {
@@ -20185,29 +20144,21 @@ body .product-popup {
 .bought-together-products .product-wrap:not(:first-child) {
   margin-left: 3rem;
 }
-.bought-together-products
-  .product-wrap:not(:first-child)
-  .product-media::before,
-.bought-together-products
-  .product-wrap:not(:first-child)
-  .product-media::after {
-  content: "";
+.bought-together-products .product-wrap:not(:first-child) .product-media::before,
+.bought-together-products .product-wrap:not(:first-child) .product-media::after {
+  content: '';
   position: absolute;
   left: -2.5rem;
   top: 50%;
   background-color: #999;
 }
-.bought-together-products
-  .product-wrap:not(:first-child)
-  .product-media::before {
+.bought-together-products .product-wrap:not(:first-child) .product-media::before {
   width: 17px;
   height: 1px;
   -webkit-transform: translateX(-8px);
   transform: translateX(-8px);
 }
-.bought-together-products
-  .product-wrap:not(:first-child)
-  .product-media::after {
+.bought-together-products .product-wrap:not(:first-child) .product-media::after {
   width: 1px;
   height: 17px;
   -webkit-transform: translateY(-8px);
@@ -20222,7 +20173,7 @@ body .product-popup {
 }
 .bought-together-products .product-button::before,
 .bought-together-products .product-button::after {
-  content: "";
+  content: '';
   position: absolute;
   left: -5rem;
   top: 70px;
@@ -20674,13 +20625,10 @@ aside .sp-sidebar-banner span {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.06);
   border-radius: 0.5rem;
   overflow: hidden;
-  -webkit-transition: opacity 0.3s, visibility 0.3s, z-index 0.3s,
-    -webkit-transform 0.3s;
-  transition: opacity 0.3s, visibility 0.3s, z-index 0.3s,
-    -webkit-transform 0.3s;
+  -webkit-transition: opacity 0.3s, visibility 0.3s, z-index 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, visibility 0.3s, z-index 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s, z-index 0.3s;
-  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, z-index 0.3s,
-    -webkit-transform 0.3s;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, z-index 0.3s, -webkit-transform 0.3s;
   z-index: -1;
 }
 .hotspot-product .product .product-action-vertical {
@@ -20851,8 +20799,7 @@ aside .sp-sidebar-banner span {
   -webkit-transition: -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
   transition: -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
   transition: box-shadow 0.3s, transform 0.3s;
-  transition: box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s,
-    -webkit-transform 0.3s;
+  transition: box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
 }
 .shop-default-category .category-ellipse:hover .category-media {
   -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
@@ -21489,14 +21436,13 @@ aside .sp-sidebar-banner span {
   -webkit-transition: opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, visibility 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-  transition: opacity 0.3s, visibility 0.3s, transform 0.3s,
-    -webkit-transform 0.3s;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, -webkit-transform 0.3s;
   z-index: 1;
 }
 .widget-coupons .coupon-tip::before,
 .widget-coupons .coupon-tip::after {
   position: absolute;
-  content: "";
+  content: '';
   left: 50%;
   bottom: 100%;
   -webkit-transform: translateX(-50%);
