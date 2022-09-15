@@ -8,7 +8,7 @@ import Loader from '../../../../../common/SmallLoader';
 const BasicOverView = ({ product }) => {
   const dispatch = useDispatch();
   const state = useSelector((s) => s);
-  const { basicOverview, loading } = state;
+  const { basicOverview, tabLoading } = state;
 
   useMemo(() => {
     dispatch(loadBasicOverview(product.productid));
@@ -48,7 +48,7 @@ const BasicOverView = ({ product }) => {
   };
   return (
     <>
-      {loading ? (
+      {tabLoading ? (
         <div
           className="row"
           style={{

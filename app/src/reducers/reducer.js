@@ -16,13 +16,18 @@ const initialState = {
   latest: [],
   error: null,
   loading: false,
+  tabLoading: false,
 };
 
+// eslint-disable-next-line complexity
 export function reducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case actions.REQUEST_START:
       return { ...state, error: null, loading: true, gallery: undefined };
+
+    case actions.TABS_REQUEST_START:
+      return { ...state, error: null, tabLoading: true };
 
     case actions.PAGE_LOADED:
       return {
@@ -108,29 +113,29 @@ export function reducer(state = initialState, action) {
       };
 
     case actions.PRODUCT_BASIC_OVERVIEW_LOADED:
-      return { ...state, basicOverview: payload, error: null, loading: false };
+      return { ...state, basicOverview: payload, error: null, tabLoading: false };
     case actions.PRODUCT_BASIC_OVERVIEW_LOAD_FAIL:
       return {
         ...state,
         error: action.error,
-        loading: false,
+        tabLoading: false,
       };
     case actions.PRODUCT_SPECIFICATIONS_LOADED:
-      return { ...state, specifications: payload, error: null, loading: false };
+      return { ...state, specifications: payload, error: null, tabLoading: false };
     case actions.PRODUCT_SPECIFICATIONS_LOAD_FAIL:
       return {
         ...state,
         error: action.error,
-        loading: false,
+        tabLoading: false,
       };
 
     case actions.PRODUCT_GALLERY_LOADED:
-      return { ...state, gallery: payload, error: null, loading: false };
+      return { ...state, gallery: payload, error: null, tabLoading: false };
     case actions.PRODUCT_GALLERY_LOAD_FAIL:
       return {
         ...state,
         error: action.error,
-        loading: false,
+        tabLoading: false,
       };
 
     case actions.PRODUCT_SIMILAR_LOADED:

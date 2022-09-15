@@ -163,7 +163,7 @@ export const manufacturerFilterLoaded = (parentcategoryid) => async (dispatch) =
 
 export const loadBasicOverview = (productid) => async (dispatch) => {
   dispatch({
-    type: actions.REQUEST_START,
+    type: actions.TABS_REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/product/basic/over/view/${productid}`)
@@ -185,7 +185,7 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
 
 export const loadSpecifications = (productid) => async (dispatch) => {
   dispatch({
-    type: actions.REQUEST_START,
+    type: actions.TABS_REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/product/specification/${productid}`)
@@ -204,7 +204,7 @@ export const loadSpecifications = (productid) => async (dispatch) => {
 
 export const loadGallery = (productid) => async (dispatch) => {
   dispatch({
-    type: actions.REQUEST_START,
+    type: actions.TABS_REQUEST_START,
   });
   await axios
     .get(REQUEST_URL + `/product/gallery/${productid}`)
