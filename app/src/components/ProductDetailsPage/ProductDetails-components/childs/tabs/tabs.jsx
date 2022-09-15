@@ -1,9 +1,13 @@
 import './css/Tabs.css';
 import './css/button.css';
-import { show, checkLabel } from '../../../common';
 import React, { useMemo } from 'react';
 import Parser from 'html-react-parser';
+import { show } from '../../../common';
+import Loader from '../../../../common/SmallLoader';
+import BasicOverView from './childs/basicoverview';
+import Specifications from './childs/specifications';
 import { useDispatch, useSelector } from 'react-redux';
+
 import {
   loadAccessories,
   loadBasicOverview,
@@ -15,10 +19,7 @@ import {
 const Tabs = ({ product }) => {
   const dispatch = useDispatch();
   const state = useSelector((s) => s);
-
-  const gallery = state.gallery;
-  const basicOverview = state.basicOverview;
-  const specifications = state.specifications;
+  const { loading, gallery, specifications } = state;
 
   useMemo(() => {
     dispatch(loadBasicOverview(product.productid));
@@ -27,54 +28,6 @@ const Tabs = ({ product }) => {
     dispatch(loadSimilarProducts(product.productid));
     dispatch(loadAccessories(product.productid));
   }, [product.productid, dispatch]);
-
-  const isPreasentinAttributes = (id) => {
-    return specifications.productAttribute.some((obj) => obj.header_id === id);
-  };
-
-  const setUniqueHeaders = () => {
-    const previousHeaders = specifications.categoryid.categoryHeader;
-    const uniqueHeaders = [...new Map(previousHeaders.map((m) => [m.headerid, m])).values()];
-    return uniqueHeaders;
-  };
-
-  const tabSpecifications = () => {
-    const uniqueHeaders = setUniqueHeaders();
-    return uniqueHeaders.map(
-      (header) =>
-        isPreasentinAttributes(header.headerid) && (
-          <div key={header.headerid}>
-            <h4 style={{ marginBottom: '10px', marginTop: '20px' }}>{header.header_label}</h4>
-            <hr
-              style={{
-                margin: '5px',
-              }}
-            />
-            <tbody>
-              {specifications.productAttribute.map((attribute) =>
-                header.headerid === attribute.header_id ? (
-                  <tr key={attribute.attributeid}>
-                    <td
-                      style={{
-                        padding: '0 15px',
-                        margin: '0 20px',
-                        width: '200px',
-                      }}
-                      align="right">
-                      {attribute.atrribute_label}:
-                    </td>
-
-                    <td align="left">{Parser(attribute.displayvalue)}</td>
-                  </tr>
-                ) : (
-                  ''
-                ),
-              )}
-            </tbody>
-          </div>
-        ),
-    );
-  };
 
   const viewManuals = (type) => {
     if (
@@ -144,6 +97,11 @@ const Tabs = ({ product }) => {
     show(`#${e.target.id}-section`, e.target);
   };
 
+  // <section className="c-section-1">
+  //   <h1 style={{ fontWeight: 200 }}>{titles[key]}</h1>
+  //   <div className="items-container">{displayCompetitions(competitions[key])}</div>
+  // </section>;
+
   return (
     <div className="tab tab-nav-boxed tab-nav-underline product-tabs">
       <ul className="nav nav-tabs" role="tablist" id="tabs">
@@ -156,7 +114,7 @@ const Tabs = ({ product }) => {
         )}
         <li className="nav-item">
           <button className="nav-link active" onClick={navigation} id="basic-overview">
-            Basic Overview
+            <span style={{ display: 'flex' }}>Basic Overview {loading ? <Loader /> : ''}</span>
           </button>
         </li>
         {specifications && specifications.productAttribute.length === 0 ? (
@@ -178,7 +136,9 @@ const Tabs = ({ product }) => {
           ''
         )}
       </ul>
+
       <div className="tab-content" id="tab-content">
+        {/* Enhanced OverView */}
         {product.productDescription.map((description) =>
           description.type === 5 || description.type === 4 ? (
             <div
@@ -196,57 +156,17 @@ const Tabs = ({ product }) => {
             ''
           ),
         )}
+
+        {/* Basic OverView */}
         <div className="tab-pane active" id="basic-overview-section">
-          {basicOverview && (
-            <React.Fragment>
-              <h4>Main Features</h4>
-              <ol style={{ listStyleType: 'square' }}>
-                {basicOverview.productAttribute.map((basic) =>
-                  checkLabel(basic.atrribute_label) ? (
-                    <li key={basic.atrribute_label + basic.displayvalue + product.productid}>
-                      {basic.atrribute_label}: {Parser(basic.displayvalue)}
-                    </li>
-                  ) : (
-                    ''
-                  ),
-                )}
-              </ol>
-            </React.Fragment>
-          )}
-          {basicOverview && (
-            <React.Fragment>
-              {basicOverview.productAttribute.map((basic) =>
-                basic.atrribute_label === 'Marketing Information' ? (
-                  <>
-                    <h4 key={basic.atrribute_label} style={{ marginTop: 20 }}>
-                      {basic.atrribute_label}
-                    </h4>
-                    <div key={basic.atrributeid}>{Parser(basic.displayvalue)}</div>
-                  </>
-                ) : (
-                  ''
-                ),
-              )}
-            </React.Fragment>
-          )}
-          {basicOverview
-            ? basicOverview.productAttribute.map((basic) =>
-                basic.atrribute_label === 'Package Contents' ? (
-                  <>
-                    <h4 key={basic.atrribute_label} style={{ marginTop: 20 }}>
-                      {basic.atrribute_label}
-                    </h4>
-                    <div key={basic.atrributeid}>{Parser(basic.displayvalue)}</div>
-                  </>
-                ) : (
-                  ''
-                ),
-              )
-            : ''}
+          <BasicOverView product={product} />
         </div>
+
+        {/* Product Specifications  */}
         <div className="tab-pane" id="specifications-section">
-          {specifications && tabSpecifications()}
+          {specifications && <Specifications product={product} specifications={specifications} />}
         </div>
+
         {gallery && checkmanuals() === true ? (
           <div className="tab-pane" id="gallery-section">
             <div className="row mb-4">

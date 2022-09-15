@@ -1,3 +1,12 @@
+export const getBasicOverviewTitles = (labels) => {
+  const titles = {
+    1: 'Main Features',
+    2: 'Marketing Information',
+    3: 'Package Contents',
+  };
+  return ['Main Features', ...Object.values(titles).filter((value) => labels.includes(value))];
+};
+
 export function checkImage(type) {
   const array = [
     'Tour',
@@ -19,7 +28,7 @@ export function checkImage(type) {
   return !array.includes(type);
 }
 
-export function checkLabel(label) {
+export function checkLabel(label, key) {
   const array = [
     'Brand Name',
     'Product Type',
@@ -30,10 +39,10 @@ export function checkLabel(label) {
     'Manufacturer Part Number',
     'Certifications & Standards',
     'Manufacturer Website Address',
-    'Minimum Operating Temperature',
     'Maximum Operating Temperature',
+    'Minimum Operating Temperature',
   ];
-  return !array.includes(label);
+  return key === 1 ? !array.includes(label) : array.includes(label);
 }
 
 export function show(which, id) {

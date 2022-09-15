@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as actions from './actionTypes';
 import config from '../components/services/config';
 import { REQUEST_URL } from '../constant/constantURL';
+import _ from 'underscore';
 
 export const pageLoaded = (des) => ({
   type: actions.PAGE_LOADED,
@@ -169,7 +170,10 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_BASIC_OVERVIEW_LOADED,
-        payload: res.data,
+        payload: _.groupBy(
+          res.data.productAttribute.filter((i) => i.type === 0),
+          'atrribute_label',
+        ),
       });
     })
     .catch(function (error) {

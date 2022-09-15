@@ -3,7 +3,7 @@ import * as actions from '../actions/actionTypes';
 const initialState = {
   category: [],
   categoryFilter: [],
-  basicOverview: [],
+  basicOverview: {},
   specifications: [],
   gallery: undefined,
   similarProducts: {},
