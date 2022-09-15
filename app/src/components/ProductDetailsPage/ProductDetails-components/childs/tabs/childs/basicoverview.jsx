@@ -21,7 +21,7 @@ const BasicOverView = ({ product }) => {
     headings.forEach(function (key, index) {
       itemList.push(
         <React.Fragment key={key}>
-          <h4>{key}</h4>
+          <h4 style={{ marginTop: 15 }}>{key}</h4>
           <ol style={{ listStyleType: 'square' }}>
             {attribute_labels.map((label) => {
               const needComma = basicOverview[label].length > 1;
