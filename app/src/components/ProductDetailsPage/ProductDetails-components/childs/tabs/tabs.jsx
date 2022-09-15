@@ -3,7 +3,6 @@ import './css/button.css';
 import React, { useMemo } from 'react';
 import Parser from 'html-react-parser';
 import { show } from '../../../common';
-import Loader from '../../../../common/SmallLoader';
 import BasicOverView from './childs/basicoverview';
 import Specifications from './childs/specifications';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +18,7 @@ import {
 const Tabs = ({ product }) => {
   const dispatch = useDispatch();
   const state = useSelector((s) => s);
-  const { loading, gallery, specifications } = state;
+  const { gallery, specifications } = state;
 
   useMemo(() => {
     dispatch(loadBasicOverview(product.productid));
@@ -114,7 +113,7 @@ const Tabs = ({ product }) => {
         )}
         <li className="nav-item">
           <button className="nav-link active" onClick={navigation} id="basic-overview">
-            <span style={{ display: 'flex' }}>Basic Overview {loading ? <Loader /> : ''}</span>
+            Basic Overview
           </button>
         </li>
         {specifications && specifications.productAttribute.length === 0 ? (

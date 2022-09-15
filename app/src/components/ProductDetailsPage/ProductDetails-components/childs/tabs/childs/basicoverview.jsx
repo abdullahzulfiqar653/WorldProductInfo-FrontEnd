@@ -55,7 +55,6 @@ const BasicOverView = ({ product }) => {
             justifyContent: 'center',
             alignItems: 'center',
             width: '100%',
-            height: '70vh',
           }}>
           <div style={{ width: '100px' }}>
             <Loader />
