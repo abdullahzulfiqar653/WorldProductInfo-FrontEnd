@@ -7,7 +7,7 @@ export const getBasicOverviewTitles = (labels) => {
   return ['Main Features', ...Object.values(titles).filter((value) => labels.includes(value))];
 };
 
-export function checkImage(type) {
+export function checkImage(type, manual = false) {
   const array = [
     'Tour',
     '220-Canvas',
@@ -26,6 +26,35 @@ export function checkImage(type) {
     'Manufacturer-Brochure',
   ];
   return !array.includes(type);
+}
+
+export function isAdditionalInfo(type) {
+  const array = [
+    'User-Manual',
+    'Energy-Guide',
+    'Additional-pdf1',
+    'Additional-pdf2',
+    'Additional-pdf3',
+    'Additional-pdf4',
+    'Additional-pdf5',
+    'Additional-pdf6',
+    'Additional-pdf6',
+    'Additional-pdf7',
+    'Assembly-Instructions',
+    'Manufacturer-Brochure',
+  ];
+  return array.includes(type);
+}
+
+export function checkmanuals(manuals) {
+  let result = false;
+  for (let i = 0; i < manuals.length; i++) {
+    result = isAdditionalInfo(manuals[i].type);
+    if (result) {
+      break;
+    }
+  }
+  return result;
 }
 
 export function checkLabel(label, key) {
