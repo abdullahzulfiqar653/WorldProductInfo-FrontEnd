@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import CategoryList from './CategoryList';
-import IntroSection from './IntroSection';
 import { HashLink } from 'react-router-hash-link';
 import LargeLoader from '../../common/LargeLoader';
 import { useDispatch, useSelector } from 'react-redux';
@@ -42,7 +41,7 @@ function NewestProduct(props) {
             <CategoryList />
           </aside>
           <div className="main-content">
-            <IntroSection />
+            {/* <IntroSection /> */}
             <h2 className="mt-7" style={{ textAlign: 'center' }}>
               Latest Products
             </h2>
