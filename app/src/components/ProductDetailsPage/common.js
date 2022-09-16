@@ -94,6 +94,11 @@ export function show(which, id) {
   });
 }
 
+export function iframHeight(obj) {
+  const source = obj[0].props.src;
+  return source;
+}
+
 export const urlList = [
   { link: '/home', title: 'Home' },
   { link: '', title: 'Products List' },

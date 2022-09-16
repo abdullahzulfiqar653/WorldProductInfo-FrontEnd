@@ -2,11 +2,12 @@ import './css/Tabs.css';
 import './css/button.css';
 import React, { useMemo } from 'react';
 import Parser from 'html-react-parser';
-import { show, checkmanuals } from '../../../common';
-import AdditionalInfo from './childs/additionalinformation';
+import IframeResizer from 'iframe-resizer-react';
 import BasicOverView from './childs/basicoverview';
 import Specifications from './childs/specifications';
 import { useDispatch, useSelector } from 'react-redux';
+import AdditionalInfo from './childs/additionalinformation';
+import { show, checkmanuals, iframHeight } from '../../../common';
 
 import {
   loadAccessories,
@@ -73,22 +74,19 @@ const Tabs = ({ product }) => {
 
       <div className="tab-content" id="tab-content">
         {/* Enhanced OverView */}
-        {product.productDescription.map((description) =>
-          description.type === 5 || description.type === 4 ? (
-            <div
-              className="tab-pane active"
-              id="enhanced-overview-section"
-              key={description.type}
-              style={{
-                height: '1630px',
-                display: 'flex',
-                justifyContent: 'center',
-              }}>
-              {Parser(description.description)}
-            </div>
-          ) : (
-            ''
-          ),
+        {isEnhancedOverview() && (
+          <div className="tab-pane active" id="enhanced-overview-section">
+            {product.productDescription.map((description) =>
+              description.type === 5 || description.type === 4 ? (
+                <IframeResizer
+                  src={iframHeight(Parser(description.description))}
+                  style={{ height: '1px', minHeight: '100%', width: '1px', minWidth: '100%', border: 'none' }}
+                />
+              ) : (
+                ''
+              ),
+            )}
+          </div>
         )}
 
         {/* Basic OverView */}
