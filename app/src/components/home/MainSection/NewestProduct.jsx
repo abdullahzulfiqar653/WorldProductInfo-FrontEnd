@@ -1,22 +1,41 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
+import queryString from 'query-string';
 import CategoryList from './CategoryList';
+import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import LargeLoader from '../../common/LargeLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { MEDIA_URL } from '../../../constant/constantURL';
 import { loadLatestProducts } from '../../../actions/actions';
 import '../../ProductDetailsPage/ProductDetails-components/childs/tabs/css/button.css';
+import { getFormBody } from '../../../actions/utils';
 
 function NewestProduct(props) {
   const dispatch = useDispatch();
+  const location = useLocation();
   const state = useSelector((s) => s);
+  const values = queryString.parse(location.search);
+  const [pageTitle, setPageTitle] = useState('Latest Products');
+  const formBody = getFormBody(values);
+
   let products = {};
   const loading = state.loading;
   products = state.latest;
 
-  useMemo(() => {
-    dispatch(loadLatestProducts());
-  }, [dispatch]);
+  useEffect(() => {
+    switch (values.flag) {
+      case 'search':
+        dispatch(loadLatestProducts(formBody));
+        setPageTitle('Searched Products');
+        break;
+      case 'onlyManufacture':
+        dispatch(loadLatestProducts(formBody));
+        setPageTitle('Manufacture Products');
+        break;
+      default:
+        dispatch(loadLatestProducts());
+    }
+  }, [values.flag, values.manufacturerid, dispatch]);
 
   // const openFilters = () => {
   //   setFilterStatus('page-content mb-10 sidebar-active');
@@ -29,6 +48,7 @@ function NewestProduct(props) {
       return image;
     }
   };
+
   return (
     <div className="page-content mb-10">
       <div className="container">
@@ -43,7 +63,7 @@ function NewestProduct(props) {
           <div className="main-content">
             {/* <IntroSection /> */}
             <h2 className="mt-7" style={{ textAlign: 'center' }}>
-              Latest Products
+              {pageTitle}
             </h2>
             {!loading && products ? (
               <React.Fragment>

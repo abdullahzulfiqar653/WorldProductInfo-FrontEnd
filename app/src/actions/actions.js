@@ -221,12 +221,12 @@ export const loadGallery = (productid) => async (dispatch) => {
     });
 };
 
-export const loadLatestProducts = () => async (dispatch) => {
+export const loadLatestProducts = (formBody = 'flag=latest') => async (dispatch) => {
   dispatch({
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/products/?flag=latest`)
+    .get(REQUEST_URL + `/products/?${formBody}&limit=${12}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCTS_LATEST_LOADED,

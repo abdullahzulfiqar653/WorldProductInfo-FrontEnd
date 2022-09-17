@@ -1,9 +1,10 @@
 import React from 'react';
 import { manufacturers } from './manufacturer';
+import { HashLink } from 'react-router-hash-link';
 
 const ManufacturerSlider = () => {
   return (
-    <div class="shop-default-brands mb-5">
+    <div class="shop-default-brands mb-5" id="products">
       <div
         class="brands-swiper swiper-container swiper-theme "
         data-swiper-options="{
@@ -31,7 +32,9 @@ const ManufacturerSlider = () => {
           {manufacturers.map((obj) => (
             <div class="swiper-slide" style={{ paddingRight: 15 }}>
               <figure>
-                <img src={obj.image} alt="Brand" width="160" height="90" />
+                <HashLink to={`/home/?flag=onlyManufacture&manufacturerid=${obj.mfg_id}#products`}>
+                  <img src={obj.image} alt="Brand" width="160" height="90" />
+                </HashLink>
               </figure>
             </div>
           ))}
