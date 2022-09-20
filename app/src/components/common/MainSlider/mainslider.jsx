@@ -9,7 +9,7 @@ const MainSlider = () => {
       <div class="container">
         <div
           class="shop-default-banner banner d-flex align-items-center mb-5 br-xs"
-          style={{ backgroundImage: `url(${Banner})`, backgroundColor: '#FFC74E' }}>
+          style={{ backgroundImage: `url(${Banner})`, backgroundColor: '#FFC74E', marginBottom: '40px !important' }}>
           <div class="banner-content">
             <h4 class="banner-subtitle font-weight-bold">Accessories Collection</h4>
             <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-normal">Smart Wrist Watches</h3>

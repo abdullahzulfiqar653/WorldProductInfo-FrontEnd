@@ -30,10 +30,10 @@ const ManufacturerSlider = () => {
                             }">
         <div class="swiper-wrapper row gutter-no cols-xl-7 cols-lg-6 cols-md-4 cols-sm-3 cols-2">
           {manufacturers.map((obj) => (
-            <div class="swiper-slide" style={{ paddingRight: 15 }}>
+            <div class="swiper-slide">
               <figure>
                 <HashLink to={`/home/?flag=onlyManufacture&manufacturerid=${obj.mfg_id}#products`}>
-                  <img src={obj.image} alt="Brand" width="160" height="90" />
+                  <img src={obj.image} alt="Brand" width="160" height="90" style={{ filter: 'grayscale(100%)' }} />
                 </HashLink>
               </figure>
             </div>

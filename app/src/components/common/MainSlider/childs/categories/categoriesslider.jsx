@@ -10,7 +10,7 @@ import Cat11 from '../../../../../assets/images/categories/category-11.jpg';
 
 const CategoriesSlider = () => {
   return (
-    <div class="shop-default-category category-ellipse-section mb-6">
+    <div class="shop-default-category category-ellipse-section mb-6" style={{ marginTop: '50px' }}>
       <div
         class="swiper-container swiper-theme shadow-swiper"
         data-swiper-options="{

@@ -1,5 +1,5 @@
 import star from '../../../../../assets/images/manufacturer/startech.png';
-import brent from '../../../../../assets/images/manufacturer/brentwood.jpg';
+import brent from '../../../../../assets/images/manufacturer/brentwood.png';
 import sony from '../../../../../assets/images/manufacturer/sony.png';
 import apple from '../../../../../assets/images/manufacturer/apple.png';
 import samsung from '../../../../../assets/images/manufacturer/samsung.png';
