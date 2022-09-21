@@ -1,4 +1,5 @@
 import * as actions from '../actions/actionTypes';
+import { makeProductsArray } from './common';
 
 const initialState = {
   category: [],
@@ -8,7 +9,9 @@ const initialState = {
   gallery: undefined,
   similarProducts: {},
   accessories: {},
-  products: [],
+  products: {
+    next: true,
+  },
   searchResults: {},
   singleProduct: {},
   productTypeFilter: [],
@@ -21,7 +24,7 @@ const initialState = {
 
 // eslint-disable-next-line complexity
 export function reducer(state = initialState, action) {
-  const { type, payload } = action;
+  const { type, payload, params } = action;
   switch (type) {
     case actions.REQUEST_START:
       return { ...state, error: null, loading: true, gallery: undefined };
@@ -59,7 +62,7 @@ export function reducer(state = initialState, action) {
     case actions.PRODUCTS_LIST_LOADED:
       return {
         ...state,
-        products: payload,
+        products: params ? makeProductsArray(payload, state.products) : payload,
         error: null,
         loading: false,
       };

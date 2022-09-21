@@ -51,6 +51,10 @@ export const loadProductList = (limit, offset, params) => async (dispatch) => {
   dispatch({
     type: actions.REQUEST_START,
   });
+  const flag = params === localStorage.getItem('params');
+  if (!flag) {
+    localStorage.setItem('params', params);
+  }
   const url = `/products/?${params}&limit=${limit}&offset=${offset}`;
   await axios
     .get(REQUEST_URL + url)
@@ -58,6 +62,7 @@ export const loadProductList = (limit, offset, params) => async (dispatch) => {
       dispatch({
         type: actions.PRODUCTS_LIST_LOADED,
         payload: res.data,
+        params: flag,
       });
     })
     .catch(function (error) {

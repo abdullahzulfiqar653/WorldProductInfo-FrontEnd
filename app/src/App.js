@@ -7,6 +7,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import ListPage from './components/ListPage/listPage';
 import ProductDetailPage from './components/ProductDetailsPage/ProductDetailPage';
 function App() {
+  localStorage.removeItem('params');
   return (
     <Provider store={store}>
       <Switch>
