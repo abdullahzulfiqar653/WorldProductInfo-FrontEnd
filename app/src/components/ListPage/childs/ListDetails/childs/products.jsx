@@ -14,6 +14,7 @@ function Products() {
   const location = useLocation();
   const dispatch = useDispatch();
   const state = useSelector((s) => s);
+  const loading = state.loading;
   const products = state.products;
 
   const values = queryString.parse(location.search);
@@ -80,7 +81,7 @@ function Products() {
         </div>
       </nav> */}
 
-      {products && Object.keys(products).length > 0 && (
+      {!loading && products && Object.keys(products).length > 0 && (
         <InfiniteScroll
           dataLength={products.count}
           next={pageNext}
