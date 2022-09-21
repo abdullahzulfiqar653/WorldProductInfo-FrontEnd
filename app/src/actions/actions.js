@@ -47,7 +47,7 @@ export const loadCategory = () => async (dispatch) => {
     });
 };
 
-export const loadProductList = (limit, offset, params) => async (dispatch) => {
+export const loadProductList = (limit = 12, offset = 0, params) => async (dispatch) => {
   dispatch({
     type: actions.REQUEST_START,
   });
@@ -56,6 +56,7 @@ export const loadProductList = (limit, offset, params) => async (dispatch) => {
     localStorage.setItem('params', params);
   }
   const url = `/products/?${params}&limit=${limit}&offset=${offset}`;
+  console.log(url);
   await axios
     .get(REQUEST_URL + url)
     .then((res) => {

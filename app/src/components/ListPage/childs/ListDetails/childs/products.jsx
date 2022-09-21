@@ -8,25 +8,25 @@ import { getFormBody } from '../../../../../actions/utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { MEDIA_URL } from '../../../../../constant/constantURL';
 import { loadProductList } from '../../../../../actions/actions';
+import { keys, sortedIndex } from 'underscore';
 
 function Products() {
   const location = useLocation();
   const dispatch = useDispatch();
   const state = useSelector((s) => s);
-  const loading = state.loading;
+  // const loading = state.loading;
   const products = state.products;
 
   const values = queryString.parse(location.search);
   const formBody = getFormBody(values);
-  const [Limit] = useState(12);
-  const [offSet, setOffSet] = useState(0);
+  const [Limit, setLimit] = useState(6);
+  const [index, setIndex] = useState(6);
   // const [currentPage, setCurrentPage] = useState(1);
   const { categoryid, valueid, manufacturerid } = queryString.parse(location.search);
   useEffect(() => {
     dispatch(loadProductList(12, 0, formBody));
-    setOffSet(0);
+    setIndex(6);
   }, [categoryid, valueid, manufacturerid]);
-
   // const handelChange = (e) => {
   //   setLimit(e.target.value);
   //   setOffSet(0);
@@ -36,10 +36,11 @@ function Products() {
   const pageNext = () => {
     console.log(formBody !== localStorage.getItem('params'));
     if (formBody !== localStorage.getItem('params')) {
-      setOffSet(0);
+      setIndex(6);
     }
-    dispatch(loadProductList(Limit, offSet + 12, formBody));
-    setOffSet(Number(offSet) + Number(Limit));
+    dispatch(loadProductList(Limit, index + 6, formBody));
+    setIndex(index + 6);
+    setLimit(6);
   };
 
   // const pagePrevious = () => {
@@ -80,7 +81,8 @@ function Products() {
           </div>
         </div>
       </nav> */}
-      {!loading && products ? (
+
+      {products && Object.keys(products).length > 0 && (
         <InfiniteScroll
           dataLength={products.count}
           next={pageNext}
@@ -114,7 +116,7 @@ function Products() {
                               </HashLink>
                             ) : (
                               ''
-                            ),
+                            )
                           )}
                         </h4>
                         {/* {product.productDescription.map((description) =>
@@ -191,19 +193,6 @@ function Products() {
             </div> */}
           </React.Fragment>
         </InfiniteScroll>
-      ) : (
-        <div
-          className="row"
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
-            height: '70vh',
-          }}>
-          <div style={{ width: '100px' }}>
-            <LargeLoader />
-          </div>
-        </div>
       )}
     </div>
   );

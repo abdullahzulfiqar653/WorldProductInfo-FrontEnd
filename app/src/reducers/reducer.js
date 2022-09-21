@@ -9,9 +9,7 @@ const initialState = {
   gallery: undefined,
   similarProducts: {},
   accessories: {},
-  products: {
-    next: true,
-  },
+  products: {},
   searchResults: {},
   singleProduct: {},
   productTypeFilter: [],
