@@ -2,19 +2,18 @@ import queryString from 'query-string';
 import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import React, { useState, useEffect } from 'react';
+import Loader from '../../../../common/SmallLoader';
 import { useDispatch, useSelector } from 'react-redux';
-import LargeLoader from '../../../../common/LargeLoader';
+// import LargeLoader from '../../../../common/LargeLoader';
 import { getFormBody } from '../../../../../actions/utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { MEDIA_URL } from '../../../../../constant/constantURL';
 import { loadProductList } from '../../../../../actions/actions';
-import { keys, sortedIndex } from 'underscore';
 
 function Products() {
   const location = useLocation();
   const dispatch = useDispatch();
   const state = useSelector((s) => s);
-  // const loading = state.loading;
   const products = state.products;
 
   const values = queryString.parse(location.search);
@@ -34,7 +33,6 @@ function Products() {
   // };
 
   const pageNext = () => {
-    console.log(formBody !== localStorage.getItem('params'));
     if (formBody !== localStorage.getItem('params')) {
       setIndex(6);
     }
@@ -87,7 +85,7 @@ function Products() {
           dataLength={products.count}
           next={pageNext}
           hasMore={products.next ? true : false}
-          loader={<LargeLoader />}
+          loader={<Loader />}
           endMessage={
             <p style={{ textAlign: 'center' }}>
               <b>Yay! You have seen it all</b>
