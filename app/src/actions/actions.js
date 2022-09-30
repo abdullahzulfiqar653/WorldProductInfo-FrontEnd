@@ -34,7 +34,7 @@ export const loadCategory = () => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/category/`, config)
+    .get(REQUEST_URL + `category/`, config)
     .then((res) => {
       dispatch({
         type: actions.CATEGORY_LOADED,
@@ -79,7 +79,7 @@ export const loadProductDetail = (productid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/product/${productid}`)
+    .get(REQUEST_URL + `product/${productid}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_LOADED,
@@ -98,7 +98,7 @@ export const categoryFilterLoaded = (parentcategoryid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/category/filter/name/?categoryid=${parentcategoryid}`, config)
+    .get(REQUEST_URL + `category/filter/name/?categoryid=${parentcategoryid}`, config)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -123,7 +123,7 @@ export const productTypeFilterLoaded = (parentcategoryid) => async (dispatch) =>
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/product/type/filter/name/?categoryid=${parentcategoryid}`, config)
+    .get(REQUEST_URL + `product/type/filter/name/?categoryid=${parentcategoryid}`, config)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -148,7 +148,7 @@ export const manufacturerFilterLoaded = (parentcategoryid) => async (dispatch) =
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/manufacturer/filter/name/?categoryid=${parentcategoryid}`, config)
+    .get(REQUEST_URL + `manufacturer/filter/name/?categoryid=${parentcategoryid}`, config)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -173,7 +173,7 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
     type: actions.TABS_REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/product/basic/over/view/${productid}`)
+    .get(REQUEST_URL + `product/basic/over/view/${productid}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_BASIC_OVERVIEW_LOADED,
@@ -196,7 +196,7 @@ export const loadSpecifications = (productid) => async (dispatch) => {
     type: actions.TABS_REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/product/specification/${productid}`)
+    .get(REQUEST_URL + `product/specification/${productid}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_SPECIFICATIONS_LOADED,
@@ -215,7 +215,7 @@ export const loadGallery = (productid) => async (dispatch) => {
     type: actions.TABS_REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/product/gallery/${productid}`)
+    .get(REQUEST_URL + `product/gallery/${productid}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_GALLERY_LOADED,
