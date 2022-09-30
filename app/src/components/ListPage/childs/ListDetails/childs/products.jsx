@@ -115,7 +115,7 @@ function Products() {
                               </HashLink>
                             ) : (
                               ''
-                            )
+                            ),
                           )}
                         </h4>
                         {/* {product.productDescription.map((description) =>
