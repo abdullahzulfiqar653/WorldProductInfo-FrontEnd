@@ -1,6 +1,5 @@
 import React from 'react';
 import ManufacturerSlider from './childs/manufacturer/manufacturerSlider';
-import CategoriesSlider from './childs/categories/categoriesslider';
 import Banner from '../../../assets/images/shop/banner1.jpg';
 
 const MainSlider = () => {
@@ -19,7 +18,6 @@ const MainSlider = () => {
           </div>
         </div>
         <ManufacturerSlider />
-        <CategoriesSlider />
       </div>
     </div>
   );

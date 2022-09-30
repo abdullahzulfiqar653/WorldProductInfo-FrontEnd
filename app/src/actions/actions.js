@@ -1,8 +1,9 @@
 import axios from 'axios';
 import * as actions from './actionTypes';
 import config from '../components/services/config';
-import { REQUEST_URL } from '../constant/constantURL';
 import _ from 'underscore';
+
+const REQUEST_URL = process.env.REACT_APP_BACKEND_API;
 
 export const pageLoaded = (des) => ({
   type: actions.PAGE_LOADED,
@@ -14,7 +15,7 @@ export const loadAccessories = (productid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/products/?productid=${productid}&flag=accessories`, config)
+    .get(REQUEST_URL + `products/?productid=${productid}&flag=accessories`, config)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_ACCESSORIES_LOADED,
@@ -55,7 +56,7 @@ export const loadProductList = (limit = 12, offset = 0, params) => async (dispat
   if (!flag) {
     localStorage.setItem('params', params);
   }
-  const url = `/products/?${params}&limit=${limit}&offset=${offset}`;
+  const url = `products/?${params}&limit=${limit}&offset=${offset}`;
   console.log(url);
   await axios
     .get(REQUEST_URL + url)
@@ -178,7 +179,8 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
         type: actions.PRODUCT_BASIC_OVERVIEW_LOADED,
         payload: _.groupBy(
           res.data.productAttribute.filter((i) => i.type === 0),
-          'atrribute_label',
+          // eslint-disable-next-line prettier/prettier
+          'atrribute_label'
         ),
       });
     })
@@ -232,7 +234,7 @@ export const loadLatestProducts = (formBody = 'flag=latest') => async (dispatch)
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/products/?${formBody}&limit=${12}`)
+    .get(REQUEST_URL + `products/?${formBody}&limit=${12}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCTS_LATEST_LOADED,
@@ -251,7 +253,7 @@ export const loadSimilarProducts = (productid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `/products/?productid=${productid}&flag=similar`)
+    .get(REQUEST_URL + `products/?productid=${productid}&flag=similar`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_SIMILAR_LOADED,

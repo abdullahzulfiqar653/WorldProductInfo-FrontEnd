@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 // import LargeLoader from '../../../../common/LargeLoader';
 import { getFormBody } from '../../../../../actions/utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { MEDIA_URL } from '../../../../../constant/constantURL';
 import { loadProductList } from '../../../../../actions/actions';
+
+const MEDIA_URL = process.env.REACT_APP_MEDIA_URL;
 
 function Products() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function Products() {
   const [index, setIndex] = useState(6);
   // const [currentPage, setCurrentPage] = useState(1);
   const { categoryid, valueid, manufacturerid } = queryString.parse(location.search);
+
   useEffect(() => {
     dispatch(loadProductList(12, 0, formBody));
     setIndex(6);

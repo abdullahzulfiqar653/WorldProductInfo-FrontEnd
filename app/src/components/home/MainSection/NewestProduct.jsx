@@ -5,10 +5,11 @@ import { useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import LargeLoader from '../../common/LargeLoader';
 import { useDispatch, useSelector } from 'react-redux';
-import { MEDIA_URL } from '../../../constant/constantURL';
 import { loadLatestProducts } from '../../../actions/actions';
 import '../../ProductDetailsPage/ProductDetails-components/childs/tabs/css/button.css';
 import { getFormBody } from '../../../actions/utils';
+
+const MEDIA_URL = process.env.REACT_APP_MEDIA_URL;
 
 function NewestProduct(props) {
   const dispatch = useDispatch();
