@@ -15,7 +15,7 @@ export const loadAccessories = (productid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `products/?productid=${productid}&flag=accessories`, config)
+    .get(REQUEST_URL + `/products/?productid=${productid}&flag=accessories`, config)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_ACCESSORIES_LOADED,
@@ -79,7 +79,7 @@ export const loadProductDetail = (productid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `product/${productid}`)
+    .get(REQUEST_URL + `/product/${productid}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_LOADED,
@@ -123,7 +123,7 @@ export const productTypeFilterLoaded = (parentcategoryid) => async (dispatch) =>
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `product/type/filter/name/?categoryid=${parentcategoryid}`, config)
+    .get(REQUEST_URL + `/product/type/filter/name/?categoryid=${parentcategoryid}`, config)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -173,7 +173,7 @@ export const loadBasicOverview = (productid) => async (dispatch) => {
     type: actions.TABS_REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `product/basic/over/view/${productid}`)
+    .get(REQUEST_URL + `/product/basic/over/view/${productid}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_BASIC_OVERVIEW_LOADED,
@@ -196,7 +196,7 @@ export const loadSpecifications = (productid) => async (dispatch) => {
     type: actions.TABS_REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `product/specification/${productid}`)
+    .get(REQUEST_URL + `/product/specification/${productid}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_SPECIFICATIONS_LOADED,
@@ -215,7 +215,7 @@ export const loadGallery = (productid) => async (dispatch) => {
     type: actions.TABS_REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `product/gallery/${productid}`)
+    .get(REQUEST_URL + `/product/gallery/${productid}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_GALLERY_LOADED,
@@ -234,7 +234,7 @@ export const loadLatestProducts = (formBody = 'flag=latest') => async (dispatch)
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `products/?${formBody}&limit=${12}`)
+    .get(REQUEST_URL + `/products/?${formBody}&limit=${12}`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCTS_LATEST_LOADED,
@@ -253,7 +253,7 @@ export const loadSimilarProducts = (productid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `products/?productid=${productid}&flag=similar`)
+    .get(REQUEST_URL + `/products/?productid=${productid}&flag=similar`)
     .then((res) => {
       dispatch({
         type: actions.PRODUCT_SIMILAR_LOADED,
