@@ -33,8 +33,8 @@ function FiltersList(closeFilters) {
 
   return (
     <aside className="sidebar shop-sidebar sticky-sidebar-wrapper sidebar-fixed">
-      <div className="sidebar-overlay" onClick={closeFilters}></div>
-      <button className="sidebar-close" href="#" onClick={closeFilters}>
+      <div className="sidebar-overlay" onClick={() => closeFilters}></div>
+      <button className="sidebar-close" href="#" onClick={() => closeFilters}>
         <i className="close-icon"></i>
       </button>
       <div className="sidebar-content scrollable scroll">

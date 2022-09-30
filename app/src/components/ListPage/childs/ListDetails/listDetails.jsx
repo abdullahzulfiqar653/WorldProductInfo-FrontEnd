@@ -18,7 +18,7 @@ function ListDetails() {
 
   return (
     <main className="main">
-      <div className={filterStatus}>
+      <div className={filterStatus ? filterStatus : ''}>
         <div className="container">
           <div className="shop-content row gutter-lg mb-10">
             <ProductNav linkList={urlList} />

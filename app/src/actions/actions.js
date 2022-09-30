@@ -34,7 +34,7 @@ export const loadCategory = () => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `category/`, config)
+    .get(REQUEST_URL + `/category/`, config)
     .then((res) => {
       dispatch({
         type: actions.CATEGORY_LOADED,
@@ -56,7 +56,7 @@ export const loadProductList = (limit = 12, offset = 0, params) => async (dispat
   if (!flag) {
     localStorage.setItem('params', params);
   }
-  const url = `products/?${params}&limit=${limit}&offset=${offset}`;
+  const url = `/products/?${params}&limit=${limit}&offset=${offset}`;
   console.log(url);
   await axios
     .get(REQUEST_URL + url)
@@ -98,7 +98,7 @@ export const categoryFilterLoaded = (parentcategoryid) => async (dispatch) => {
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `category/filter/name/?categoryid=${parentcategoryid}`, config)
+    .get(REQUEST_URL + `/category/filter/name/?categoryid=${parentcategoryid}`, config)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
@@ -148,7 +148,7 @@ export const manufacturerFilterLoaded = (parentcategoryid) => async (dispatch) =
     type: actions.REQUEST_START,
   });
   await axios
-    .get(REQUEST_URL + `manufacturer/filter/name/?categoryid=${parentcategoryid}`, config)
+    .get(REQUEST_URL + `/manufacturer/filter/name/?categoryid=${parentcategoryid}`, config)
     .then((res) => {
       if (res.status === 200) {
         dispatch({
