@@ -52,7 +52,7 @@ function FiltersList(closeFilters) {
                     }
                   }}>
                   <span>{category ? 'Sub Categories' : ''}</span>
-                  <span class="toggle-btn"></span>
+                  <span className="toggle-btn"></span>
                 </h3>
                 <div className="widget-body">
                   <ul className="filter-items search-ul">
@@ -79,7 +79,7 @@ function FiltersList(closeFilters) {
                     }
                   }}>
                   <span>Product Type</span>
-                  <span class="toggle-btn"></span>
+                  <span className="toggle-btn"></span>
                 </h3>
                 <div className="widget-body">
                   <ul className="filter-items search-ul">
@@ -107,7 +107,7 @@ function FiltersList(closeFilters) {
                     }
                   }}>
                   <span>Manufacturer Filter</span>
-                  <span class="toggle-btn"></span>
+                  <span className="toggle-btn"></span>
                 </h3>
                 <div className="widget-body">
                   <ul className="filter-items search-ul">

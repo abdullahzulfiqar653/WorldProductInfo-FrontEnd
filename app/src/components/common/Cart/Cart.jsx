@@ -17,6 +17,7 @@ class Cart extends Component {
             })
           }></div>
         <Link
+          to="#"
           onClick={() =>
             this.setState({
               cartstate: 'dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2 opened',

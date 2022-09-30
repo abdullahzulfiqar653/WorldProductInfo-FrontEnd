@@ -60,6 +60,7 @@ class BottomNav extends Component {
             <div className="header-left">
               <div className="dropdown category-dropdown has-border" data-visible="true">
                 <Link
+                  to="#"
                   className="category-toggle text-dark"
                   data-toggle="dropdown"
                   role="button"

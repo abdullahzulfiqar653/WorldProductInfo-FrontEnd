@@ -15,7 +15,7 @@ class MiddleNav extends Component {
       <div className="header-middle">
         <div className="container">
           <div className="header-left mr-md-4">
-            <Link className="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle"></Link>
+            <Link to="#" className="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle"></Link>
             <NavLink to={'/home'} className="logo ml-lg-0">
               <img src={Logo} alt="logo" width="180" height="50" />
               {/* <h2 className="mt-2 mb-2" style={{ fontFamily: 'wolmart !important' }}>

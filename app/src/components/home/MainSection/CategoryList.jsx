@@ -20,7 +20,7 @@ function CategoryList(props) {
                 }
               }}>
               <span>Categories</span>
-              <span class="toggle-btn"></span>
+              <span className="toggle-btn"></span>
             </h3>
             <div className="widget-body">
               <ul className="filter-items search-ul">

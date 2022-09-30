@@ -13,23 +13,23 @@ class UpperNav extends Component {
           </div>
           <div className="header-right">
             <div className="dropdown">
-              <Link>USD</Link>
+              <Link to="/">USD</Link>
               <div className="dropdown-box">
-                <Link>USD</Link>
-                <Link>EUR</Link>
+                <Link to="/">USD</Link>
+                <Link to="/">EUR</Link>
               </div>
             </div>
             <div className="dropdown">
-              <Link>
+              <Link to="/">
                 <img src={ENGFlag} alt="ENG Flag" width={14} height={8} className="dropdown-image" />
                 ENG
               </Link>
               <div className="dropdown-box">
-                <Link>
+                <Link to="/">
                   <img src={ENGFlag} alt="ENG Flag" width={14} height={8} className="dropdown-image" />
                   ENG
                 </Link>
-                <Link>
+                <Link to="/">
                   <img src={FRAFlag} alt="FRA Flag" width={14} height={8} className="dropdown-image" />
                   FRA
                 </Link>
@@ -38,11 +38,13 @@ class UpperNav extends Component {
 
             <span className="divider d-lg-show"></span>
 
-            <Link className="d-lg-show login sign-in">
+            <Link to="#" className="d-lg-show login sign-in">
               <i className="w-icon-account"></i>Sign In
             </Link>
             <span className="delimiter d-lg-show">/</span>
-            <Link className="ml-0 d-lg-show login register">Register</Link>
+            <Link to="#" className="ml-0 d-lg-show login register">
+              Register
+            </Link>
           </div>
         </div>
       </div>
